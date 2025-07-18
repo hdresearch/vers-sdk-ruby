@@ -1,0 +1,3 @@
+module FirecrackerManager
+  module API = FirecrackerManager::Models::API
+end

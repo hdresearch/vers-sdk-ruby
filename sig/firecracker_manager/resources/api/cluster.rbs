@@ -1,0 +1,39 @@
+module FirecrackerManager
+  module Resources
+    class API
+      class Cluster
+        def create: (
+          cluster_create_params: FirecrackerManager::Models::API::ClusterCreateParams,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::ClusterCreateResponse
+
+        def retrieve: (
+          String cluster_id_or_alias,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::ClusterRetrieveResponse
+
+        def update: (
+          String cluster_id_or_alias,
+          ?alias_: String?,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::ClusterUpdateResponse
+
+        def list: (
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::ClusterListResponse
+
+        def delete: (
+          String cluster_id_or_alias,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::ClusterDeleteResponse
+
+        def get_ssh_key: (
+          String cluster_id_or_alias,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::ClusterGetSSHKeyResponse
+
+        def initialize: (client: FirecrackerManager::Client) -> void
+      end
+    end
+  end
+end

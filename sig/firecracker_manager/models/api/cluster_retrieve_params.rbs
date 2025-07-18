@@ -1,0 +1,19 @@
+module FirecrackerManager
+  module Models
+    module API
+      type cluster_retrieve_params =
+        {  } & FirecrackerManager::Internal::Type::request_parameters
+
+      class ClusterRetrieveParams < FirecrackerManager::Internal::Type::BaseModel
+        extend FirecrackerManager::Internal::Type::RequestParameters::Converter
+        include FirecrackerManager::Internal::Type::RequestParameters
+
+        def initialize: (
+          ?request_options: FirecrackerManager::request_opts
+        ) -> void
+
+        def to_hash: -> { request_options: FirecrackerManager::RequestOptions }
+      end
+    end
+  end
+end

@@ -1,0 +1,7 @@
+module FirecrackerManager
+  module Models
+    module API
+      class HealthCheckResponse = String
+    end
+  end
+end

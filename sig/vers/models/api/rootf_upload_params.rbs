@@ -1,0 +1,27 @@
+module Vers
+  module Models
+    module API
+      type rootf_upload_params =
+        { dockerfile: String } & Vers::Internal::Type::request_parameters
+
+      class RootfUploadParams < Vers::Internal::Type::BaseModel
+        extend Vers::Internal::Type::RequestParameters::Converter
+        include Vers::Internal::Type::RequestParameters
+
+        attr_reader dockerfile: String?
+
+        def dockerfile=: (String) -> String
+
+        def initialize: (
+          ?dockerfile: String,
+          ?request_options: Vers::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          dockerfile: String,
+          request_options: Vers::RequestOptions
+        }
+      end
+    end
+  end
+end

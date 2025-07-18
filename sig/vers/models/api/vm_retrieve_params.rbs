@@ -1,0 +1,16 @@
+module Vers
+  module Models
+    module API
+      type vm_retrieve_params = {  } & Vers::Internal::Type::request_parameters
+
+      class VmRetrieveParams < Vers::Internal::Type::BaseModel
+        extend Vers::Internal::Type::RequestParameters::Converter
+        include Vers::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: Vers::request_opts) -> void
+
+        def to_hash: -> { request_options: Vers::RequestOptions }
+      end
+    end
+  end
+end

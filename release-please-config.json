@@ -60,7 +60,7 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/firecracker_manager/version.rb",
+  "version-file": "lib/vers/version.rb",
   "extra-files": [
     {
       "type": "ruby-readme",

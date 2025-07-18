@@ -1,0 +1,30 @@
+module Vers
+  module Models
+    module API
+      type cluster_create_params =
+        { cluster_create_params: Vers::Models::API::cluster_create_params }
+        & Vers::Internal::Type::request_parameters
+
+      class ClusterCreateParams < Vers::Internal::Type::BaseModel
+        extend Vers::Internal::Type::RequestParameters::Converter
+        include Vers::Internal::Type::RequestParameters
+
+        def cluster_create_params: -> Vers::Models::API::cluster_create_params
+
+        def cluster_create_params=: (
+          Vers::Models::API::cluster_create_params _
+        ) -> Vers::Models::API::cluster_create_params
+
+        def initialize: (
+          cluster_create_params: Vers::Models::API::cluster_create_params,
+          ?request_options: Vers::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          cluster_create_params: Vers::Models::API::cluster_create_params,
+          request_options: Vers::RequestOptions
+        }
+      end
+    end
+  end
+end

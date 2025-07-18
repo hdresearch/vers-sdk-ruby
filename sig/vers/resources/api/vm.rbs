@@ -1,0 +1,48 @@
+module Vers
+  module Resources
+    class API
+      class Vm
+        def retrieve: (
+          String vm_id_or_alias,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::VmRetrieveResponse
+
+        def update: (
+          String vm_id_or_alias,
+          ?alias_: String?,
+          ?state: Vers::Models::API::VmPatchParams::state?,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::VmUpdateResponse
+
+        def list: (
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::VmListResponse
+
+        def delete: (
+          String vm_id_or_alias,
+          recursive: bool,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::VmDeleteResponse
+
+        def branch: (
+          String vm_id_or_alias,
+          ?alias_: String?,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::VmBranchResponse
+
+        def commit: (
+          String vm_id_or_alias,
+          ?tags: ::Array[String]?,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::VmCommitResponse
+
+        def get_ssh_key: (
+          String vm_id_or_alias,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::VmGetSSHKeyResponse
+
+        def initialize: (client: Vers::Client) -> void
+      end
+    end
+  end
+end

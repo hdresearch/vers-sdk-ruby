@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    module API
+      type rootfs_delete_response = { rootfs_name: String }
+
+      class RootfsDeleteResponse < Vers::Internal::Type::BaseModel
+        attr_accessor rootfs_name: String
+
+        def initialize: (rootfs_name: String) -> void
+
+        def to_hash: -> { rootfs_name: String }
+      end
+    end
+  end
+end

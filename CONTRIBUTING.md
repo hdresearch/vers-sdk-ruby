@@ -14,7 +14,7 @@ This will install all the required dependencies.
 
 ## Modifying/Adding code
 
-Most of the SDK is generated code. Modifications to code will be persisted between generations, but may result in merge conflicts between manual patches and changes from the generator. The generator will never modify the contents of `lib/firecracker_manager/helpers/` and `examples/` directory.
+Most of the SDK is generated code. Modifications to code will be persisted between generations, but may result in merge conflicts between manual patches and changes from the generator. The generator will never modify the contents of `lib/vers/helpers/` and `examples/` directory.
 
 ## Adding and running examples
 
@@ -24,7 +24,7 @@ All files in the `examples/` directory are not modified by the generator and can
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require_relative "../lib/firecracker_manager"
+require_relative "../lib/vers"
 
 # ...
 ```
@@ -43,7 +43,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git in your `Gemfile`:
 
 ```ruby
-gem "firecracker-manager", git: "https://www.github.com/hdresearch/vers-sdk-ruby"
+gem "vers", git: "https://www.github.com/hdresearch/vers-sdk-ruby"
 ```
 
 Alternatively, reference local copy of the repo:
@@ -53,7 +53,7 @@ $ git clone -- 'https://www.github.com/hdresearch/vers-sdk-ruby' '<path-to-repo>
 ```
 
 ```ruby
-gem "firecracker-manager", path: "<path-to-repo>"
+gem "vers", path: "<path-to-repo>"
 ```
 
 ## Running commands

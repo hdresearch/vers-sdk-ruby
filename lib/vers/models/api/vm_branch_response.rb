@@ -83,8 +83,8 @@ module Vers
           # @!attribute network_info
           #   The VM's network configuration
           #
-          #   @return [Vers::Models::API::VmBranchResponse::Data::NetworkInfo]
-          required :network_info, -> { Vers::Models::API::VmBranchResponse::Data::NetworkInfo }
+          #   @return [Vers::Models::API::VmNetworkInfoDto]
+          required :network_info, -> { Vers::API::VmNetworkInfoDto }
 
           # @!attribute state
           #   Whether the VM is running, paused, or not started.
@@ -123,7 +123,7 @@ module Vers
           #
           #   @param mem_size_mib [Integer] How much RAM is allocated to this VM
           #
-          #   @param network_info [Vers::Models::API::VmBranchResponse::Data::NetworkInfo] The VM's network configuration
+          #   @param network_info [Vers::Models::API::VmNetworkInfoDto] The VM's network configuration
           #
           #   @param state [Symbol, Vers::Models::API::VmBranchResponse::Data::State] Whether the VM is running, paused, or not started.
           #
@@ -132,49 +132,6 @@ module Vers
           #   @param alias_ [String, nil] Human-readable name assigned to the VM.
           #
           #   @param parent_id [String, nil] The parent VM's ID, if present. If None, then this VM is a root VM.
-
-          # @see Vers::Models::API::VmBranchResponse::Data#network_info
-          class NetworkInfo < Vers::Internal::Type::BaseModel
-            # @!attribute guest_ip
-            #
-            #   @return [String]
-            required :guest_ip, String
-
-            # @!attribute guest_mac
-            #
-            #   @return [String]
-            required :guest_mac, String
-
-            # @!attribute ssh_port
-            #
-            #   @return [Integer]
-            required :ssh_port, Integer
-
-            # @!attribute tap0_ip
-            #
-            #   @return [String]
-            required :tap0_ip, String
-
-            # @!attribute tap0_name
-            #
-            #   @return [String]
-            required :tap0_name, String
-
-            # @!attribute vm_namespace
-            #
-            #   @return [String]
-            required :vm_namespace, String
-
-            # @!method initialize(guest_ip:, guest_mac:, ssh_port:, tap0_ip:, tap0_name:, vm_namespace:)
-            #   The VM's network configuration
-            #
-            #   @param guest_ip [String]
-            #   @param guest_mac [String]
-            #   @param ssh_port [Integer]
-            #   @param tap0_ip [String]
-            #   @param tap0_name [String]
-            #   @param vm_namespace [String]
-          end
 
           # Whether the VM is running, paused, or not started.
           #

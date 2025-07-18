@@ -45,7 +45,7 @@ module Vers
             fs_size_mib: Integer,
             ip_address: String,
             mem_size_mib: Integer,
-            network_info: Vers::Models::API::VmBranchResponse::Data::NetworkInfo,
+            network_info: Vers::API::VmNetworkInfoDto,
             state: Vers::Models::API::VmBranchResponse::Data::state,
             vcpu_count: Integer,
             alias_: String?,
@@ -65,7 +65,7 @@ module Vers
 
           attr_accessor mem_size_mib: Integer
 
-          attr_accessor network_info: Vers::Models::API::VmBranchResponse::Data::NetworkInfo
+          attr_accessor network_info: Vers::API::VmNetworkInfoDto
 
           attr_accessor state: Vers::Models::API::VmBranchResponse::Data::state
 
@@ -82,7 +82,7 @@ module Vers
             fs_size_mib: Integer,
             ip_address: String,
             mem_size_mib: Integer,
-            network_info: Vers::Models::API::VmBranchResponse::Data::NetworkInfo,
+            network_info: Vers::API::VmNetworkInfoDto,
             state: Vers::Models::API::VmBranchResponse::Data::state,
             vcpu_count: Integer,
             ?alias_: String?,
@@ -96,54 +96,12 @@ module Vers
             fs_size_mib: Integer,
             ip_address: String,
             mem_size_mib: Integer,
-            network_info: Vers::Models::API::VmBranchResponse::Data::NetworkInfo,
+            network_info: Vers::API::VmNetworkInfoDto,
             state: Vers::Models::API::VmBranchResponse::Data::state,
             vcpu_count: Integer,
             alias_: String?,
             parent_id: String?
           }
-
-          type network_info =
-            {
-              guest_ip: String,
-              guest_mac: String,
-              ssh_port: Integer,
-              :tap0_ip => String,
-              :tap0_name => String,
-              vm_namespace: String
-            }
-
-          class NetworkInfo < Vers::Internal::Type::BaseModel
-            attr_accessor guest_ip: String
-
-            attr_accessor guest_mac: String
-
-            attr_accessor ssh_port: Integer
-
-            attr_accessor tap0_ip: String
-
-            attr_accessor tap0_name: String
-
-            attr_accessor vm_namespace: String
-
-            def initialize: (
-              guest_ip: String,
-              guest_mac: String,
-              ssh_port: Integer,
-              tap0_ip: String,
-              tap0_name: String,
-              vm_namespace: String
-            ) -> void
-
-            def to_hash: -> {
-              guest_ip: String,
-              guest_mac: String,
-              ssh_port: Integer,
-              :tap0_ip => String,
-              :tap0_name => String,
-              vm_namespace: String
-            }
-          end
 
           type state = :"Not started" | :Running | :Paused
 

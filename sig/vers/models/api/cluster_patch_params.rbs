@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    module API
+      type cluster_patch_params = { alias_: String? }
+
+      class ClusterPatchParams < Vers::Internal::Type::BaseModel
+        attr_accessor alias_: String?
+
+        def initialize: (?alias_: String?) -> void
+
+        def to_hash: -> { alias_: String? }
+      end
+    end
+  end
+end

@@ -1,0 +1,47 @@
+module FirecrackerManager
+  module Models
+    module API
+      type cluster_dto =
+        {
+          id: String,
+          fs_size_mib: Integer,
+          root_vm_id: String,
+          vm_count: Integer,
+          vms: ::Array[FirecrackerManager::API::VmDto],
+          alias_: String?
+        }
+
+      class ClusterDto < FirecrackerManager::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor fs_size_mib: Integer
+
+        attr_accessor root_vm_id: String
+
+        attr_accessor vm_count: Integer
+
+        attr_accessor vms: ::Array[FirecrackerManager::API::VmDto]
+
+        attr_accessor alias_: String?
+
+        def initialize: (
+          id: String,
+          fs_size_mib: Integer,
+          root_vm_id: String,
+          vm_count: Integer,
+          vms: ::Array[FirecrackerManager::API::VmDto],
+          ?alias_: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          fs_size_mib: Integer,
+          root_vm_id: String,
+          vm_count: Integer,
+          vms: ::Array[FirecrackerManager::API::VmDto],
+          alias_: String?
+        }
+      end
+    end
+  end
+end

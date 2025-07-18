@@ -1,0 +1,32 @@
+module FirecrackerManager
+  module Models
+    module API
+      type cluster_create_params =
+        {
+          cluster_create_params: FirecrackerManager::Models::API::cluster_create_params
+        }
+        & FirecrackerManager::Internal::Type::request_parameters
+
+      class ClusterCreateParams < FirecrackerManager::Internal::Type::BaseModel
+        extend FirecrackerManager::Internal::Type::RequestParameters::Converter
+        include FirecrackerManager::Internal::Type::RequestParameters
+
+        def cluster_create_params: -> FirecrackerManager::Models::API::cluster_create_params
+
+        def cluster_create_params=: (
+          FirecrackerManager::Models::API::cluster_create_params _
+        ) -> FirecrackerManager::Models::API::cluster_create_params
+
+        def initialize: (
+          cluster_create_params: FirecrackerManager::Models::API::cluster_create_params,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          cluster_create_params: FirecrackerManager::Models::API::cluster_create_params,
+          request_options: FirecrackerManager::RequestOptions
+        }
+      end
+    end
+  end
+end

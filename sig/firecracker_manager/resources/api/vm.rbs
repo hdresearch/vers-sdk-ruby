@@ -1,0 +1,48 @@
+module FirecrackerManager
+  module Resources
+    class API
+      class Vm
+        def retrieve: (
+          String vm_id_or_alias,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::VmRetrieveResponse
+
+        def update: (
+          String vm_id_or_alias,
+          ?alias_: String?,
+          ?state: FirecrackerManager::Models::API::VmPatchParams::state?,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::VmUpdateResponse
+
+        def list: (
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::VmListResponse
+
+        def delete: (
+          String vm_id_or_alias,
+          recursive: bool,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::VmDeleteResponse
+
+        def branch: (
+          String vm_id_or_alias,
+          ?alias_: String?,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::VmBranchResponse
+
+        def commit: (
+          String vm_id_or_alias,
+          ?tags: ::Array[String]?,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::VmCommitResponse
+
+        def get_ssh_key: (
+          String vm_id_or_alias,
+          ?request_options: FirecrackerManager::request_opts
+        ) -> FirecrackerManager::Models::API::VmGetSSHKeyResponse
+
+        def initialize: (client: FirecrackerManager::Client) -> void
+      end
+    end
+  end
+end

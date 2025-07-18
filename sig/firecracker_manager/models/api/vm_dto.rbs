@@ -1,0 +1,126 @@
+module FirecrackerManager
+  module Models
+    module API
+      type vm_dto =
+        {
+          id: String,
+          children: ::Array[String],
+          cluster_id: String,
+          fs_size_mib: Integer,
+          ip_address: String,
+          mem_size_mib: Integer,
+          network_info: FirecrackerManager::API::VmDto::NetworkInfo,
+          state: FirecrackerManager::Models::API::VmDto::state,
+          vcpu_count: Integer,
+          alias_: String?,
+          parent_id: String?
+        }
+
+      class VmDto < FirecrackerManager::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor children: ::Array[String]
+
+        attr_accessor cluster_id: String
+
+        attr_accessor fs_size_mib: Integer
+
+        attr_accessor ip_address: String
+
+        attr_accessor mem_size_mib: Integer
+
+        attr_accessor network_info: FirecrackerManager::API::VmDto::NetworkInfo
+
+        attr_accessor state: FirecrackerManager::Models::API::VmDto::state
+
+        attr_accessor vcpu_count: Integer
+
+        attr_accessor alias_: String?
+
+        attr_accessor parent_id: String?
+
+        def initialize: (
+          id: String,
+          children: ::Array[String],
+          cluster_id: String,
+          fs_size_mib: Integer,
+          ip_address: String,
+          mem_size_mib: Integer,
+          network_info: FirecrackerManager::API::VmDto::NetworkInfo,
+          state: FirecrackerManager::Models::API::VmDto::state,
+          vcpu_count: Integer,
+          ?alias_: String?,
+          ?parent_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          children: ::Array[String],
+          cluster_id: String,
+          fs_size_mib: Integer,
+          ip_address: String,
+          mem_size_mib: Integer,
+          network_info: FirecrackerManager::API::VmDto::NetworkInfo,
+          state: FirecrackerManager::Models::API::VmDto::state,
+          vcpu_count: Integer,
+          alias_: String?,
+          parent_id: String?
+        }
+
+        type network_info =
+          {
+            guest_ip: String,
+            guest_mac: String,
+            ssh_port: Integer,
+            :tap0_ip => String,
+            :tap0_name => String,
+            vm_namespace: String
+          }
+
+        class NetworkInfo < FirecrackerManager::Internal::Type::BaseModel
+          attr_accessor guest_ip: String
+
+          attr_accessor guest_mac: String
+
+          attr_accessor ssh_port: Integer
+
+          attr_accessor tap0_ip: String
+
+          attr_accessor tap0_name: String
+
+          attr_accessor vm_namespace: String
+
+          def initialize: (
+            guest_ip: String,
+            guest_mac: String,
+            ssh_port: Integer,
+            tap0_ip: String,
+            tap0_name: String,
+            vm_namespace: String
+          ) -> void
+
+          def to_hash: -> {
+            guest_ip: String,
+            guest_mac: String,
+            ssh_port: Integer,
+            :tap0_ip => String,
+            :tap0_name => String,
+            vm_namespace: String
+          }
+        end
+
+        type state = :"Not started" | :Running | :Paused
+
+        module State
+          extend FirecrackerManager::Internal::Type::Enum
+
+          NOT_STARTED: :"Not started"
+          RUNNING: :Running
+          PAUSED: :Paused
+
+          def self?.values: -> ::Array[FirecrackerManager::Models::API::VmDto::state]
+        end
+      end
+    end
+  end
+end

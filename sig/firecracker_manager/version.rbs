@@ -1,3 +1,0 @@
-module FirecrackerManager
-  VERSION: String
-end

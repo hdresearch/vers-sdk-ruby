@@ -1,0 +1,17 @@
+module Vers
+  module Resources
+    class API
+      attr_reader cluster: Vers::Resources::API::Cluster
+
+      attr_reader vm: Vers::Resources::API::Vm
+
+      attr_reader rootfs: Vers::Resources::API::Rootfs
+
+      attr_reader health: Vers::Resources::API::Health
+
+      attr_reader telemetry: Vers::Resources::API::Telemetry
+
+      def initialize: (client: Vers::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,11 @@
+module Vers
+  module Resources
+    class API
+      class Health
+        def check: (?request_options: Vers::request_opts) -> String
+
+        def initialize: (client: Vers::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,47 @@
+module Vers
+  module Models
+    module API
+      type vm_network_info_dto =
+        {
+          guest_ip: String,
+          guest_mac: String,
+          ssh_port: Integer,
+          :tap0_ip => String,
+          :tap0_name => String,
+          vm_namespace: String
+        }
+
+      class VmNetworkInfoDto < Vers::Internal::Type::BaseModel
+        attr_accessor guest_ip: String
+
+        attr_accessor guest_mac: String
+
+        attr_accessor ssh_port: Integer
+
+        attr_accessor tap0_ip: String
+
+        attr_accessor tap0_name: String
+
+        attr_accessor vm_namespace: String
+
+        def initialize: (
+          guest_ip: String,
+          guest_mac: String,
+          ssh_port: Integer,
+          tap0_ip: String,
+          tap0_name: String,
+          vm_namespace: String
+        ) -> void
+
+        def to_hash: -> {
+          guest_ip: String,
+          guest_mac: String,
+          ssh_port: Integer,
+          :tap0_ip => String,
+          :tap0_name => String,
+          vm_namespace: String
+        }
+      end
+    end
+  end
+end

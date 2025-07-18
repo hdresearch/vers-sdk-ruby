@@ -1,0 +1,162 @@
+module Vers
+  module Models
+    module API
+      type vm_update_response =
+        {
+          data: Vers::Models::API::VmUpdateResponse::Data,
+          duration_ns: Integer,
+          operation_code: Vers::Models::API::VmUpdateResponse::operation_code,
+          operation_id: String,
+          time_start: Integer
+        }
+
+      class VmUpdateResponse < Vers::Internal::Type::BaseModel
+        attr_accessor data: Vers::Models::API::VmUpdateResponse::Data
+
+        attr_accessor duration_ns: Integer
+
+        attr_accessor operation_code: Vers::Models::API::VmUpdateResponse::operation_code
+
+        attr_accessor operation_id: String
+
+        attr_accessor time_start: Integer
+
+        def initialize: (
+          data: Vers::Models::API::VmUpdateResponse::Data,
+          duration_ns: Integer,
+          operation_code: Vers::Models::API::VmUpdateResponse::operation_code,
+          operation_id: String,
+          time_start: Integer
+        ) -> void
+
+        def to_hash: -> {
+          data: Vers::Models::API::VmUpdateResponse::Data,
+          duration_ns: Integer,
+          operation_code: Vers::Models::API::VmUpdateResponse::operation_code,
+          operation_id: String,
+          time_start: Integer
+        }
+
+        type data =
+          {
+            id: String,
+            children: ::Array[String],
+            cluster_id: String,
+            fs_size_mib: Integer,
+            ip_address: String,
+            mem_size_mib: Integer,
+            network_info: Vers::API::VmNetworkInfoDto,
+            state: Vers::Models::API::VmUpdateResponse::Data::state,
+            vcpu_count: Integer,
+            alias_: String?,
+            parent_id: String?
+          }
+
+        class Data < Vers::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor children: ::Array[String]
+
+          attr_accessor cluster_id: String
+
+          attr_accessor fs_size_mib: Integer
+
+          attr_accessor ip_address: String
+
+          attr_accessor mem_size_mib: Integer
+
+          attr_accessor network_info: Vers::API::VmNetworkInfoDto
+
+          attr_accessor state: Vers::Models::API::VmUpdateResponse::Data::state
+
+          attr_accessor vcpu_count: Integer
+
+          attr_accessor alias_: String?
+
+          attr_accessor parent_id: String?
+
+          def initialize: (
+            id: String,
+            children: ::Array[String],
+            cluster_id: String,
+            fs_size_mib: Integer,
+            ip_address: String,
+            mem_size_mib: Integer,
+            network_info: Vers::API::VmNetworkInfoDto,
+            state: Vers::Models::API::VmUpdateResponse::Data::state,
+            vcpu_count: Integer,
+            ?alias_: String?,
+            ?parent_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            children: ::Array[String],
+            cluster_id: String,
+            fs_size_mib: Integer,
+            ip_address: String,
+            mem_size_mib: Integer,
+            network_info: Vers::API::VmNetworkInfoDto,
+            state: Vers::Models::API::VmUpdateResponse::Data::state,
+            vcpu_count: Integer,
+            alias_: String?,
+            parent_id: String?
+          }
+
+          type state = :"Not started" | :Running | :Paused
+
+          module State
+            extend Vers::Internal::Type::Enum
+
+            NOT_STARTED: :"Not started"
+            RUNNING: :Running
+            PAUSED: :Paused
+
+            def self?.values: -> ::Array[Vers::Models::API::VmUpdateResponse::Data::state]
+          end
+        end
+
+        type operation_code =
+          :list_clusters
+          | :get_cluster
+          | :create_cluster
+          | :delete_cluster
+          | :update_cluster
+          | :get_cluster_ssh_key
+          | :list_vms
+          | :get_vm
+          | :update_vm
+          | :branch_vm
+          | :commit_vm
+          | :delete_vm
+          | :get_vm_ssh_key
+          | :upload_rootfs
+          | :delete_rootfs
+          | :list_rootfs
+
+        module OperationCode
+          extend Vers::Internal::Type::Enum
+
+          LIST_CLUSTERS: :list_clusters
+          GET_CLUSTER: :get_cluster
+          CREATE_CLUSTER: :create_cluster
+          DELETE_CLUSTER: :delete_cluster
+          UPDATE_CLUSTER: :update_cluster
+          GET_CLUSTER_SSH_KEY: :get_cluster_ssh_key
+          LIST_VMS: :list_vms
+          GET_VM: :get_vm
+          UPDATE_VM: :update_vm
+          BRANCH_VM: :branch_vm
+          COMMIT_VM: :commit_vm
+          DELETE_VM: :delete_vm
+          GET_VM_SSH_KEY: :get_vm_ssh_key
+          UPLOAD_ROOTFS: :upload_rootfs
+          DELETE_ROOTFS: :delete_rootfs
+          LIST_ROOTFS: :list_rootfs
+
+          def self?.values: -> ::Array[Vers::Models::API::VmUpdateResponse::operation_code]
+        end
+      end
+    end
+  end
+end

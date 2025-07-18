@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    module API
+      type rootfs_list_response = { rootfs_names: ::Array[String] }
+
+      class RootfsListResponse < Vers::Internal::Type::BaseModel
+        attr_accessor rootfs_names: ::Array[String]
+
+        def initialize: (rootfs_names: ::Array[String]) -> void
+
+        def to_hash: -> { rootfs_names: ::Array[String] }
+      end
+    end
+  end
+end

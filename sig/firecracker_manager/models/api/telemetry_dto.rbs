@@ -1,0 +1,62 @@
+module FirecrackerManager
+  module Models
+    module API
+      type telemetry_dto =
+        {
+          id: String,
+          fs_mib_current: Integer,
+          fs_mib_max: Integer,
+          mem_mib_current: Integer,
+          mem_mib_max: Integer,
+          vcpu_current: Integer,
+          vcpu_max: Integer,
+          vm_network_count_in_use: Integer,
+          vm_network_count_total: Integer
+        }
+
+      class TelemetryDto < FirecrackerManager::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor fs_mib_current: Integer
+
+        attr_accessor fs_mib_max: Integer
+
+        attr_accessor mem_mib_current: Integer
+
+        attr_accessor mem_mib_max: Integer
+
+        attr_accessor vcpu_current: Integer
+
+        attr_accessor vcpu_max: Integer
+
+        attr_accessor vm_network_count_in_use: Integer
+
+        attr_accessor vm_network_count_total: Integer
+
+        def initialize: (
+          id: String,
+          fs_mib_current: Integer,
+          fs_mib_max: Integer,
+          mem_mib_current: Integer,
+          mem_mib_max: Integer,
+          vcpu_current: Integer,
+          vcpu_max: Integer,
+          vm_network_count_in_use: Integer,
+          vm_network_count_total: Integer
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          fs_mib_current: Integer,
+          fs_mib_max: Integer,
+          mem_mib_current: Integer,
+          mem_mib_max: Integer,
+          vcpu_current: Integer,
+          vcpu_max: Integer,
+          vm_network_count_in_use: Integer,
+          vm_network_count_total: Integer
+        }
+      end
+    end
+  end
+end

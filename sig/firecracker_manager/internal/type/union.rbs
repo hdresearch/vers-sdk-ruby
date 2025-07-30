@@ -1,0 +1,52 @@
+module FirecrackerManager
+  module Internal
+    module Type
+      module Union
+        include FirecrackerManager::Internal::Type::Converter
+        include FirecrackerManager::Internal::Util::SorbetRuntimeSupport
+
+        private def self.known_variants: -> ::Array[[Symbol?, (^-> FirecrackerManager::Internal::Type::Converter::input)]]
+
+        def self.derefed_variants: -> ::Array[[Symbol?, top]]
+
+        def self.variants: -> ::Array[top]
+
+        private def self.discriminator: (Symbol property) -> void
+
+        private def self.variant: (
+          Symbol
+          | ::Hash[Symbol, top]
+          | ^-> FirecrackerManager::Internal::Type::Converter::input
+          | FirecrackerManager::Internal::Type::Converter::input key,
+          ?::Hash[Symbol, top]
+          | ^-> FirecrackerManager::Internal::Type::Converter::input
+          | FirecrackerManager::Internal::Type::Converter::input spec
+        ) -> void
+
+        private def self.resolve_variant: (
+          top value
+        ) -> FirecrackerManager::Internal::Type::Converter::input?
+
+        def ===: (top other) -> bool
+
+        def ==: (top other) -> bool
+
+        def hash: -> Integer
+
+        def coerce: (
+          top value,
+          state: FirecrackerManager::Internal::Type::Converter::coerce_state
+        ) -> top
+
+        def dump: (
+          top value,
+          state: FirecrackerManager::Internal::Type::Converter::dump_state
+        ) -> top
+
+        def to_sorbet_type: -> top
+
+        def inspect: (?depth: Integer) -> String
+      end
+    end
+  end
+end

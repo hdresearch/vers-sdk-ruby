@@ -1,0 +1,10 @@
+module FirecrackerManager
+  module Internal
+    extend FirecrackerManager::Internal::Util::SorbetRuntimeSupport
+
+    type file_input =
+      Pathname | StringIO | IO | String | FirecrackerManager::FilePart
+
+    OMIT: Object
+  end
+end

@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    vers (0.1.0.pre.alpha.1)
+    firecracker-manager (0.1.0.pre.alpha.1)
       connection_pool
 
 GEM
@@ -189,6 +189,7 @@ PLATFORMS
 
 DEPENDENCIES
   async
+  firecracker-manager!
   minitest
   minitest-focus
   minitest-hooks
@@ -203,7 +204,6 @@ DEPENDENCIES
   syntax_tree
   syntax_tree-rbs!
   tapioca
-  vers!
   webmock
   webrick
   yard

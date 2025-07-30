@@ -1,3 +1,0 @@
-module Vers
-  module API = Vers::Models::API
-end

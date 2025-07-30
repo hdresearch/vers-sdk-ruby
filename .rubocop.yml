@@ -39,9 +39,9 @@ Layout/LineLength:
   AllowedPatterns:
     - "^\\s*#.*$"
     - ^require(_relative)?
-    - "Vers::Internal::Type::BaseModel$"
+    - "FirecrackerManager::Internal::Type::BaseModel$"
     - "^\\s*[A-Z0-9_]+ = :"
-    - "Vers::(Models|Resources|Test)::"
+    - "FirecrackerManager::(Models|Resources|Test)::"
   Max: 110
 
 Layout/MultilineArrayLineBreaks:

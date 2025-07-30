@@ -1,12 +1,12 @@
 # Vers Ruby API library
 
-The Vers Ruby library provides convenient access to the Vers REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/hdresearch/vers-sdk-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
+The Vers Ruby library provides convenient access to the Vers REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/stainless-sdks/firecracker-manager-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/vers).
+Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/firecracker-manager).
 
 The REST API documentation can be found on [hdr.is](https://hdr.is).
 
@@ -14,21 +14,17 @@ The REST API documentation can be found on [hdr.is](https://hdr.is).
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "vers", "~> 0.1.0.pre.alpha.1"
+gem "firecracker-manager", "~> 0.1.0.pre.alpha.1"
 ```
-
-<!-- x-release-please-end -->
 
 ## Usage
 
 ```ruby
 require "bundler/setup"
-require "vers"
+require "firecracker_manager"
 
-vers = Vers::Client.new(
+vers = FirecrackerManager::Client.new(
   api_key: ENV["VERS_API_KEY"] # This is the default and can be omitted
 )
 
@@ -39,17 +35,17 @@ puts(clusters.operation_id)
 
 ### Handling errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Vers::Errors::APIError` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `FirecrackerManager::Errors::APIError` will be thrown:
 
 ```ruby
 begin
   cluster = vers.api.cluster.list
-rescue Vers::Errors::APIConnectionError => e
+rescue FirecrackerManager::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
-rescue Vers::Errors::RateLimitError => e
+rescue FirecrackerManager::Errors::RateLimitError => e
   puts("A 429 status code was received; we should back off a bit.")
-rescue Vers::Errors::APIStatusError => e
+rescue FirecrackerManager::Errors::APIStatusError => e
   puts("Another non-200-range status code was received")
   puts(e.status)
 end
@@ -81,7 +77,7 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-vers = Vers::Client.new(
+vers = FirecrackerManager::Client.new(
   max_retries: 0 # default is 2
 )
 
@@ -95,7 +91,7 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 
 ```ruby
 # Configure the default for all requests:
-vers = Vers::Client.new(
+vers = FirecrackerManager::Client.new(
   timeout: nil # default is 60
 )
 
@@ -103,7 +99,7 @@ vers = Vers::Client.new(
 vers.api.cluster.list(request_options: {timeout: 5})
 ```
 
-On timeout, `Vers::Errors::APITimeoutError` is raised.
+On timeout, `FirecrackerManager::Errors::APITimeoutError` is raised.
 
 Note that requests that time out are retried by default.
 
@@ -111,7 +107,7 @@ Note that requests that time out are retried by default.
 
 ### BaseModel
 
-All parameter and response objects inherit from `Vers::Internal::Type::BaseModel`, which provides several conveniences, including:
+All parameter and response objects inherit from `FirecrackerManager::Internal::Type::BaseModel`, which provides several conveniences, including:
 
 1. All fields, including unknown ones, are accessible with `obj[:prop]` syntax, and can be destructured with `obj => {prop: prop}` or pattern-matching syntax.
 
@@ -162,9 +158,9 @@ response = client.request(
 
 ### Concurrency & connection pooling
 
-The `Vers::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
+The `FirecrackerManager::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
 
-Each instance of `Vers::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
+Each instance of `FirecrackerManager::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
 
 When all available connections from the pool are checked out, requests wait for a new connection to become available, with queue time counting towards the request timeout.
 
@@ -187,7 +183,7 @@ Or, equivalently:
 vers.api.cluster.list
 
 # You can also splat a full Params class:
-params = Vers::API::ClusterListParams.new
+params = FirecrackerManager::API::ClusterListParams.new
 vers.api.cluster.list(**params)
 ```
 
@@ -197,10 +193,10 @@ Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::E
 
 ```ruby
 # :Running
-puts(Vers::API::VmPatchParams::State::RUNNING)
+puts(FirecrackerManager::API::VmPatchParams::State::RUNNING)
 
-# Revealed type: `T.all(Vers::API::VmPatchParams::State, Symbol)`
-T.reveal_type(Vers::API::VmPatchParams::State::RUNNING)
+# Revealed type: `T.all(FirecrackerManager::API::VmPatchParams::State, Symbol)`
+T.reveal_type(FirecrackerManager::API::VmPatchParams::State::RUNNING)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
@@ -208,7 +204,7 @@ Enum parameters have a "relaxed" type, so you can either pass in enum constants 
 ```ruby
 # Using the enum constants preserves the tagged type information:
 vers.api.vm.update(
-  state: Vers::API::VmPatchParams::State::RUNNING,
+  state: FirecrackerManager::API::VmPatchParams::State::RUNNING,
   # …
 )
 
@@ -231,4 +227,4 @@ Ruby 3.2.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/hdresearch/vers-sdk-ruby/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/stainless-sdks/firecracker-manager-ruby/tree/main/CONTRIBUTING.md).

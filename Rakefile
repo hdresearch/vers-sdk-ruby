@@ -150,7 +150,7 @@ multitask(:"build:gem") do
     sig/*
   GLOB
 
-  sh(*%w[gem build -- vers.gemspec])
+  sh(*%w[gem build -- firecracker_manager.gemspec])
   rm_rf(ignore_file)
 end
 

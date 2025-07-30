@@ -1,0 +1,93 @@
+module FirecrackerManager
+  module Models
+    module API
+      type rootf_upload_response =
+        {
+          data: FirecrackerManager::Models::API::RootfUploadResponse::Data,
+          duration_ns: Integer,
+          operation_code: FirecrackerManager::Models::API::RootfUploadResponse::operation_code,
+          operation_id: String,
+          time_start: Integer
+        }
+
+      class RootfUploadResponse < FirecrackerManager::Internal::Type::BaseModel
+        attr_accessor data: FirecrackerManager::Models::API::RootfUploadResponse::Data
+
+        attr_accessor duration_ns: Integer
+
+        attr_accessor operation_code: FirecrackerManager::Models::API::RootfUploadResponse::operation_code
+
+        attr_accessor operation_id: String
+
+        attr_accessor time_start: Integer
+
+        def initialize: (
+          data: FirecrackerManager::Models::API::RootfUploadResponse::Data,
+          duration_ns: Integer,
+          operation_code: FirecrackerManager::Models::API::RootfUploadResponse::operation_code,
+          operation_id: String,
+          time_start: Integer
+        ) -> void
+
+        def to_hash: -> {
+          data: FirecrackerManager::Models::API::RootfUploadResponse::Data,
+          duration_ns: Integer,
+          operation_code: FirecrackerManager::Models::API::RootfUploadResponse::operation_code,
+          operation_id: String,
+          time_start: Integer
+        }
+
+        type data = { rootfs_name: String }
+
+        class Data < FirecrackerManager::Internal::Type::BaseModel
+          attr_accessor rootfs_name: String
+
+          def initialize: (rootfs_name: String) -> void
+
+          def to_hash: -> { rootfs_name: String }
+        end
+
+        type operation_code =
+          :list_clusters
+          | :get_cluster
+          | :create_cluster
+          | :delete_cluster
+          | :update_cluster
+          | :get_cluster_ssh_key
+          | :list_vms
+          | :get_vm
+          | :update_vm
+          | :branch_vm
+          | :commit_vm
+          | :delete_vm
+          | :get_vm_ssh_key
+          | :upload_rootfs
+          | :delete_rootfs
+          | :list_rootfs
+
+        module OperationCode
+          extend FirecrackerManager::Internal::Type::Enum
+
+          LIST_CLUSTERS: :list_clusters
+          GET_CLUSTER: :get_cluster
+          CREATE_CLUSTER: :create_cluster
+          DELETE_CLUSTER: :delete_cluster
+          UPDATE_CLUSTER: :update_cluster
+          GET_CLUSTER_SSH_KEY: :get_cluster_ssh_key
+          LIST_VMS: :list_vms
+          GET_VM: :get_vm
+          UPDATE_VM: :update_vm
+          BRANCH_VM: :branch_vm
+          COMMIT_VM: :commit_vm
+          DELETE_VM: :delete_vm
+          GET_VM_SSH_KEY: :get_vm_ssh_key
+          UPLOAD_ROOTFS: :upload_rootfs
+          DELETE_ROOTFS: :delete_rootfs
+          LIST_ROOTFS: :list_rootfs
+
+          def self?.values: -> ::Array[FirecrackerManager::Models::API::RootfUploadResponse::operation_code]
+        end
+      end
+    end
+  end
+end

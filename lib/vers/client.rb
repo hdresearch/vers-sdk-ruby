@@ -52,7 +52,7 @@ module Vers
       initial_retry_delay: self.class::DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: self.class::DEFAULT_MAX_RETRY_DELAY
     )
-      base_url ||= "http://13.219.19.157"
+      base_url ||= "https://api.vers.sh"
 
       @api_key = api_key&.to_s
 

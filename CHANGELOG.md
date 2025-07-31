@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-07-31)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/hdresearch/vers-sdk-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** api update ([b715dd4](https://github.com/hdresearch/vers-sdk-ruby/commit/b715dd4f217afaeb55a0f47708253de71596f2b4))
+
+
+### Chores
+
+* configure new SDK language ([448290c](https://github.com/hdresearch/vers-sdk-ruby/commit/448290cdcbad5845ba725e87fb8f110c22571d73))
+* configure new SDK language ([0ab31bc](https://github.com/hdresearch/vers-sdk-ruby/commit/0ab31bc21c4c1b154835ac352d18d32a8f5ee894))
+* update SDK settings ([630143f](https://github.com/hdresearch/vers-sdk-ruby/commit/630143f471608cd02ab71bd2cd747b1e8e01a237))
+* update SDK settings ([bd5f2ca](https://github.com/hdresearch/vers-sdk-ruby/commit/bd5f2cae65d670a56c629fec5bc22d6c1927923e))
+
 ## 0.1.0-alpha.1 (2025-07-18)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/hdresearch/vers-sdk-ruby/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)

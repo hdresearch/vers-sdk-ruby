@@ -4,7 +4,7 @@ module Vers
       type cluster_update_params =
         {  } & Vers::Internal::Type::request_parameters
 
-      class ClusterUpdateParams < Vers::Models::API::ClusterPatchParams
+      class ClusterUpdateParams < Vers::Models::API::ClusterPatchRequest
         extend Vers::Internal::Type::RequestParameters::Converter
         include Vers::Internal::Type::RequestParameters
 

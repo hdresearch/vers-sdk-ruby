@@ -1,0 +1,163 @@
+module Vers
+  module Models
+    module API
+      type cluster_create_request =
+        Vers::API::ClusterCreateRequest::NewClusterParams
+        | Vers::API::ClusterCreateRequest::ClusterFromCommitParams
+
+      module ClusterCreateRequest
+        extend Vers::Internal::Type::Union
+
+        type new_cluster_params =
+          {
+            cluster_type: Vers::Models::API::ClusterCreateRequest::NewClusterParams::cluster_type,
+            params: Vers::API::ClusterCreateRequest::NewClusterParams::Params
+          }
+
+        class NewClusterParams < Vers::Internal::Type::BaseModel
+          attr_accessor cluster_type: Vers::Models::API::ClusterCreateRequest::NewClusterParams::cluster_type
+
+          attr_accessor params: Vers::API::ClusterCreateRequest::NewClusterParams::Params
+
+          def initialize: (
+            cluster_type: Vers::Models::API::ClusterCreateRequest::NewClusterParams::cluster_type,
+            params: Vers::API::ClusterCreateRequest::NewClusterParams::Params
+          ) -> void
+
+          def to_hash: -> {
+            cluster_type: Vers::Models::API::ClusterCreateRequest::NewClusterParams::cluster_type,
+            params: Vers::API::ClusterCreateRequest::NewClusterParams::Params
+          }
+
+          type cluster_type = :new
+
+          module ClusterType
+            extend Vers::Internal::Type::Enum
+
+            NEW: :new
+
+            def self?.values: -> ::Array[Vers::Models::API::ClusterCreateRequest::NewClusterParams::cluster_type]
+          end
+
+          type params =
+            {
+              cluster_alias: String?,
+              fs_size_cluster_mib: Integer?,
+              fs_size_vm_mib: Integer?,
+              kernel_name: String?,
+              mem_size_mib: Integer?,
+              rootfs_name: String?,
+              vcpu_count: Integer?,
+              vm_alias: String?
+            }
+
+          class Params < Vers::Internal::Type::BaseModel
+            attr_accessor cluster_alias: String?
+
+            attr_accessor fs_size_cluster_mib: Integer?
+
+            attr_accessor fs_size_vm_mib: Integer?
+
+            attr_accessor kernel_name: String?
+
+            attr_accessor mem_size_mib: Integer?
+
+            attr_accessor rootfs_name: String?
+
+            attr_accessor vcpu_count: Integer?
+
+            attr_accessor vm_alias: String?
+
+            def initialize: (
+              ?cluster_alias: String?,
+              ?fs_size_cluster_mib: Integer?,
+              ?fs_size_vm_mib: Integer?,
+              ?kernel_name: String?,
+              ?mem_size_mib: Integer?,
+              ?rootfs_name: String?,
+              ?vcpu_count: Integer?,
+              ?vm_alias: String?
+            ) -> void
+
+            def to_hash: -> {
+              cluster_alias: String?,
+              fs_size_cluster_mib: Integer?,
+              fs_size_vm_mib: Integer?,
+              kernel_name: String?,
+              mem_size_mib: Integer?,
+              rootfs_name: String?,
+              vcpu_count: Integer?,
+              vm_alias: String?
+            }
+          end
+        end
+
+        type cluster_from_commit_params =
+          {
+            cluster_type: Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams::cluster_type,
+            params: Vers::API::ClusterCreateRequest::ClusterFromCommitParams::Params
+          }
+
+        class ClusterFromCommitParams < Vers::Internal::Type::BaseModel
+          attr_accessor cluster_type: Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams::cluster_type
+
+          attr_accessor params: Vers::API::ClusterCreateRequest::ClusterFromCommitParams::Params
+
+          def initialize: (
+            cluster_type: Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams::cluster_type,
+            params: Vers::API::ClusterCreateRequest::ClusterFromCommitParams::Params
+          ) -> void
+
+          def to_hash: -> {
+            cluster_type: Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams::cluster_type,
+            params: Vers::API::ClusterCreateRequest::ClusterFromCommitParams::Params
+          }
+
+          type cluster_type = :from_commit
+
+          module ClusterType
+            extend Vers::Internal::Type::Enum
+
+            FROM_COMMIT: :from_commit
+
+            def self?.values: -> ::Array[Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams::cluster_type]
+          end
+
+          type params =
+            {
+              commit_key: String,
+              cluster_alias: String?,
+              fs_size_cluster_mib: Integer?,
+              vm_alias: String?
+            }
+
+          class Params < Vers::Internal::Type::BaseModel
+            attr_accessor commit_key: String
+
+            attr_accessor cluster_alias: String?
+
+            attr_accessor fs_size_cluster_mib: Integer?
+
+            attr_accessor vm_alias: String?
+
+            def initialize: (
+              commit_key: String,
+              ?cluster_alias: String?,
+              ?fs_size_cluster_mib: Integer?,
+              ?vm_alias: String?
+            ) -> void
+
+            def to_hash: -> {
+              commit_key: String,
+              cluster_alias: String?,
+              fs_size_cluster_mib: Integer?,
+              vm_alias: String?
+            }
+          end
+        end
+
+        def self?.variants: -> ::Array[Vers::Models::API::cluster_create_request]
+      end
+    end
+  end
+end

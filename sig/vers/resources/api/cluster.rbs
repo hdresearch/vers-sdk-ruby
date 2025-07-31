@@ -3,7 +3,7 @@ module Vers
     class API
       class Cluster
         def create: (
-          cluster_create_params: Vers::Models::API::ClusterCreateParams,
+          cluster_create_request: Vers::Models::API::ClusterCreateRequest,
           ?request_options: Vers::request_opts
         ) -> Vers::Models::API::ClusterCreateResponse
 

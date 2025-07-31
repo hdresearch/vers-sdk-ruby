@@ -6,9 +6,9 @@ module Vers
       class Cluster
         # Create a new cluster.
         #
-        # @overload create(cluster_create_params:, request_options: {})
+        # @overload create(cluster_create_request:, request_options: {})
         #
-        # @param cluster_create_params [Vers::API::ClusterCreateParams]
+        # @param cluster_create_request [Vers::API::ClusterCreateRequest]
         # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Vers::Models::API::ClusterCreateResponse]
@@ -17,7 +17,7 @@ module Vers
         def create(params)
           parsed, options = Vers::API::ClusterCreateParams.dump_request(params)
           case parsed
-          in {cluster_create_params: Hash => union, **rest}
+          in {cluster_create_request: Hash => union, **rest}
             parsed = {**rest, **union}
           else
           end

@@ -3,7 +3,7 @@
 module Vers
   module Models
     module API
-      class ClusterPatchParams < Vers::Internal::Type::BaseModel
+      class ClusterPatchRequest < Vers::Internal::Type::BaseModel
         # @!attribute alias_
         #
         #   @return [String, nil]

@@ -3,10 +3,10 @@
 module Vers
   module Models
     module API
-      class ClusterPatchParams < Vers::Internal::Type::BaseModel
+      class ClusterPatchRequest < Vers::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
-            T.any(Vers::API::ClusterPatchParams, Vers::Internal::AnyHash)
+            T.any(Vers::API::ClusterPatchRequest, Vers::Internal::AnyHash)
           end
 
         sig { returns(T.nilable(String)) }

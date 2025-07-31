@@ -3,7 +3,7 @@
 module Vers
   module Models
     module API
-      class ClusterUpdateParams < Vers::Models::API::ClusterPatchParams
+      class ClusterUpdateParams < Vers::Models::API::ClusterPatchRequest
         extend Vers::Internal::Type::RequestParameters::Converter
         include Vers::Internal::Type::RequestParameters
 

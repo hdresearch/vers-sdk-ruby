@@ -3,7 +3,7 @@
 module Vers
   module Models
     module API
-      class VmUpdateParams < Vers::Models::API::VmPatchParams
+      class VmUpdateParams < Vers::Models::API::VmPatchRequest
         extend Vers::Internal::Type::RequestParameters::Converter
         include Vers::Internal::Type::RequestParameters
 

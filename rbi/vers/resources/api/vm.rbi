@@ -23,7 +23,7 @@ module Vers
           params(
             vm_id_or_alias: String,
             alias_: T.nilable(String),
-            state: T.nilable(Vers::API::VmPatchParams::State::OrSymbol),
+            state: T.nilable(Vers::API::VmPatchRequest::State::OrSymbol),
             request_options: Vers::RequestOptions::OrHash
           ).returns(Vers::Models::API::VmUpdateResponse)
         end

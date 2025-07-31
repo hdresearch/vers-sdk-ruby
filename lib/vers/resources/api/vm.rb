@@ -32,7 +32,7 @@ module Vers
         #
         # @param alias_ [String, nil]
         #
-        # @param state [Symbol, Vers::Models::API::VmPatchParams::State, nil]
+        # @param state [Symbol, Vers::Models::API::VmPatchRequest::State, nil]
         #
         # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
         #

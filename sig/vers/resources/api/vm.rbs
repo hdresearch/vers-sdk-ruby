@@ -10,7 +10,7 @@ module Vers
         def update: (
           String vm_id_or_alias,
           ?alias_: String?,
-          ?state: Vers::Models::API::VmPatchParams::state?,
+          ?state: Vers::Models::API::VmPatchRequest::state?,
           ?request_options: Vers::request_opts
         ) -> Vers::Models::API::VmUpdateResponse
 

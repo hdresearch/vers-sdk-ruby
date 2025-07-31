@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "vers", "~> 0.1.0.pre.alpha.1"
+gem "vers", "~> 0.1.0.pre.alpha.2"
 ```
 
 <!-- x-release-please-end -->
@@ -197,10 +197,10 @@ Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::E
 
 ```ruby
 # :Running
-puts(Vers::API::VmPatchParams::State::RUNNING)
+puts(Vers::API::VmPatchRequest::State::RUNNING)
 
-# Revealed type: `T.all(Vers::API::VmPatchParams::State, Symbol)`
-T.reveal_type(Vers::API::VmPatchParams::State::RUNNING)
+# Revealed type: `T.all(Vers::API::VmPatchRequest::State, Symbol)`
+T.reveal_type(Vers::API::VmPatchRequest::State::RUNNING)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
@@ -208,7 +208,7 @@ Enum parameters have a "relaxed" type, so you can either pass in enum constants 
 ```ruby
 # Using the enum constants preserves the tagged type information:
 vers.api.vm.update(
-  state: Vers::API::VmPatchParams::State::RUNNING,
+  state: Vers::API::VmPatchRequest::State::RUNNING,
   # …
 )
 

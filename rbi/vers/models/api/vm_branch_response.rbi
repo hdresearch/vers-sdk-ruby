@@ -103,10 +103,17 @@ module Vers
           attr_accessor :mem_size_mib
 
           # The VM's network configuration
-          sig { returns(Vers::API::VmNetworkInfoDto) }
+          sig do
+            returns(Vers::Models::API::VmBranchResponse::Data::NetworkInfo)
+          end
           attr_reader :network_info
 
-          sig { params(network_info: Vers::API::VmNetworkInfoDto::OrHash).void }
+          sig do
+            params(
+              network_info:
+                Vers::Models::API::VmBranchResponse::Data::NetworkInfo::OrHash
+            ).void
+          end
           attr_writer :network_info
 
           # Whether the VM is running, paused, or not started.
@@ -137,7 +144,8 @@ module Vers
               fs_size_mib: Integer,
               ip_address: String,
               mem_size_mib: Integer,
-              network_info: Vers::API::VmNetworkInfoDto::OrHash,
+              network_info:
+                Vers::Models::API::VmBranchResponse::Data::NetworkInfo::OrHash,
               state: Vers::Models::API::VmBranchResponse::Data::State::OrSymbol,
               vcpu_count: Integer,
               alias_: T.nilable(String),
@@ -179,7 +187,8 @@ module Vers
                 fs_size_mib: Integer,
                 ip_address: String,
                 mem_size_mib: Integer,
-                network_info: Vers::API::VmNetworkInfoDto,
+                network_info:
+                  Vers::Models::API::VmBranchResponse::Data::NetworkInfo,
                 state:
                   Vers::Models::API::VmBranchResponse::Data::State::TaggedSymbol,
                 vcpu_count: Integer,
@@ -189,6 +198,70 @@ module Vers
             )
           end
           def to_hash
+          end
+
+          class NetworkInfo < Vers::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Vers::Models::API::VmBranchResponse::Data::NetworkInfo,
+                  Vers::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :guest_ip
+
+            sig { returns(String) }
+            attr_accessor :guest_mac
+
+            sig { returns(Integer) }
+            attr_accessor :ssh_port
+
+            sig { returns(String) }
+            attr_accessor :tap0_ip
+
+            sig { returns(String) }
+            attr_accessor :tap0_name
+
+            sig { returns(String) }
+            attr_accessor :vm_namespace
+
+            # The VM's network configuration
+            sig do
+              params(
+                guest_ip: String,
+                guest_mac: String,
+                ssh_port: Integer,
+                tap0_ip: String,
+                tap0_name: String,
+                vm_namespace: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              guest_ip:,
+              guest_mac:,
+              ssh_port:,
+              tap0_ip:,
+              tap0_name:,
+              vm_namespace:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  guest_ip: String,
+                  guest_mac: String,
+                  ssh_port: Integer,
+                  tap0_ip: String,
+                  tap0_name: String,
+                  vm_namespace: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
 
           # Whether the VM is running, paused, or not started.

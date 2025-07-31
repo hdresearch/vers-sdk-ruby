@@ -3,7 +3,7 @@
 module Vers
   module Models
     module API
-      class VmBranchParams < Vers::Models::API::VmBranchParams
+      class VmBranchParams < Vers::Models::API::VmBranchRequest
         extend Vers::Internal::Type::RequestParameters::Converter
         include Vers::Internal::Type::RequestParameters
 

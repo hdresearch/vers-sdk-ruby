@@ -3,7 +3,7 @@
 module Vers
   module Models
     module API
-      class VmPatchParams < Vers::Internal::Type::BaseModel
+      class VmPatchRequest < Vers::Internal::Type::BaseModel
         # @!attribute alias_
         #
         #   @return [String, nil]
@@ -11,14 +11,14 @@ module Vers
 
         # @!attribute state
         #
-        #   @return [Symbol, Vers::Models::API::VmPatchParams::State, nil]
-        optional :state, enum: -> { Vers::API::VmPatchParams::State }, nil?: true
+        #   @return [Symbol, Vers::Models::API::VmPatchRequest::State, nil]
+        optional :state, enum: -> { Vers::API::VmPatchRequest::State }, nil?: true
 
         # @!method initialize(alias_: nil, state: nil)
         #   @param alias_ [String, nil]
-        #   @param state [Symbol, Vers::Models::API::VmPatchParams::State, nil]
+        #   @param state [Symbol, Vers::Models::API::VmPatchRequest::State, nil]
 
-        # @see Vers::Models::API::VmPatchParams#state
+        # @see Vers::Models::API::VmPatchRequest#state
         module State
           extend Vers::Internal::Type::Enum
 

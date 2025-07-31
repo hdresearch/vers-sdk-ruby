@@ -8,13 +8,13 @@ module Vers
         extend Vers::Internal::Type::RequestParameters::Converter
         include Vers::Internal::Type::RequestParameters
 
-        # @!attribute cluster_create_params
+        # @!attribute cluster_create_request
         #
-        #   @return [Vers::Models::API::ClusterCreateParams::NewClusterParams, Vers::Models::API::ClusterCreateParams::ClusterFromCommitParams]
-        required :cluster_create_params, union: -> { Vers::API::ClusterCreateParams }
+        #   @return [Vers::Models::API::ClusterCreateRequest::NewClusterParams, Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams]
+        required :cluster_create_request, union: -> { Vers::API::ClusterCreateRequest }
 
-        # @!method initialize(cluster_create_params:, request_options: {})
-        #   @param cluster_create_params [Vers::Models::API::ClusterCreateParams::NewClusterParams, Vers::Models::API::ClusterCreateParams::ClusterFromCommitParams]
+        # @!method initialize(cluster_create_request:, request_options: {})
+        #   @param cluster_create_request [Vers::Models::API::ClusterCreateRequest::NewClusterParams, Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams]
         #   @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}]
       end
     end

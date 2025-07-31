@@ -1,0 +1,24 @@
+module Vers
+  module Resources
+    class API
+      class Rootfs
+        def list: (
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::RootfListResponse
+
+        def delete: (
+          String rootfs_id,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::RootfDeleteResponse
+
+        def upload: (
+          String rootfs_id,
+          ?dockerfile: String,
+          ?request_options: Vers::request_opts
+        ) -> Vers::Models::API::RootfUploadResponse
+
+        def initialize: (client: Vers::Client) -> void
+      end
+    end
+  end
+end

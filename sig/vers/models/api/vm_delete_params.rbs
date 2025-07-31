@@ -1,0 +1,25 @@
+module Vers
+  module Models
+    module API
+      type vm_delete_params =
+        { recursive: bool } & Vers::Internal::Type::request_parameters
+
+      class VmDeleteParams < Vers::Internal::Type::BaseModel
+        extend Vers::Internal::Type::RequestParameters::Converter
+        include Vers::Internal::Type::RequestParameters
+
+        attr_accessor recursive: bool
+
+        def initialize: (
+          recursive: bool,
+          ?request_options: Vers::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          recursive: bool,
+          request_options: Vers::RequestOptions
+        }
+      end
+    end
+  end
+end

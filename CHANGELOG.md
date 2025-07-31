@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-07-31)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/hdresearch/vers-sdk-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Chores
+
+* sync repo ([6541a35](https://github.com/hdresearch/vers-sdk-ruby/commit/6541a35c1d8193d2183326e7376449ca6aa75879))
+
 ## 0.1.0-alpha.1 (2025-07-18)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/hdresearch/vers-sdk-ruby/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)

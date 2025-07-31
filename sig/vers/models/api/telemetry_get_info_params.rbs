@@ -1,0 +1,17 @@
+module Vers
+  module Models
+    module API
+      type telemetry_get_info_params =
+        {  } & Vers::Internal::Type::request_parameters
+
+      class TelemetryGetInfoParams < Vers::Internal::Type::BaseModel
+        extend Vers::Internal::Type::RequestParameters::Converter
+        include Vers::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: Vers::request_opts) -> void
+
+        def to_hash: -> { request_options: Vers::RequestOptions }
+      end
+    end
+  end
+end

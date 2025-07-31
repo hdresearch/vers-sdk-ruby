@@ -1,0 +1,7 @@
+module Vers
+  module Models
+    module API
+      class HealthCheckResponse = String
+    end
+  end
+end

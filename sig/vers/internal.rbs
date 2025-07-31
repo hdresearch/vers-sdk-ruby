@@ -1,0 +1,9 @@
+module Vers
+  module Internal
+    extend Vers::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | Vers::FilePart
+
+    OMIT: Object
+  end
+end

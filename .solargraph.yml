@@ -5,7 +5,7 @@ include:
   - 'Rakefile'
   - 'examples/**/*.rb'
   - 'lib/**/*.rb'
-  - 'test/firecracker_manager/resource_namespaces.rb'
-  - 'test/firecracker_manager/test_helper.rb'
+  - 'test/vers/resource_namespaces.rb'
+  - 'test/vers/test_helper.rb'
 exclude:
   - 'rbi/**/*'

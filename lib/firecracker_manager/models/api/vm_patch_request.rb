@@ -3,7 +3,7 @@
 module FirecrackerManager
   module Models
     module API
-      class VmPatchParams < FirecrackerManager::Internal::Type::BaseModel
+      class VmPatchRequest < FirecrackerManager::Internal::Type::BaseModel
         # @!attribute alias_
         #
         #   @return [String, nil]
@@ -11,14 +11,14 @@ module FirecrackerManager
 
         # @!attribute state
         #
-        #   @return [Symbol, FirecrackerManager::Models::API::VmPatchParams::State, nil]
-        optional :state, enum: -> { FirecrackerManager::API::VmPatchParams::State }, nil?: true
+        #   @return [Symbol, FirecrackerManager::Models::API::VmPatchRequest::State, nil]
+        optional :state, enum: -> { FirecrackerManager::API::VmPatchRequest::State }, nil?: true
 
         # @!method initialize(alias_: nil, state: nil)
         #   @param alias_ [String, nil]
-        #   @param state [Symbol, FirecrackerManager::Models::API::VmPatchParams::State, nil]
+        #   @param state [Symbol, FirecrackerManager::Models::API::VmPatchRequest::State, nil]
 
-        # @see FirecrackerManager::Models::API::VmPatchParams#state
+        # @see FirecrackerManager::Models::API::VmPatchRequest#state
         module State
           extend FirecrackerManager::Internal::Type::Enum
 

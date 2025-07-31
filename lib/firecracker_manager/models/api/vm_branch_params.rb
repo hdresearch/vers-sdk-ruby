@@ -4,7 +4,7 @@ module FirecrackerManager
   module Models
     module API
       # @see FirecrackerManager::Resources::API::Vm#branch
-      class VmBranchParams < FirecrackerManager::Models::API::VmBranchParams
+      class VmBranchParams < FirecrackerManager::Models::API::VmBranchRequest
         extend FirecrackerManager::Internal::Type::RequestParameters::Converter
         include FirecrackerManager::Internal::Type::RequestParameters
 

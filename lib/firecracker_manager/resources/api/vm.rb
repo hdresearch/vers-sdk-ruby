@@ -32,7 +32,7 @@ module FirecrackerManager
         #
         # @param alias_ [String, nil]
         #
-        # @param state [Symbol, FirecrackerManager::Models::API::VmPatchParams::State, nil]
+        # @param state [Symbol, FirecrackerManager::Models::API::VmPatchRequest::State, nil]
         #
         # @param request_options [FirecrackerManager::RequestOptions, Hash{Symbol=>Object}, nil]
         #

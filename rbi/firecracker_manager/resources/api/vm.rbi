@@ -25,7 +25,7 @@ module FirecrackerManager
             alias_: T.nilable(String),
             state:
               T.nilable(
-                FirecrackerManager::API::VmPatchParams::State::OrSymbol
+                FirecrackerManager::API::VmPatchRequest::State::OrSymbol
               ),
             request_options: FirecrackerManager::RequestOptions::OrHash
           ).returns(FirecrackerManager::Models::API::VmUpdateResponse)

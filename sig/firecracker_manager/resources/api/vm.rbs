@@ -10,7 +10,7 @@ module FirecrackerManager
         def update: (
           String vm_id_or_alias,
           ?alias_: String?,
-          ?state: FirecrackerManager::Models::API::VmPatchParams::state?,
+          ?state: FirecrackerManager::Models::API::VmPatchRequest::state?,
           ?request_options: FirecrackerManager::request_opts
         ) -> FirecrackerManager::Models::API::VmUpdateResponse
 

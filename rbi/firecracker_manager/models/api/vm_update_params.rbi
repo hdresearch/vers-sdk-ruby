@@ -3,7 +3,7 @@
 module FirecrackerManager
   module Models
     module API
-      class VmUpdateParams < FirecrackerManager::Models::API::VmPatchParams
+      class VmUpdateParams < FirecrackerManager::Models::API::VmPatchRequest
         extend FirecrackerManager::Internal::Type::RequestParameters::Converter
         include FirecrackerManager::Internal::Type::RequestParameters
 

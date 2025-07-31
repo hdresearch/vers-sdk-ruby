@@ -1,9 +1,9 @@
 module Vers
   module Models
     module API
-      type cluster_patch_params = { alias_: String? }
+      type cluster_patch_request = { alias_: String? }
 
-      class ClusterPatchParams < Vers::Internal::Type::BaseModel
+      class ClusterPatchRequest < Vers::Internal::Type::BaseModel
         attr_accessor alias_: String?
 
         def initialize: (?alias_: String?) -> void

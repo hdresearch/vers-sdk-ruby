@@ -7,11 +7,11 @@ module Vers
         # Create a new cluster.
         sig do
           params(
-            cluster_create_params: Vers::API::ClusterCreateParams,
+            cluster_create_request: Vers::API::ClusterCreateRequest,
             request_options: Vers::RequestOptions::OrHash
           ).returns(Vers::Models::API::ClusterCreateResponse)
         end
-        def create(cluster_create_params:, request_options: {})
+        def create(cluster_create_request:, request_options: {})
         end
 
         # Retrieve information on a particular cluster.

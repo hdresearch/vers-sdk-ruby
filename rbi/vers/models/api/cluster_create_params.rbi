@@ -15,33 +15,33 @@ module Vers
         sig do
           returns(
             T.any(
-              Vers::API::ClusterCreateParams::NewClusterParams,
-              Vers::API::ClusterCreateParams::ClusterFromCommitParams
+              Vers::API::ClusterCreateRequest::NewClusterParams,
+              Vers::API::ClusterCreateRequest::ClusterFromCommitParams
             )
           )
         end
-        attr_accessor :cluster_create_params
+        attr_accessor :cluster_create_request
 
         sig do
           params(
-            cluster_create_params:
+            cluster_create_request:
               T.any(
-                Vers::API::ClusterCreateParams::NewClusterParams::OrHash,
-                Vers::API::ClusterCreateParams::ClusterFromCommitParams::OrHash
+                Vers::API::ClusterCreateRequest::NewClusterParams::OrHash,
+                Vers::API::ClusterCreateRequest::ClusterFromCommitParams::OrHash
               ),
             request_options: Vers::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(cluster_create_params:, request_options: {})
+        def self.new(cluster_create_request:, request_options: {})
         end
 
         sig do
           override.returns(
             {
-              cluster_create_params:
+              cluster_create_request:
                 T.any(
-                  Vers::API::ClusterCreateParams::NewClusterParams,
-                  Vers::API::ClusterCreateParams::ClusterFromCommitParams
+                  Vers::API::ClusterCreateRequest::NewClusterParams,
+                  Vers::API::ClusterCreateRequest::ClusterFromCommitParams
                 ),
               request_options: Vers::RequestOptions
             }

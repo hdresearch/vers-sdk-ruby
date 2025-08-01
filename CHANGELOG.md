@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-08-01)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/hdresearch/vers-sdk-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Chores
+
+* **internal:** increase visibility of internal helper method ([15170f0](https://github.com/hdresearch/vers-sdk-ruby/commit/15170f0785f38b699342aa92588096a314141193))
+* sync repo ([6446369](https://github.com/hdresearch/vers-sdk-ruby/commit/6446369b1ba62a90f97f9b2351beda09a6bd83c6))
+
 ## 0.1.0-alpha.1 (2025-07-18)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/hdresearch/vers-sdk-ruby/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)

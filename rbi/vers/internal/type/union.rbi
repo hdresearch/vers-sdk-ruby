@@ -16,7 +16,8 @@ module Vers
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(Vers::Internal::Type::Converter::Input)
+                T.proc.returns(Vers::Internal::Type::Converter::Input),
+                Vers::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,11 @@ module Vers
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[[T.nilable(Symbol), T.anything, Vers::Internal::AnyHash]]
+          )
+        end
         protected def derefed_variants
         end
 

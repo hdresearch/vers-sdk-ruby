@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Vers::Test::Resources::API::ClusterTest < Vers::Test::ResourceTest
   def test_create_required_params
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.cluster.create(cluster_type: :new, params: {})
 
@@ -24,7 +24,7 @@ class Vers::Test::Resources::API::ClusterTest < Vers::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.cluster.retrieve("cluster_id_or_alias")
 
@@ -44,7 +44,7 @@ class Vers::Test::Resources::API::ClusterTest < Vers::Test::ResourceTest
   end
 
   def test_update
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.cluster.update("cluster_id_or_alias")
 
@@ -64,7 +64,7 @@ class Vers::Test::Resources::API::ClusterTest < Vers::Test::ResourceTest
   end
 
   def test_list
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.cluster.list
 
@@ -84,7 +84,7 @@ class Vers::Test::Resources::API::ClusterTest < Vers::Test::ResourceTest
   end
 
   def test_delete
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.cluster.delete("cluster_id_or_alias")
 
@@ -104,7 +104,7 @@ class Vers::Test::Resources::API::ClusterTest < Vers::Test::ResourceTest
   end
 
   def test_get_ssh_key
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.cluster.get_ssh_key("cluster_id_or_alias")
 

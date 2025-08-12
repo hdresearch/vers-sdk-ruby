@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Vers::Test::Resources::API::RootfsTest < Vers::Test::ResourceTest
   def test_list
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.rootfs.list
 
@@ -24,7 +24,7 @@ class Vers::Test::Resources::API::RootfsTest < Vers::Test::ResourceTest
   end
 
   def test_delete
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.rootfs.delete("rootfs_id")
 
@@ -44,7 +44,7 @@ class Vers::Test::Resources::API::RootfsTest < Vers::Test::ResourceTest
   end
 
   def test_upload
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.rootfs.upload("rootfs_id")
 

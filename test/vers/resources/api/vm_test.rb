@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
   def test_retrieve
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.vm.retrieve("vm_id_or_alias")
 
@@ -24,7 +24,7 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
   end
 
   def test_update
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.vm.update("vm_id_or_alias")
 
@@ -44,7 +44,7 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
   end
 
   def test_list
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.vm.list
 
@@ -64,7 +64,7 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
   end
 
   def test_delete_required_params
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.vm.delete("vm_id_or_alias", recursive: true)
 
@@ -84,7 +84,7 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
   end
 
   def test_branch
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.vm.branch("vm_id_or_alias")
 
@@ -104,7 +104,7 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
   end
 
   def test_commit
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.vm.commit("vm_id_or_alias")
 
@@ -124,7 +124,7 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
   end
 
   def test_get_ssh_key
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.vm.get_ssh_key("vm_id_or_alias")
 

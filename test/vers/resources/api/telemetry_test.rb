@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Vers::Test::Resources::API::TelemetryTest < Vers::Test::ResourceTest
   def test_get_info
-    skip("skipped: tests are disabled for the time being")
+    skip("Prism tests are disabled")
 
     response = @vers.api.telemetry.get_info
 

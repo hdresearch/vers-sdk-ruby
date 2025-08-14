@@ -272,7 +272,7 @@ module Vers
               end
 
             sig { returns(String) }
-            attr_accessor :commit_key
+            attr_accessor :commit_id
 
             sig { returns(T.nilable(String)) }
             attr_accessor :cluster_alias
@@ -285,14 +285,14 @@ module Vers
 
             sig do
               params(
-                commit_key: String,
+                commit_id: String,
                 cluster_alias: T.nilable(String),
                 fs_size_cluster_mib: T.nilable(Integer),
                 vm_alias: T.nilable(String)
               ).returns(T.attached_class)
             end
             def self.new(
-              commit_key:,
+              commit_id:,
               cluster_alias: nil,
               fs_size_cluster_mib: nil,
               vm_alias: nil
@@ -302,7 +302,7 @@ module Vers
             sig do
               override.returns(
                 {
-                  commit_key: String,
+                  commit_id: String,
                   cluster_alias: T.nilable(String),
                   fs_size_cluster_mib: T.nilable(Integer),
                   vm_alias: T.nilable(String)

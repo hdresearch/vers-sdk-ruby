@@ -125,14 +125,14 @@ module Vers
 
           type params =
             {
-              commit_id: String,
+              commit_key: String,
               cluster_alias: String?,
               fs_size_cluster_mib: Integer?,
               vm_alias: String?
             }
 
           class Params < Vers::Internal::Type::BaseModel
-            attr_accessor commit_id: String
+            attr_accessor commit_key: String
 
             attr_accessor cluster_alias: String?
 
@@ -141,14 +141,14 @@ module Vers
             attr_accessor vm_alias: String?
 
             def initialize: (
-              commit_id: String,
+              commit_key: String,
               ?cluster_alias: String?,
               ?fs_size_cluster_mib: Integer?,
               ?vm_alias: String?
             ) -> void
 
             def to_hash: -> {
-              commit_id: String,
+              commit_key: String,
               cluster_alias: String?,
               fs_size_cluster_mib: Integer?,
               vm_alias: String?

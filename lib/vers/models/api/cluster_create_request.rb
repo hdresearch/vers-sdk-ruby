@@ -133,10 +133,10 @@ module Vers
 
           # @see Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams#params
           class Params < Vers::Internal::Type::BaseModel
-            # @!attribute commit_id
+            # @!attribute commit_key
             #
             #   @return [String]
-            required :commit_id, String
+            required :commit_key, String
 
             # @!attribute cluster_alias
             #
@@ -153,8 +153,8 @@ module Vers
             #   @return [String, nil]
             optional :vm_alias, String, nil?: true
 
-            # @!method initialize(commit_id:, cluster_alias: nil, fs_size_cluster_mib: nil, vm_alias: nil)
-            #   @param commit_id [String]
+            # @!method initialize(commit_key:, cluster_alias: nil, fs_size_cluster_mib: nil, vm_alias: nil)
+            #   @param commit_key [String]
             #   @param cluster_alias [String, nil]
             #   @param fs_size_cluster_mib [Integer, nil]
             #   @param vm_alias [String, nil]

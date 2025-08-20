@@ -59,10 +59,10 @@ module Vers
     end
 
     class APIConnectionError < Vers::Errors::APIError
-      sig { void }
+      sig { returns(NilClass) }
       attr_accessor :status
 
-      sig { void }
+      sig { returns(NilClass) }
       attr_accessor :body
 
       # @api private

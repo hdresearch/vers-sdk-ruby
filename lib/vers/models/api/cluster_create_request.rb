@@ -107,10 +107,7 @@ module Vers
           # @!attribute cluster_type
           #
           #   @return [Symbol, Vers::Models::API::ClusterCreateRequest::ClusterFromCommitParams::ClusterType]
-          required :cluster_type,
-                   enum: -> {
-                     Vers::API::ClusterCreateRequest::ClusterFromCommitParams::ClusterType
-                   }
+          required :cluster_type, enum: -> { Vers::API::ClusterCreateRequest::ClusterFromCommitParams::ClusterType }
 
           # @!attribute params
           #

@@ -15,12 +15,18 @@ class Vers::Test::Resources::API::TelemetryTest < Vers::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
-        fs_mib_current: Integer,
-        fs_mib_max: Integer,
-        mem_mib_current: Integer,
-        mem_mib_max: Integer,
-        vcpu_current: Integer,
-        vcpu_max: Integer,
+        cpu_cores_available: Integer,
+        cpu_cores_margin: Integer,
+        cpu_cores_total: Integer,
+        cpu_cores_used: Integer,
+        disk_data_mib_available: Integer,
+        disk_data_mib_total: Integer,
+        disk_vm_mib_available: Integer,
+        disk_vm_mib_total: Integer,
+        memory_mib_available: Integer,
+        memory_mib_margin: Integer,
+        memory_mib_total: Integer,
+        memory_mib_used: Integer,
         vm_network_count_in_use: Integer,
         vm_network_count_total: Integer
       }

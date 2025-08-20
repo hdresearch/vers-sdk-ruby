@@ -10,35 +10,65 @@ module Vers
         #   @return [String]
         required :id, String
 
-        # @!attribute fs_mib_current
+        # @!attribute cpu_cores_available
         #
         #   @return [Integer]
-        required :fs_mib_current, Integer
+        required :cpu_cores_available, Integer
 
-        # @!attribute fs_mib_max
+        # @!attribute cpu_cores_margin
         #
         #   @return [Integer]
-        required :fs_mib_max, Integer
+        required :cpu_cores_margin, Integer
 
-        # @!attribute mem_mib_current
+        # @!attribute cpu_cores_total
         #
         #   @return [Integer]
-        required :mem_mib_current, Integer
+        required :cpu_cores_total, Integer
 
-        # @!attribute mem_mib_max
+        # @!attribute cpu_cores_used
         #
         #   @return [Integer]
-        required :mem_mib_max, Integer
+        required :cpu_cores_used, Integer
 
-        # @!attribute vcpu_current
+        # @!attribute disk_data_mib_available
         #
         #   @return [Integer]
-        required :vcpu_current, Integer
+        required :disk_data_mib_available, Integer
 
-        # @!attribute vcpu_max
+        # @!attribute disk_data_mib_total
         #
         #   @return [Integer]
-        required :vcpu_max, Integer
+        required :disk_data_mib_total, Integer
+
+        # @!attribute disk_vm_mib_available
+        #
+        #   @return [Integer]
+        required :disk_vm_mib_available, Integer
+
+        # @!attribute disk_vm_mib_total
+        #
+        #   @return [Integer]
+        required :disk_vm_mib_total, Integer
+
+        # @!attribute memory_mib_available
+        #
+        #   @return [Integer]
+        required :memory_mib_available, Integer
+
+        # @!attribute memory_mib_margin
+        #
+        #   @return [Integer]
+        required :memory_mib_margin, Integer
+
+        # @!attribute memory_mib_total
+        #
+        #   @return [Integer]
+        required :memory_mib_total, Integer
+
+        # @!attribute memory_mib_used
+        #
+        #   @return [Integer]
+        required :memory_mib_used, Integer
 
         # @!attribute vm_network_count_in_use
         #
@@ -50,14 +80,20 @@ module Vers
         #   @return [Integer]
         required :vm_network_count_total, Integer
 
-        # @!method initialize(id:, fs_mib_current:, fs_mib_max:, mem_mib_current:, mem_mib_max:, vcpu_current:, vcpu_max:, vm_network_count_in_use:, vm_network_count_total:)
+        # @!method initialize(id:, cpu_cores_available:, cpu_cores_margin:, cpu_cores_total:, cpu_cores_used:, disk_data_mib_available:, disk_data_mib_total:, disk_vm_mib_available:, disk_vm_mib_total:, memory_mib_available:, memory_mib_margin:, memory_mib_total:, memory_mib_used:, vm_network_count_in_use:, vm_network_count_total:)
         #   @param id [String]
-        #   @param fs_mib_current [Integer]
-        #   @param fs_mib_max [Integer]
-        #   @param mem_mib_current [Integer]
-        #   @param mem_mib_max [Integer]
-        #   @param vcpu_current [Integer]
-        #   @param vcpu_max [Integer]
+        #   @param cpu_cores_available [Integer]
+        #   @param cpu_cores_margin [Integer]
+        #   @param cpu_cores_total [Integer]
+        #   @param cpu_cores_used [Integer]
+        #   @param disk_data_mib_available [Integer]
+        #   @param disk_data_mib_total [Integer]
+        #   @param disk_vm_mib_available [Integer]
+        #   @param disk_vm_mib_total [Integer]
+        #   @param memory_mib_available [Integer]
+        #   @param memory_mib_margin [Integer]
+        #   @param memory_mib_total [Integer]
+        #   @param memory_mib_used [Integer]
         #   @param vm_network_count_in_use [Integer]
         #   @param vm_network_count_total [Integer]
       end

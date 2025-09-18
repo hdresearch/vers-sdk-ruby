@@ -30,7 +30,7 @@ module Vers
           params(
             client: Vers::Internal::Transport::BaseClient,
             req: Vers::Internal::Transport::BaseClient::RequestComponents,
-            headers: T.any(T::Hash[String, String], Net::HTTPHeader),
+            headers: T::Hash[String, String],
             page_data: T.anything
           ).void
         end

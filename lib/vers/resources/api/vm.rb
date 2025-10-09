@@ -87,7 +87,7 @@ module Vers
             method: :delete,
             path: ["api/vm/%1$s", vm_id_or_alias],
             query: parsed,
-            model: Vers::Models::API::VmDeleteResponse,
+            model: Vers::API::VmDeleteResponse,
             options: options
           )
         end
@@ -135,7 +135,7 @@ module Vers
             method: :post,
             path: ["api/vm/%1$s/commit", vm_id_or_alias],
             body: parsed,
-            model: Vers::Models::API::VmCommitResponse,
+            model: Vers::API::VmCommitResponse,
             options: options
           )
         end

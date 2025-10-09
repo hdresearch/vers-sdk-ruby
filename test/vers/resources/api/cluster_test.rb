@@ -89,14 +89,14 @@ class Vers::Test::Resources::API::ClusterTest < Vers::Test::ResourceTest
     response = @vers.api.cluster.delete("cluster_id_or_alias")
 
     assert_pattern do
-      response => Vers::Models::API::ClusterDeleteResponse
+      response => Vers::API::ClusterDeleteResponse
     end
 
     assert_pattern do
       response => {
-        data: Vers::Models::API::ClusterDeleteResponse::Data,
+        data: Vers::API::ClusterDeleteResponse::Data,
         duration_ns: Integer,
-        operation_code: Vers::Models::API::ClusterDeleteResponse::OperationCode,
+        operation_code: Vers::API::ClusterDeleteResponse::OperationCode,
         operation_id: String,
         time_start: Integer
       }

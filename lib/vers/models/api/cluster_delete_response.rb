@@ -3,6 +3,7 @@
 module Vers
   module Models
     module API
+      # @see Vers::Resources::API::Cluster#delete
       class ClusterDeleteResponse < Vers::Internal::Type::BaseModel
         # @!attribute data
         #   A struct containing information about an attempted cluster deletion request.

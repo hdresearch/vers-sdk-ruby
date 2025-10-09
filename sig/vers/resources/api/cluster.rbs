@@ -25,7 +25,7 @@ module Vers
         def delete: (
           String cluster_id_or_alias,
           ?request_options: Vers::request_opts
-        ) -> Vers::Models::API::ClusterDeleteResponse
+        ) -> Vers::API::ClusterDeleteResponse
 
         def get_ssh_key: (
           String cluster_id_or_alias,

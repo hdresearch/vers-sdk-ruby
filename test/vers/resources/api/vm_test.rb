@@ -69,14 +69,14 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
     response = @vers.api.vm.delete("vm_id_or_alias", recursive: true)
 
     assert_pattern do
-      response => Vers::Models::API::VmDeleteResponse
+      response => Vers::API::VmDeleteResponse
     end
 
     assert_pattern do
       response => {
-        data: Vers::Models::API::VmDeleteResponse::Data,
+        data: Vers::API::VmDeleteResponse::Data,
         duration_ns: Integer,
-        operation_code: Vers::Models::API::VmDeleteResponse::OperationCode,
+        operation_code: Vers::API::VmDeleteResponse::OperationCode,
         operation_id: String,
         time_start: Integer
       }
@@ -109,14 +109,14 @@ class Vers::Test::Resources::API::VmTest < Vers::Test::ResourceTest
     response = @vers.api.vm.commit("vm_id_or_alias")
 
     assert_pattern do
-      response => Vers::Models::API::VmCommitResponse
+      response => Vers::API::VmCommitResponse
     end
 
     assert_pattern do
       response => {
-        data: Vers::Models::API::VmCommitResponse::Data,
+        data: Vers::API::VmCommitResponse::Data,
         duration_ns: Integer,
-        operation_code: Vers::Models::API::VmCommitResponse::OperationCode,
+        operation_code: Vers::API::VmCommitResponse::OperationCode,
         operation_id: String,
         time_start: Integer
       }

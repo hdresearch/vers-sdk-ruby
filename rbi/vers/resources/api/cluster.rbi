@@ -58,7 +58,7 @@ module Vers
           params(
             cluster_id_or_alias: String,
             request_options: Vers::RequestOptions::OrHash
-          ).returns(Vers::Models::API::ClusterDeleteResponse)
+          ).returns(Vers::API::ClusterDeleteResponse)
         end
         def delete(
           # Unique cluster identifier

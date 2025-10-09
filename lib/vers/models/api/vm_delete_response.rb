@@ -3,6 +3,7 @@
 module Vers
   module Models
     module API
+      # @see Vers::Resources::API::Vm#delete
       class VmDeleteResponse < Vers::Internal::Type::BaseModel
         # @!attribute data
         #   A struct containing information about an attempted VM deletion request. Reports

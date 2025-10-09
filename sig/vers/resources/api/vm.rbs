@@ -22,7 +22,7 @@ module Vers
           String vm_id_or_alias,
           recursive: bool,
           ?request_options: Vers::request_opts
-        ) -> Vers::Models::API::VmDeleteResponse
+        ) -> Vers::API::VmDeleteResponse
 
         def branch: (
           String vm_id_or_alias,
@@ -34,7 +34,7 @@ module Vers
           String vm_id_or_alias,
           ?tags: ::Array[String]?,
           ?request_options: Vers::request_opts
-        ) -> Vers::Models::API::VmCommitResponse
+        ) -> Vers::API::VmCommitResponse
 
         def get_ssh_key: (
           String vm_id_or_alias,

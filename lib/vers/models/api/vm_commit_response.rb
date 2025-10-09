@@ -3,6 +3,7 @@
 module Vers
   module Models
     module API
+      # @see Vers::Resources::API::Vm#commit
       class VmCommitResponse < Vers::Internal::Type::BaseModel
         # @!attribute data
         #

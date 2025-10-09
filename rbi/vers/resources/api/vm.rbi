@@ -51,7 +51,7 @@ module Vers
             vm_id_or_alias: String,
             recursive: T::Boolean,
             request_options: Vers::RequestOptions::OrHash
-          ).returns(Vers::Models::API::VmDeleteResponse)
+          ).returns(Vers::API::VmDeleteResponse)
         end
         def delete(
           # Unique VM identifier
@@ -84,7 +84,7 @@ module Vers
             vm_id_or_alias: String,
             tags: T.nilable(T::Array[String]),
             request_options: Vers::RequestOptions::OrHash
-          ).returns(Vers::Models::API::VmCommitResponse)
+          ).returns(Vers::API::VmCommitResponse)
         end
         def commit(
           # Unique VM identifier

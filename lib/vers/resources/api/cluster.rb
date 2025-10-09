@@ -107,7 +107,7 @@ module Vers
           @client.request(
             method: :delete,
             path: ["api/cluster/%1$s", cluster_id_or_alias],
-            model: Vers::Models::API::ClusterDeleteResponse,
+            model: Vers::API::ClusterDeleteResponse,
             options: params[:request_options]
           )
         end

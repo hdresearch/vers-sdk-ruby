@@ -4,17 +4,6 @@ module Vers
   module Internal
     module Type
       # @api private
-      #
-      # @example
-      #   # `cluster_create_request` is a `Vers::API::ClusterCreateRequest`
-      #   case cluster_create_request
-      #   when Vers::API::ClusterCreateRequest::NewClusterParams
-      #     puts(cluster_create_request.cluster_type)
-      #   when Vers::API::ClusterCreateRequest::ClusterFromCommitParams
-      #     puts(cluster_create_request.params)
-      #   else
-      #     puts(cluster_create_request)
-      #   end
       module Union
         include Vers::Internal::Type::Converter
         include Vers::Internal::Util::SorbetRuntimeSupport

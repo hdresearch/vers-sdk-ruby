@@ -1,0 +1,31 @@
+module Vers
+  module Models
+    module Orchestrator
+      type vm_update_state_request =
+        { state: Vers::Models::Orchestrator::VmUpdateStateRequest::state }
+
+      class VmUpdateStateRequest < Vers::Internal::Type::BaseModel
+        attr_accessor state: Vers::Models::Orchestrator::VmUpdateStateRequest::state
+
+        def initialize: (
+          state: Vers::Models::Orchestrator::VmUpdateStateRequest::state
+        ) -> void
+
+        def to_hash: -> {
+          state: Vers::Models::Orchestrator::VmUpdateStateRequest::state
+        }
+
+        type state = :Paused | :Running
+
+        module State
+          extend Vers::Internal::Type::Enum
+
+          PAUSED: :Paused
+          RUNNING: :Running
+
+          def self?.values: -> ::Array[Vers::Models::Orchestrator::VmUpdateStateRequest::state]
+        end
+      end
+    end
+  end
+end

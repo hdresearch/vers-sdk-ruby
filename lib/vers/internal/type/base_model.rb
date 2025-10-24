@@ -440,11 +440,10 @@ module Vers
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `cluster_delete_response` is a `Vers::API::ClusterDeleteResponse`
-        #   cluster_delete_response => {
-        #     cluster_id: cluster_id,
-        #     vms: vms,
-        #     fs_error: fs_error
+        #   # `error_response` is a `Vers::Orchestrator::ErrorResponse`
+        #   error_response => {
+        #     error: error,
+        #     success: success
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

@@ -1,5 +1,5 @@
 # typed: strong
 
 module Vers
-  API = Vers::Models::API
+  Orchestrator = Vers::Models::Orchestrator
 end

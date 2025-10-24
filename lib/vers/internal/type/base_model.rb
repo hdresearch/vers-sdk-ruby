@@ -440,7 +440,7 @@ module Vers
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `error_response` is a `Vers::Orchestrator::ErrorResponse`
+        #   # `error_response` is a `Vers::ErrorResponse`
         #   error_response => {
         #     error: error,
         #     success: success

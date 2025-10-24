@@ -28,13 +28,11 @@ gem "vers", "~> 0.1.0.pre.alpha.2"
 require "bundler/setup"
 require "vers"
 
-vers = Vers::Client.new(
-  api_key: ENV["VERS_API_KEY"] # This is the default and can be omitted
-)
+vers = Vers::Client.new
 
-clusters = vers.api.cluster.list
+new_vm_response = vers.orchestrator.vm.create_root(vm_config: {})
 
-puts(clusters.operation_id)
+puts(new_vm_response.id)
 ```
 
 ### Handling errors
@@ -43,7 +41,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  cluster = vers.api.cluster.list
+  vm = vers.orchestrator.vm.create_root(vm_config: {})
 rescue Vers::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -86,7 +84,7 @@ vers = Vers::Client.new(
 )
 
 # Or, configure per-request:
-vers.api.cluster.list(request_options: {max_retries: 5})
+vers.orchestrator.vm.create_root(vm_config: {}, request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -100,7 +98,7 @@ vers = Vers::Client.new(
 )
 
 # Or, configure per-request:
-vers.api.cluster.list(request_options: {timeout: 5})
+vers.orchestrator.vm.create_root(vm_config: {}, request_options: {timeout: 5})
 ```
 
 On timeout, `Vers::Errors::APITimeoutError` is raised.
@@ -130,8 +128,9 @@ You can send undocumented parameters to any endpoint, and read undocumented resp
 Note: the `extra_` parameters of the same name overrides the documented parameters.
 
 ```ruby
-clusters =
-  vers.api.cluster.list(
+new_vm_response =
+  vers.orchestrator.vm.create_root(
+    vm_config: {},
     request_options: {
       extra_query: {my_query_parameter: value},
       extra_body: {my_body_parameter: value},
@@ -139,7 +138,7 @@ clusters =
     }
   )
 
-puts(clusters[:my_undocumented_property])
+puts(new_vm_response[:my_undocumented_property])
 ```
 
 #### Undocumented request params
@@ -177,18 +176,18 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-vers.api.cluster.list
+vers.orchestrator.vm.create_root(vm_config: Vers::Orchestrator::NewRootRequest::VmConfig.new)
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-vers.api.cluster.list
+vers.orchestrator.vm.create_root(vm_config: {})
 
 # You can also splat a full Params class:
-params = Vers::API::ClusterListParams.new
-vers.api.cluster.list(**params)
+params = Vers::Orchestrator::VmCreateRootParams.new(vm_config: Vers::Orchestrator::NewRootRequest::VmConfig.new)
+vers.orchestrator.vm.create_root(**params)
 ```
 
 ### Enums
@@ -196,25 +195,25 @@ vers.api.cluster.list(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :Running
-puts(Vers::API::VmPatchRequest::State::RUNNING)
+# :Paused
+puts(Vers::Orchestrator::VmUpdateStateRequest::State::PAUSED)
 
-# Revealed type: `T.all(Vers::API::VmPatchRequest::State, Symbol)`
-T.reveal_type(Vers::API::VmPatchRequest::State::RUNNING)
+# Revealed type: `T.all(Vers::Orchestrator::VmUpdateStateRequest::State, Symbol)`
+T.reveal_type(Vers::Orchestrator::VmUpdateStateRequest::State::PAUSED)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-vers.api.vm.update(
-  state: Vers::API::VmPatchRequest::State::RUNNING,
+vers.orchestrator.vm.update_state(
+  state: Vers::Orchestrator::VmUpdateStateRequest::State::PAUSED,
   # …
 )
 
 # Literal values are also permissible:
-vers.api.vm.update(
-  state: :Running,
+vers.orchestrator.vm.update_state(
+  state: :Paused,
   # …
 )
 ```

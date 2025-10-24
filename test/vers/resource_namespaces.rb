@@ -3,7 +3,7 @@
 module Vers
   module Test
     module Resources
-      module API
+      module Orchestrator
       end
     end
   end

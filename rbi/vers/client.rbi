@@ -13,8 +13,8 @@ module Vers
     sig { returns(T.nilable(String)) }
     attr_reader :api_key
 
-    sig { returns(Vers::Resources::API) }
-    attr_reader :api
+    sig { returns(Vers::Resources::Orchestrator) }
+    attr_reader :orchestrator
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

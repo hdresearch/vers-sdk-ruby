@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    module Orchestrator
+      type vm_from_commit_request = { commit_id: String }
+
+      class VmFromCommitRequest < Vers::Internal::Type::BaseModel
+        attr_accessor commit_id: String
+
+        def initialize: (commit_id: String) -> void
+
+        def to_hash: -> { commit_id: String }
+      end
+    end
+  end
+end

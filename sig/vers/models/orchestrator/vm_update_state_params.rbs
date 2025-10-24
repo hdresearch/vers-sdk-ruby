@@ -1,0 +1,17 @@
+module Vers
+  module Models
+    module Orchestrator
+      type vm_update_state_params =
+        {  } & Vers::Internal::Type::request_parameters
+
+      class VmUpdateStateParams < Vers::Models::Orchestrator::VmUpdateStateRequest
+        extend Vers::Internal::Type::RequestParameters::Converter
+        include Vers::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: Vers::request_opts) -> void
+
+        def to_hash: -> { request_options: Vers::RequestOptions }
+      end
+    end
+  end
+end

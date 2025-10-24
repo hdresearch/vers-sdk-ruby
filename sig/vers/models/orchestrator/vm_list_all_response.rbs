@@ -1,0 +1,32 @@
+module Vers
+  module Models
+    module Orchestrator
+      type vm_list_all_response =
+        { vms: ::Array[Vers::Orchestrator::VmListAllResponse::Vm] }
+
+      class VmListAllResponse < Vers::Internal::Type::BaseModel
+        attr_accessor vms: ::Array[Vers::Orchestrator::VmListAllResponse::Vm]
+
+        def initialize: (
+          vms: ::Array[Vers::Orchestrator::VmListAllResponse::Vm]
+        ) -> void
+
+        def to_hash: -> {
+          vms: ::Array[Vers::Orchestrator::VmListAllResponse::Vm]
+        }
+
+        type vm = { vm_id: String, parent_id: String? }
+
+        class Vm < Vers::Internal::Type::BaseModel
+          attr_accessor vm_id: String
+
+          attr_accessor parent_id: String?
+
+          def initialize: (vm_id: String, ?parent_id: String?) -> void
+
+          def to_hash: -> { vm_id: String, parent_id: String? }
+        end
+      end
+    end
+  end
+end

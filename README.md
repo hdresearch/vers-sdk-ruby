@@ -28,7 +28,9 @@ gem "vers", "~> 0.1.0.pre.alpha.2"
 require "bundler/setup"
 require "vers"
 
-vers = Vers::Client.new
+vers = Vers::Client.new(
+  api_key: ENV["VERS_API_KEY"] # This is the default and can be omitted
+)
 
 new_vm_response = vers.orchestrator.vm.create_root(vm_config: {})
 

@@ -1,3 +1,5 @@
 module Vers
+  class ErrorResponse = Vers::Models::ErrorResponse
+
   module Orchestrator = Vers::Models::Orchestrator
 end

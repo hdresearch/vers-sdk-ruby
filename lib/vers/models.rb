@@ -39,5 +39,7 @@ module Vers
     mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
   end
 
+  ErrorResponse = Vers::Models::ErrorResponse
+
   Orchestrator = Vers::Models::Orchestrator
 end

@@ -1,0 +1,19 @@
+module Vers
+  module Models
+    type error_response = { error: String, success: bool }
+
+    class ErrorResponse < Vers::Internal::Type::BaseModel
+      attr_reader error: String?
+
+      def error=: (String) -> String
+
+      attr_reader success: bool?
+
+      def success=: (bool) -> bool
+
+      def initialize: (?error: String, ?success: bool) -> void
+
+      def to_hash: -> { error: String, success: bool }
+    end
+  end
+end

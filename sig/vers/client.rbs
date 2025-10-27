@@ -10,7 +10,7 @@ module Vers
 
     attr_reader api_key: String?
 
-    attr_reader orchestrator: Vers::Resources::Orchestrator
+    attr_reader vm: Vers::Resources::Vm
 
     private def auth_headers: -> ::Hash[String, String]
 

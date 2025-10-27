@@ -1,0 +1,7 @@
+module Vers
+  module Models
+    type vm_list_response = ::Array[Vers::VmAPI]
+
+    VmListResponse: Vers::Internal::Type::Converter
+  end
+end

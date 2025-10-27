@@ -1,0 +1,40 @@
+module Vers
+  module Models
+    type vm_api =
+      {
+        created_at: Time,
+        ip: String,
+        owner_id: String,
+        vm_id: String,
+        parent: String?
+      }
+
+    class VmAPI < Vers::Internal::Type::BaseModel
+      attr_accessor created_at: Time
+
+      attr_accessor ip: String
+
+      attr_accessor owner_id: String
+
+      attr_accessor vm_id: String
+
+      attr_accessor parent: String?
+
+      def initialize: (
+        created_at: Time,
+        ip: String,
+        owner_id: String,
+        vm_id: String,
+        ?parent: String?
+      ) -> void
+
+      def to_hash: -> {
+        created_at: Time,
+        ip: String,
+        owner_id: String,
+        vm_id: String,
+        parent: String?
+      }
+    end
+  end
+end

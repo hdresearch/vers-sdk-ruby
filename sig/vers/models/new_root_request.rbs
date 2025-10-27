@@ -1,0 +1,50 @@
+module Vers
+  module Models
+    type new_root_request = { vm_config: Vers::NewRootRequest::VmConfig }
+
+    class NewRootRequest < Vers::Internal::Type::BaseModel
+      attr_accessor vm_config: Vers::NewRootRequest::VmConfig
+
+      def initialize: (vm_config: Vers::NewRootRequest::VmConfig) -> void
+
+      def to_hash: -> { vm_config: Vers::NewRootRequest::VmConfig }
+
+      type vm_config =
+        {
+          fs_size_mib: Integer?,
+          image_name: String?,
+          kernel_name: String?,
+          mem_size_mib: Integer?,
+          vcpu_count: Integer?
+        }
+
+      class VmConfig < Vers::Internal::Type::BaseModel
+        attr_accessor fs_size_mib: Integer?
+
+        attr_accessor image_name: String?
+
+        attr_accessor kernel_name: String?
+
+        attr_accessor mem_size_mib: Integer?
+
+        attr_accessor vcpu_count: Integer?
+
+        def initialize: (
+          ?fs_size_mib: Integer?,
+          ?image_name: String?,
+          ?kernel_name: String?,
+          ?mem_size_mib: Integer?,
+          ?vcpu_count: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          fs_size_mib: Integer?,
+          image_name: String?,
+          kernel_name: String?,
+          mem_size_mib: Integer?,
+          vcpu_count: Integer?
+        }
+      end
+    end
+  end
+end

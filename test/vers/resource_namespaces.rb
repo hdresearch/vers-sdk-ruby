@@ -3,8 +3,6 @@
 module Vers
   module Test
     module Resources
-      module Orchestrator
-      end
     end
   end
 end

@@ -1,0 +1,42 @@
+module Vers
+  module Resources
+    class Vm
+      def list: (
+        ?request_options: Vers::request_opts
+      ) -> Vers::Models::vm_list_response
+
+      def delete: (
+        String vm_id,
+        ?request_options: Vers::request_opts
+      ) -> Vers::VmDeleteResponse
+
+      def branch: (
+        String vm_id,
+        ?request_options: Vers::request_opts
+      ) -> Vers::NewVmResponse
+
+      def commit: (
+        String vm_id,
+        ?request_options: Vers::request_opts
+      ) -> Vers::VmCommitResponse
+
+      def create_root: (
+        vm_config: Vers::NewRootRequest::VmConfig,
+        ?request_options: Vers::request_opts
+      ) -> Vers::NewVmResponse
+
+      def restore_from_commit: (
+        commit_id: String,
+        ?request_options: Vers::request_opts
+      ) -> Vers::NewVmResponse
+
+      def update_state: (
+        String vm_id,
+        state: Vers::Models::VmUpdateStateRequest::state,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def initialize: (client: Vers::Client) -> void
+    end
+  end
+end

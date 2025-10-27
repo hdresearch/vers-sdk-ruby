@@ -32,7 +32,7 @@ vers = Vers::Client.new(
   api_key: ENV["VERS_API_KEY"] # This is the default and can be omitted
 )
 
-new_vm_response = vers.orchestrator.vm.create_root(vm_config: {})
+new_vm_response = vers.vm.create_root(vm_config: {})
 
 puts(new_vm_response.id)
 ```
@@ -43,7 +43,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  vm = vers.orchestrator.vm.create_root(vm_config: {})
+  vm = vers.vm.create_root(vm_config: {})
 rescue Vers::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -86,7 +86,7 @@ vers = Vers::Client.new(
 )
 
 # Or, configure per-request:
-vers.orchestrator.vm.create_root(vm_config: {}, request_options: {max_retries: 5})
+vers.vm.create_root(vm_config: {}, request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -100,7 +100,7 @@ vers = Vers::Client.new(
 )
 
 # Or, configure per-request:
-vers.orchestrator.vm.create_root(vm_config: {}, request_options: {timeout: 5})
+vers.vm.create_root(vm_config: {}, request_options: {timeout: 5})
 ```
 
 On timeout, `Vers::Errors::APITimeoutError` is raised.
@@ -131,7 +131,7 @@ Note: the `extra_` parameters of the same name overrides the documented paramete
 
 ```ruby
 new_vm_response =
-  vers.orchestrator.vm.create_root(
+  vers.vm.create_root(
     vm_config: {},
     request_options: {
       extra_query: {my_query_parameter: value},
@@ -178,18 +178,18 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-vers.orchestrator.vm.create_root(vm_config: Vers::Orchestrator::NewRootRequest::VmConfig.new)
+vers.vm.create_root(vm_config: Vers::NewRootRequest::VmConfig.new)
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-vers.orchestrator.vm.create_root(vm_config: {})
+vers.vm.create_root(vm_config: {})
 
 # You can also splat a full Params class:
-params = Vers::Orchestrator::VmCreateRootParams.new(vm_config: Vers::Orchestrator::NewRootRequest::VmConfig.new)
-vers.orchestrator.vm.create_root(**params)
+params = Vers::VmCreateRootParams.new(vm_config: Vers::NewRootRequest::VmConfig.new)
+vers.vm.create_root(**params)
 ```
 
 ### Enums
@@ -198,23 +198,23 @@ Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::E
 
 ```ruby
 # :Paused
-puts(Vers::Orchestrator::VmUpdateStateRequest::State::PAUSED)
+puts(Vers::VmUpdateStateRequest::State::PAUSED)
 
-# Revealed type: `T.all(Vers::Orchestrator::VmUpdateStateRequest::State, Symbol)`
-T.reveal_type(Vers::Orchestrator::VmUpdateStateRequest::State::PAUSED)
+# Revealed type: `T.all(Vers::VmUpdateStateRequest::State, Symbol)`
+T.reveal_type(Vers::VmUpdateStateRequest::State::PAUSED)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-vers.orchestrator.vm.update_state(
-  state: Vers::Orchestrator::VmUpdateStateRequest::State::PAUSED,
+vers.vm.update_state(
+  state: Vers::VmUpdateStateRequest::State::PAUSED,
   # …
 )
 
 # Literal values are also permissible:
-vers.orchestrator.vm.update_state(
+vers.vm.update_state(
   state: :Paused,
   # …
 )

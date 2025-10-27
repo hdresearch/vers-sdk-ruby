@@ -33,7 +33,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(vm_config: {})
+      vers.vm.create_root(vm_config: {})
     end
 
     assert_requested(:any, /./, times: 3)
@@ -45,7 +45,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 3)
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(vm_config: {})
+      vers.vm.create_root(vm_config: {})
     end
 
     assert_requested(:any, /./, times: 4)
@@ -57,7 +57,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(vm_config: {}, request_options: {max_retries: 3})
+      vers.vm.create_root(vm_config: {}, request_options: {max_retries: 3})
     end
 
     assert_requested(:any, /./, times: 4)
@@ -69,7 +69,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 3)
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(vm_config: {}, request_options: {max_retries: 4})
+      vers.vm.create_root(vm_config: {}, request_options: {max_retries: 4})
     end
 
     assert_requested(:any, /./, times: 5)
@@ -85,7 +85,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 1)
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(vm_config: {})
+      vers.vm.create_root(vm_config: {})
     end
 
     assert_requested(:any, /./, times: 2)
@@ -103,7 +103,7 @@ class VersTest < Minitest::Test
 
     assert_raises(Vers::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
-      vers.orchestrator.vm.create_root(vm_config: {})
+      vers.vm.create_root(vm_config: {})
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
@@ -121,7 +121,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 1)
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(vm_config: {})
+      vers.vm.create_root(vm_config: {})
     end
 
     assert_requested(:any, /./, times: 2)
@@ -134,7 +134,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(vm_config: {})
+      vers.vm.create_root(vm_config: {})
     end
 
     3.times do
@@ -148,10 +148,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(
-        vm_config: {},
-        request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
-      )
+      vers.vm.create_root(vm_config: {}, request_options: {extra_headers: {"x-stainless-retry-count" => nil}})
     end
 
     assert_requested(:any, /./, times: 3) do
@@ -165,7 +162,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::InternalServerError) do
-      vers.orchestrator.vm.create_root(
+      vers.vm.create_root(
         vm_config: {},
         request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
       )
@@ -188,7 +185,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::APIConnectionError) do
-      vers.orchestrator.vm.create_root(vm_config: {}, request_options: {extra_headers: {}})
+      vers.vm.create_root(vm_config: {}, request_options: {extra_headers: {}})
     end
 
     recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
@@ -217,7 +214,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::APIConnectionError) do
-      vers.orchestrator.vm.create_root(vm_config: {}, request_options: {extra_headers: {}})
+      vers.vm.create_root(vm_config: {}, request_options: {extra_headers: {}})
     end
 
     assert_requested(:get, "http://localhost/redirected", times: Vers::Client::MAX_REDIRECTS) do
@@ -241,10 +238,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::APIConnectionError) do
-      vers.orchestrator.vm.create_root(
-        vm_config: {},
-        request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
-      )
+      vers.vm.create_root(vm_config: {}, request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
     end
 
     recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
@@ -271,10 +265,7 @@ class VersTest < Minitest::Test
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Vers::Errors::APIConnectionError) do
-      vers.orchestrator.vm.create_root(
-        vm_config: {},
-        request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
-      )
+      vers.vm.create_root(vm_config: {}, request_options: {extra_headers: {"authorization" => "Bearer xyz"}})
     end
 
     assert_requested(:any, "https://example.com/redirected", times: Vers::Client::MAX_REDIRECTS) do
@@ -288,7 +279,7 @@ class VersTest < Minitest::Test
 
     vers = Vers::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
-    vers.orchestrator.vm.create_root(vm_config: {})
+    vers.vm.create_root(vm_config: {})
 
     assert_requested(:any, /./) do |req|
       headers = req.headers.transform_keys(&:downcase).fetch_values("accept", "content-type")

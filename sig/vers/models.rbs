@@ -1,5 +1,31 @@
 module Vers
   class ErrorResponse = Vers::Models::ErrorResponse
 
-  module Orchestrator = Vers::Models::Orchestrator
+  class NewRootRequest = Vers::Models::NewRootRequest
+
+  class NewVmResponse = Vers::Models::NewVmResponse
+
+  class VmAPI = Vers::Models::VmAPI
+
+  class VmBranchParams = Vers::Models::VmBranchParams
+
+  class VmCommitParams = Vers::Models::VmCommitParams
+
+  class VmCommitResponse = Vers::Models::VmCommitResponse
+
+  class VmCreateRootParams = Vers::Models::VmCreateRootParams
+
+  class VmDeleteParams = Vers::Models::VmDeleteParams
+
+  class VmDeleteResponse = Vers::Models::VmDeleteResponse
+
+  class VmFromCommitRequest = Vers::Models::VmFromCommitRequest
+
+  class VmListParams = Vers::Models::VmListParams
+
+  class VmRestoreFromCommitParams = Vers::Models::VmRestoreFromCommitParams
+
+  class VmUpdateStateParams = Vers::Models::VmUpdateStateParams
+
+  class VmUpdateStateRequest = Vers::Models::VmUpdateStateRequest
 end

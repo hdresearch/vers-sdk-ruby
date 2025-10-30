@@ -43,14 +43,14 @@ module Vers
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Vers::Models::NewVmResponse]
+      # @return [nil]
       #
       # @see Vers::Models::VmBranchParams
       def branch(vm_id, params = {})
         @client.request(
           method: :post,
           path: ["vm/%1$s/branch", vm_id],
-          model: Vers::NewVmResponse,
+          model: NilClass,
           options: params[:request_options]
         )
       end
@@ -79,18 +79,12 @@ module Vers
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Vers::Models::NewVmResponse]
+      # @return [nil]
       #
       # @see Vers::Models::VmCreateRootParams
       def create_root(params)
         parsed, options = Vers::VmCreateRootParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "vm/new_root",
-          body: parsed,
-          model: Vers::NewVmResponse,
-          options: options
-        )
+        @client.request(method: :post, path: "vm/new_root", body: parsed, model: NilClass, options: options)
       end
 
       # @overload restore_from_commit(commit_id:, request_options: {})
@@ -98,7 +92,7 @@ module Vers
       # @param commit_id [String]
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Vers::Models::NewVmResponse]
+      # @return [nil]
       #
       # @see Vers::Models::VmRestoreFromCommitParams
       def restore_from_commit(params)
@@ -107,7 +101,7 @@ module Vers
           method: :post,
           path: "vm/from_commit",
           body: parsed,
-          model: Vers::NewVmResponse,
+          model: NilClass,
           options: options
         )
       end

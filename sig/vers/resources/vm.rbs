@@ -10,10 +10,7 @@ module Vers
         ?request_options: Vers::request_opts
       ) -> Vers::VmDeleteResponse
 
-      def branch: (
-        String vm_id,
-        ?request_options: Vers::request_opts
-      ) -> Vers::NewVmResponse
+      def branch: (String vm_id, ?request_options: Vers::request_opts) -> nil
 
       def commit: (
         String vm_id,
@@ -23,12 +20,12 @@ module Vers
       def create_root: (
         vm_config: Vers::NewRootRequest::VmConfig,
         ?request_options: Vers::request_opts
-      ) -> Vers::NewVmResponse
+      ) -> nil
 
       def restore_from_commit: (
         commit_id: String,
         ?request_options: Vers::request_opts
-      ) -> Vers::NewVmResponse
+      ) -> nil
 
       def update_state: (
         String vm_id,

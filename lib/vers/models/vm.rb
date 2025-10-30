@@ -8,11 +8,6 @@ module Vers
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute ip
-      #
-      #   @return [String]
-      required :ip, String
-
       # @!attribute owner_id
       #
       #   @return [String]
@@ -28,9 +23,8 @@ module Vers
       #   @return [String, nil]
       optional :parent, String, nil?: true
 
-      # @!method initialize(created_at:, ip:, owner_id:, vm_id:, parent: nil)
+      # @!method initialize(created_at:, owner_id:, vm_id:, parent: nil)
       #   @param created_at [Time]
-      #   @param ip [String]
       #   @param owner_id [String]
       #   @param vm_id [String]
       #   @param parent [String, nil]

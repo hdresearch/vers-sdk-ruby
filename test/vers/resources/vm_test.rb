@@ -35,13 +35,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.branch("vm_id")
 
     assert_pattern do
-      response => Vers::NewVmResponse
-    end
-
-    assert_pattern do
-      response => {
-        id: String
-      }
+      response => nil
     end
   end
 
@@ -68,13 +62,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.create_root(vm_config: {})
 
     assert_pattern do
-      response => Vers::NewVmResponse
-    end
-
-    assert_pattern do
-      response => {
-        id: String
-      }
+      response => nil
     end
   end
 
@@ -84,13 +72,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.restore_from_commit(commit_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Vers::NewVmResponse
-    end
-
-    assert_pattern do
-      response => {
-        id: String
-      }
+      response => nil
     end
   end
 

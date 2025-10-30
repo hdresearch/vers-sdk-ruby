@@ -5,8 +5,6 @@ module Vers
 
   NewRootRequest = Vers::Models::NewRootRequest
 
-  NewVmResponse = Vers::Models::NewVmResponse
-
   VmAPI = Vers::Models::VmAPI
 
   VmBranchParams = Vers::Models::VmBranchParams

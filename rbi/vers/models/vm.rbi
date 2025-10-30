@@ -9,9 +9,6 @@ module Vers
       attr_accessor :created_at
 
       sig { returns(String) }
-      attr_accessor :ip
-
-      sig { returns(String) }
       attr_accessor :owner_id
 
       sig { returns(String) }
@@ -23,20 +20,18 @@ module Vers
       sig do
         params(
           created_at: Time,
-          ip: String,
           owner_id: String,
           vm_id: String,
           parent: T.nilable(String)
         ).returns(T.attached_class)
       end
-      def self.new(created_at:, ip:, owner_id:, vm_id:, parent: nil)
+      def self.new(created_at:, owner_id:, vm_id:, parent: nil)
       end
 
       sig do
         override.returns(
           {
             created_at: Time,
-            ip: String,
             owner_id: String,
             vm_id: String,
             parent: T.nilable(String)

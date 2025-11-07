@@ -32,9 +32,9 @@ vers = Vers::Client.new(
   api_key: ENV["VERS_API_KEY"] # This is the default and can be omitted
 )
 
-result = vers.vm.create_root(vm_config: {})
+new_vm_response = vers.vm.create_root(vm_config: {})
 
-puts(result)
+puts(new_vm_response.vm_id)
 ```
 
 ### Handling errors
@@ -130,7 +130,7 @@ You can send undocumented parameters to any endpoint, and read undocumented resp
 Note: the `extra_` parameters of the same name overrides the documented parameters.
 
 ```ruby
-result =
+new_vm_response =
   vers.vm.create_root(
     vm_config: {},
     request_options: {
@@ -140,7 +140,7 @@ result =
     }
   )
 
-puts(result[:my_undocumented_property])
+puts(new_vm_response[:my_undocumented_property])
 ```
 
 #### Undocumented request params

@@ -28,7 +28,7 @@ module Vers
         params(
           vm_id: String,
           request_options: Vers::RequestOptions::OrHash
-        ).void
+        ).returns(Vers::NewVmResponse)
       end
       def branch(
         # Parent VM ID
@@ -54,7 +54,7 @@ module Vers
         params(
           vm_config: Vers::NewRootRequest::VmConfig::OrHash,
           request_options: Vers::RequestOptions::OrHash
-        ).void
+        ).returns(Vers::NewVmResponse)
       end
       def create_root(
         # Struct representing configuration options common to all VMs
@@ -67,7 +67,7 @@ module Vers
         params(
           commit_id: String,
           request_options: Vers::RequestOptions::OrHash
-        ).void
+        ).returns(Vers::NewVmResponse)
       end
       def restore_from_commit(commit_id:, request_options: {})
       end

@@ -61,13 +61,9 @@ module Vers
 
   VmFromCommitRequest = Vers::Models::VmFromCommitRequest
 
-  VmGetSSHKeyParams = Vers::Models::VmGetSSHKeyParams
-
   VmListParams = Vers::Models::VmListParams
 
   VmRestoreFromCommitParams = Vers::Models::VmRestoreFromCommitParams
-
-  VmSSHKeyResponse = Vers::Models::VmSSHKeyResponse
 
   VmUpdateStateParams = Vers::Models::VmUpdateStateParams
 

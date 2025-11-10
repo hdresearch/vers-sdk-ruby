@@ -78,23 +78,6 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     end
   end
 
-  def test_get_ssh_key
-    skip("Prism tests are disabled")
-
-    response = @vers.vm.get_ssh_key("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-
-    assert_pattern do
-      response => Vers::VmSSHKeyResponse
-    end
-
-    assert_pattern do
-      response => {
-        ssh_port: Integer,
-        ssh_private_key: String
-      }
-    end
-  end
-
   def test_restore_from_commit_required_params
     skip("Prism tests are disabled")
 

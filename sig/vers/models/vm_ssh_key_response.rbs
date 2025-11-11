@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    type vm_ssh_key_response = { ssh_port: Integer, ssh_private_key: String }
+
+    class VmSSHKeyResponse < Vers::Internal::Type::BaseModel
+      attr_accessor ssh_port: Integer
+
+      attr_accessor ssh_private_key: String
+
+      def initialize: (ssh_port: Integer, ssh_private_key: String) -> void
+
+      def to_hash: -> { ssh_port: Integer, ssh_private_key: String }
+    end
+  end
+end

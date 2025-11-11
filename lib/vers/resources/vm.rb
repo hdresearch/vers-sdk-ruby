@@ -93,6 +93,24 @@ module Vers
         )
       end
 
+      # @overload get_ssh_key(vm_id, request_options: {})
+      #
+      # @param vm_id [String] Node ID
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::VmSSHKeyResponse]
+      #
+      # @see Vers::Models::VmGetSSHKeyParams
+      def get_ssh_key(vm_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["vm/%1$s/ssh_key", vm_id],
+          model: Vers::VmSSHKeyResponse,
+          options: params[:request_options]
+        )
+      end
+
       # @overload restore_from_commit(commit_id:, request_options: {})
       #
       # @param commit_id [String]

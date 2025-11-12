@@ -65,19 +65,6 @@ module Vers
 
       sig do
         params(
-          vm_id: String,
-          request_options: Vers::RequestOptions::OrHash
-        ).returns(Vers::VmSSHKeyResponse)
-      end
-      def get_ssh_key(
-        # Node ID
-        vm_id,
-        request_options: {}
-      )
-      end
-
-      sig do
-        params(
           commit_id: String,
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::NewVmResponse)

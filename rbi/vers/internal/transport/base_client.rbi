@@ -84,10 +84,9 @@ module Vers
 
           # @api private
           sig do
-            params(
-              status: Integer,
-              headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(T::Boolean)
+            params(status: Integer, headers: T::Hash[String, String]).returns(
+              T::Boolean
+            )
           end
           def should_retry?(status, headers:)
           end
@@ -97,7 +96,7 @@ module Vers
             params(
               request: Vers::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
-              response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
+              response_headers: T::Hash[String, String]
             ).returns(Vers::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
@@ -179,6 +178,11 @@ module Vers
 
         # @api private
         sig { returns(String) }
+        private def user_agent
+        end
+
+        # @api private
+        sig { returns(String) }
         private def generate_idempotency_key
         end
 
@@ -213,7 +217,7 @@ module Vers
             send_retry_header: T::Boolean
           ).returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
-        private def send_request(
+        def send_request(
           request,
           redirect_count:,
           retry_count:,

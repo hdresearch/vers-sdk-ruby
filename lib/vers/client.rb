@@ -18,8 +18,8 @@ module Vers
     # @return [String, nil]
     attr_reader :api_key
 
-    # @return [Vers::Resources::API]
-    attr_reader :api
+    # @return [Vers::Resources::Vm]
+    attr_reader :vm
 
     # @api private
     #
@@ -64,7 +64,7 @@ module Vers
         max_retry_delay: max_retry_delay
       )
 
-      @api = Vers::Resources::API.new(client: self)
+      @vm = Vers::Resources::Vm.new(client: self)
     end
   end
 end

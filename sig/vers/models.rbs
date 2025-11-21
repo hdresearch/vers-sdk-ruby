@@ -1,3 +1,35 @@
 module Vers
-  module API = Vers::Models::API
+  class ErrorResponse = Vers::Models::ErrorResponse
+
+  class NewRootRequest = Vers::Models::NewRootRequest
+
+  class NewVmResponse = Vers::Models::NewVmResponse
+
+  class VmAPI = Vers::Models::VmAPI
+
+  class VmBranchParams = Vers::Models::VmBranchParams
+
+  class VmCommitParams = Vers::Models::VmCommitParams
+
+  class VmCommitResponse = Vers::Models::VmCommitResponse
+
+  class VmCreateRootParams = Vers::Models::VmCreateRootParams
+
+  class VmDeleteParams = Vers::Models::VmDeleteParams
+
+  class VmDeleteResponse = Vers::Models::VmDeleteResponse
+
+  class VmFromCommitRequest = Vers::Models::VmFromCommitRequest
+
+  class VmGetSSHKeyParams = Vers::Models::VmGetSSHKeyParams
+
+  class VmListParams = Vers::Models::VmListParams
+
+  class VmRestoreFromCommitParams = Vers::Models::VmRestoreFromCommitParams
+
+  class VmSSHKeyResponse = Vers::Models::VmSSHKeyResponse
+
+  class VmUpdateStateParams = Vers::Models::VmUpdateStateParams
+
+  class VmUpdateStateRequest = Vers::Models::VmUpdateStateRequest
 end

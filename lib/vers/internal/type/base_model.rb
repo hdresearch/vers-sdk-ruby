@@ -52,6 +52,7 @@ module Vers
           #
           #   @option spec [Boolean] :"nil?"
           private def add_field(name_sym, required:, type_info:, spec:)
+            meta = Vers::Internal::Type::Converter.meta_info(type_info, spec)
             type_fn, info =
               case type_info
               in Proc | Vers::Internal::Type::Converter | Class
@@ -74,7 +75,8 @@ module Vers
                 required: required,
                 nilable: nilable,
                 const: const,
-                type_fn: type_fn
+                type_fn: type_fn,
+                meta: meta
               }
 
             define_method(setter) do |value|
@@ -438,11 +440,10 @@ module Vers
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `cluster_delete_response` is a `Vers::API::ClusterDeleteResponse`
-        #   cluster_delete_response => {
-        #     cluster_id: cluster_id,
-        #     vms: vms,
-        #     fs_error: fs_error
+        #   # `error_response` is a `Vers::ErrorResponse`
+        #   error_response => {
+        #     error: error,
+        #     success: success
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

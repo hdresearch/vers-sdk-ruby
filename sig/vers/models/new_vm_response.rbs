@@ -1,0 +1,13 @@
+module Vers
+  module Models
+    type new_vm_response = { vm_id: String }
+
+    class NewVmResponse < Vers::Internal::Type::BaseModel
+      attr_accessor vm_id: String
+
+      def initialize: (vm_id: String) -> void
+
+      def to_hash: -> { vm_id: String }
+    end
+  end
+end

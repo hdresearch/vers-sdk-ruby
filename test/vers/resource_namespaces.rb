@@ -3,8 +3,6 @@
 module Vers
   module Test
     module Resources
-      module API
-      end
     end
   end
 end

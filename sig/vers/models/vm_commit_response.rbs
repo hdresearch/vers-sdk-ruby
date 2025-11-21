@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    type vm_commit_response = { commit_id: String, host_architecture: String }
+
+    class VmCommitResponse < Vers::Internal::Type::BaseModel
+      attr_accessor commit_id: String
+
+      attr_accessor host_architecture: String
+
+      def initialize: (commit_id: String, host_architecture: String) -> void
+
+      def to_hash: -> { commit_id: String, host_architecture: String }
+    end
+  end
+end

@@ -6,15 +6,15 @@ module Vers
       OrHash =
         T.type_alias { T.any(Vers::VmDeleteResponse, Vers::Internal::AnyHash) }
 
-      sig { returns(T::Array[String]) }
-      attr_accessor :deleted_ids
+      sig { returns(String) }
+      attr_accessor :vm_id
 
       # Response body for DELETE /api/vm/{vm_id}
-      sig { params(deleted_ids: T::Array[String]).returns(T.attached_class) }
-      def self.new(deleted_ids:)
+      sig { params(vm_id: String).returns(T.attached_class) }
+      def self.new(vm_id:)
       end
 
-      sig { override.returns({ deleted_ids: T::Array[String] }) }
+      sig { override.returns({ vm_id: String }) }
       def to_hash
       end
     end

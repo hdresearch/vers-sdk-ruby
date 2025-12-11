@@ -24,7 +24,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
 
     assert_pattern do
       response => {
-        deleted_ids: ^(Vers::Internal::Type::ArrayOf[String])
+        vm_id: String
       }
     end
   end
@@ -51,13 +51,12 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.commit("vm_id")
 
     assert_pattern do
-      response => Vers::VmCommitResponse
+      response => Vers::Models::VmCommitResponse
     end
 
     assert_pattern do
       response => {
-        commit_id: String,
-        host_architecture: String
+        commit_id: String
       }
     end
   end

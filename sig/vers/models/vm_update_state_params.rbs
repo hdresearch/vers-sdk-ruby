@@ -1,15 +1,25 @@
 module Vers
   module Models
     type vm_update_state_params =
-      {  } & Vers::Internal::Type::request_parameters
+      { skip_wait_boot: bool } & Vers::Internal::Type::request_parameters
 
     class VmUpdateStateParams < Vers::Models::VmUpdateStateRequest
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Vers::request_opts) -> void
+      def skip_wait_boot: -> bool?
 
-      def to_hash: -> { request_options: Vers::RequestOptions }
+      def skip_wait_boot=: (bool _) -> bool
+
+      def initialize: (
+        ?skip_wait_boot: bool,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        skip_wait_boot: bool,
+        request_options: Vers::RequestOptions
+      }
     end
   end
 end

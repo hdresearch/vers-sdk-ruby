@@ -1,13 +1,13 @@
 module Vers
   module Models
-    type vm_delete_response = { deleted_ids: ::Array[String] }
+    type vm_delete_response = { vm_id: String }
 
     class VmDeleteResponse < Vers::Internal::Type::BaseModel
-      attr_accessor deleted_ids: ::Array[String]
+      attr_accessor vm_id: String
 
-      def initialize: (deleted_ids: ::Array[String]) -> void
+      def initialize: (vm_id: String) -> void
 
-      def to_hash: -> { deleted_ids: ::Array[String] }
+      def to_hash: -> { vm_id: String }
     end
   end
 end

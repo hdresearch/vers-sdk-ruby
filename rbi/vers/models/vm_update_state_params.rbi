@@ -11,15 +11,31 @@ module Vers
           T.any(Vers::VmUpdateStateParams, Vers::Internal::AnyHash)
         end
 
+      # If true, error immediately if the VM is not finished booting. Defaults to false
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :skip_wait_boot
+
+      sig { params(skip_wait_boot: T::Boolean).void }
+      attr_writer :skip_wait_boot
+
       sig do
-        params(request_options: Vers::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          skip_wait_boot: T::Boolean,
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(
+        # If true, error immediately if the VM is not finished booting. Defaults to false
+        skip_wait_boot: nil,
+        request_options: {}
+      )
       end
 
-      sig { override.returns({ request_options: Vers::RequestOptions }) }
+      sig do
+        override.returns(
+          { skip_wait_boot: T::Boolean, request_options: Vers::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

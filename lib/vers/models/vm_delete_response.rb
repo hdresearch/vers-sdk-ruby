@@ -4,15 +4,15 @@ module Vers
   module Models
     # @see Vers::Resources::Vm#delete
     class VmDeleteResponse < Vers::Internal::Type::BaseModel
-      # @!attribute deleted_ids
+      # @!attribute vm_id
       #
-      #   @return [Array<String>]
-      required :deleted_ids, Vers::Internal::Type::ArrayOf[String]
+      #   @return [String]
+      required :vm_id, String
 
-      # @!method initialize(deleted_ids:)
+      # @!method initialize(vm_id:)
       #   Response body for DELETE /api/vm/{vm_id}
       #
-      #   @param deleted_ids [Array<String>]
+      #   @param vm_id [String]
     end
   end
 end

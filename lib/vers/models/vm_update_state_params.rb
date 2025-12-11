@@ -7,7 +7,15 @@ module Vers
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute skip_wait_boot
+      #   If true, error immediately if the VM is not finished booting. Defaults to false
+      #
+      #   @return [Boolean, nil]
+      optional :skip_wait_boot, Vers::Internal::Type::Boolean
+
+      # @!method initialize(skip_wait_boot: nil, request_options: {})
+      #   @param skip_wait_boot [Boolean] If true, error immediately if the VM is not finished booting. Defaults to false
+      #
       #   @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}]
     end
   end

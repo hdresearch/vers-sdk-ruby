@@ -1,14 +1,22 @@
 module Vers
   module Models
-    type vm_create_root_params = {  } & Vers::Internal::Type::request_parameters
+    type vm_create_root_params =
+      { wait_boot: bool } & Vers::Internal::Type::request_parameters
 
     class VmCreateRootParams < Vers::Models::NewRootRequest
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Vers::request_opts) -> void
+      def wait_boot: -> bool?
 
-      def to_hash: -> { request_options: Vers::RequestOptions }
+      def wait_boot=: (bool _) -> bool
+
+      def initialize: (
+        ?wait_boot: bool,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> { wait_boot: bool, request_options: Vers::RequestOptions }
     end
   end
 end

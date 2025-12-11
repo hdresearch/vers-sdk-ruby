@@ -14,12 +14,15 @@ module Vers
       sig do
         params(
           vm_id: String,
+          skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::VmDeleteResponse)
       end
       def delete(
         # VM ID to delete
         vm_id,
+        # If true, return an error immediately if the VM is still booting. Default: false
+        skip_wait_boot: nil,
         request_options: {}
       )
       end
@@ -40,12 +43,18 @@ module Vers
       sig do
         params(
           vm_id: String,
+          keep_paused: T::Boolean,
+          skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
-        ).returns(Vers::VmCommitResponse)
+        ).returns(Vers::Models::VmCommitResponse)
       end
       def commit(
         # VM ID to commit
         vm_id,
+        # If true, keep VM paused after commit
+        keep_paused: nil,
+        # If true, return an error immediately if the VM is still booting. Default: false
+        skip_wait_boot: nil,
         request_options: {}
       )
       end
@@ -53,12 +62,16 @@ module Vers
       sig do
         params(
           vm_config: Vers::NewRootRequest::VmConfig::OrHash,
+          wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::NewVmResponse)
       end
       def create_root(
-        # Struct representing configuration options common to all VMs
+        # Body param: Struct representing configuration options common to all VMs
         vm_config:,
+        # Query param: If true, wait for the newly-created VM to finish booting before
+        # returning. Default: false.
+        wait_boot: nil,
         request_options: {}
       )
       end
@@ -89,14 +102,18 @@ module Vers
         params(
           vm_id: String,
           state: Vers::VmUpdateStateRequest::State::OrSymbol,
+          skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
         ).void
       end
       def update_state(
-        # VM ID
+        # Path param: VM ID
         vm_id,
-        # The requested state for the VM
+        # Body param: The requested state for the VM
         state:,
+        # Query param: If true, error immediately if the VM is not finished booting.
+        # Defaults to false
+        skip_wait_boot: nil,
         request_options: {}
       )
       end

@@ -9,15 +9,45 @@ module Vers
       OrHash =
         T.type_alias { T.any(Vers::VmCommitParams, Vers::Internal::AnyHash) }
 
+      # If true, keep VM paused after commit
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :keep_paused
+
+      sig { params(keep_paused: T::Boolean).void }
+      attr_writer :keep_paused
+
+      # If true, return an error immediately if the VM is still booting. Default: false
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :skip_wait_boot
+
+      sig { params(skip_wait_boot: T::Boolean).void }
+      attr_writer :skip_wait_boot
+
       sig do
-        params(request_options: Vers::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          keep_paused: T::Boolean,
+          skip_wait_boot: T::Boolean,
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(
+        # If true, keep VM paused after commit
+        keep_paused: nil,
+        # If true, return an error immediately if the VM is still booting. Default: false
+        skip_wait_boot: nil,
+        request_options: {}
+      )
       end
 
-      sig { override.returns({ request_options: Vers::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            keep_paused: T::Boolean,
+            skip_wait_boot: T::Boolean,
+            request_options: Vers::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
     end

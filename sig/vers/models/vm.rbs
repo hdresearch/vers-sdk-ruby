@@ -1,30 +1,47 @@
 module Vers
   module Models
     type vm_api =
-      { created_at: Time, owner_id: String, vm_id: String, parent: String? }
+      {
+        created_at: Time,
+        owner_id: String,
+        state: Vers::Models::VmAPI::state,
+        vm_id: String
+      }
 
     class VmAPI < Vers::Internal::Type::BaseModel
       attr_accessor created_at: Time
 
       attr_accessor owner_id: String
 
-      attr_accessor vm_id: String
+      attr_accessor state: Vers::Models::VmAPI::state
 
-      attr_accessor parent: String?
+      attr_accessor vm_id: String
 
       def initialize: (
         created_at: Time,
         owner_id: String,
-        vm_id: String,
-        ?parent: String?
+        state: Vers::Models::VmAPI::state,
+        vm_id: String
       ) -> void
 
       def to_hash: -> {
         created_at: Time,
         owner_id: String,
-        vm_id: String,
-        parent: String?
+        state: Vers::Models::VmAPI::state,
+        vm_id: String
       }
+
+      type state = :booting | :running | :paused
+
+      module State
+        extend Vers::Internal::Type::Enum
+
+        BOOTING: :booting
+        RUNNING: :running
+        PAUSED: :paused
+
+        def self?.values: -> ::Array[Vers::Models::VmAPI::state]
+      end
     end
   end
 end

@@ -51,7 +51,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.commit("vm_id")
 
     assert_pattern do
-      response => Vers::Models::VmCommitResponse
+      response => Vers::VmCommitResponse
     end
 
     assert_pattern do

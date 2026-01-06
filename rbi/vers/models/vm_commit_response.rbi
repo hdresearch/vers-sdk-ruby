@@ -4,16 +4,18 @@ module Vers
   module Models
     class VmCommitResponse < Vers::Internal::Type::BaseModel
       OrHash =
-        T.type_alias do
-          T.any(Vers::Models::VmCommitResponse, Vers::Internal::AnyHash)
-        end
+        T.type_alias { T.any(Vers::VmCommitResponse, Vers::Internal::AnyHash) }
 
+      # The UUID of the newly-created commit
       sig { returns(String) }
       attr_accessor :commit_id
 
-      # A summary of a commit, appropriate for displaying on the frontend
+      # The response body for POST /api/vm/{vm_id}/commit
       sig { params(commit_id: String).returns(T.attached_class) }
-      def self.new(commit_id:)
+      def self.new(
+        # The UUID of the newly-created commit
+        commit_id:
+      )
       end
 
       sig { override.returns({ commit_id: String }) }

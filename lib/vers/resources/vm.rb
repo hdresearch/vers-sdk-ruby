@@ -78,7 +78,7 @@ module Vers
           method: :post,
           path: ["vm/%1$s/commit", vm_id],
           query: parsed,
-          model: Vers::Models::VmCommitResponse,
+          model: Vers::VmCommitResponse,
           options: options
         )
       end

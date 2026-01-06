@@ -11,6 +11,8 @@ module Vers
 
   class VmCommitParams = Vers::Models::VmCommitParams
 
+  class VmCommitResponse = Vers::Models::VmCommitResponse
+
   class VmCreateRootParams = Vers::Models::VmCreateRootParams
 
   class VmDeleteParams = Vers::Models::VmDeleteParams

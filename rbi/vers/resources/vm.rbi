@@ -46,7 +46,7 @@ module Vers
           keep_paused: T::Boolean,
           skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
-        ).returns(Vers::Models::VmCommitResponse)
+        ).returns(Vers::VmCommitResponse)
       end
       def commit(
         # VM ID to commit

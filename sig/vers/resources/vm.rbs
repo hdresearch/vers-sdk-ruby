@@ -21,7 +21,7 @@ module Vers
         ?keep_paused: bool,
         ?skip_wait_boot: bool,
         ?request_options: Vers::request_opts
-      ) -> Vers::Models::VmCommitResponse
+      ) -> Vers::VmCommitResponse
 
       def create_root: (
         vm_config: Vers::NewRootRequest::VmConfig,

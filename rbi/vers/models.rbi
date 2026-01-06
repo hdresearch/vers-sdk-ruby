@@ -13,6 +13,8 @@ module Vers
 
   VmCommitParams = Vers::Models::VmCommitParams
 
+  VmCommitResponse = Vers::Models::VmCommitResponse
+
   VmCreateRootParams = Vers::Models::VmCreateRootParams
 
   VmDeleteParams = Vers::Models::VmDeleteParams

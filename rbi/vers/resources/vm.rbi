@@ -101,6 +101,19 @@ module Vers
       sig do
         params(
           vm_id: String,
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(Vers::VmAPI)
+      end
+      def status(
+        # VM ID
+        vm_id,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
           state: Vers::VmUpdateStateRequest::State::OrSymbol,
           skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash

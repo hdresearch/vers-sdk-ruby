@@ -110,6 +110,25 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     end
   end
 
+  def test_status
+    skip("Prism tests are disabled")
+
+    response = @vers.vm.status("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Vers::VmAPI
+    end
+
+    assert_pattern do
+      response => {
+        created_at: Time,
+        owner_id: String,
+        state: Vers::VmAPI::State,
+        vm_id: String
+      }
+    end
+  end
+
   def test_update_state_required_params
     skip("Prism tests are disabled")
 

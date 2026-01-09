@@ -29,6 +29,8 @@ module Vers
 
   class VmSSHKeyResponse = Vers::Models::VmSSHKeyResponse
 
+  class VmStatusParams = Vers::Models::VmStatusParams
+
   class VmUpdateStateParams = Vers::Models::VmUpdateStateParams
 
   class VmUpdateStateRequest = Vers::Models::VmUpdateStateRequest

@@ -32,9 +32,9 @@ vers = Vers::Client.new(
   api_key: ENV["VERS_API_KEY"] # This is the default and can be omitted
 )
 
-new_vm_response = vers.vm.create_root(vm_config: {})
+vms = vers.vm.list
 
-puts(new_vm_response.vm_id)
+puts(vms)
 ```
 
 ### Handling errors
@@ -43,7 +43,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  vm = vers.vm.create_root(vm_config: {})
+  vm = vers.vm.list
 rescue Vers::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -86,7 +86,7 @@ vers = Vers::Client.new(
 )
 
 # Or, configure per-request:
-vers.vm.create_root(vm_config: {}, request_options: {max_retries: 5})
+vers.vm.list(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -100,7 +100,7 @@ vers = Vers::Client.new(
 )
 
 # Or, configure per-request:
-vers.vm.create_root(vm_config: {}, request_options: {timeout: 5})
+vers.vm.list(request_options: {timeout: 5})
 ```
 
 On timeout, `Vers::Errors::APITimeoutError` is raised.
@@ -130,9 +130,8 @@ You can send undocumented parameters to any endpoint, and read undocumented resp
 Note: the `extra_` parameters of the same name overrides the documented parameters.
 
 ```ruby
-new_vm_response =
-  vers.vm.create_root(
-    vm_config: {},
+vms =
+  vers.vm.list(
     request_options: {
       extra_query: {my_query_parameter: value},
       extra_body: {my_body_parameter: value},
@@ -140,7 +139,7 @@ new_vm_response =
     }
   )
 
-puts(new_vm_response[:my_undocumented_property])
+puts(vms[:my_undocumented_property])
 ```
 
 #### Undocumented request params
@@ -178,18 +177,18 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-vers.vm.create_root(vm_config: Vers::NewRootRequest::VmConfig.new)
+vers.vm.list
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-vers.vm.create_root(vm_config: {})
+vers.vm.list
 
 # You can also splat a full Params class:
-params = Vers::VmCreateRootParams.new(vm_config: Vers::NewRootRequest::VmConfig.new)
-vers.vm.create_root(**params)
+params = Vers::VmListParams.new
+vers.vm.list(**params)
 ```
 
 ### Enums

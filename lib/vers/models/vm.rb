@@ -2,6 +2,7 @@
 
 module Vers
   module Models
+    # @see Vers::Resources::Vm#status
     class VmAPI < Vers::Internal::Type::BaseModel
       # @!attribute created_at
       #

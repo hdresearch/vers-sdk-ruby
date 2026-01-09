@@ -39,6 +39,11 @@ module Vers
         ?request_options: Vers::request_opts
       ) -> Vers::NewVmResponse
 
+      def status: (
+        String vm_id,
+        ?request_options: Vers::request_opts
+      ) -> Vers::VmAPI
+
       def update_state: (
         String vm_id,
         state: Vers::Models::VmUpdateStateRequest::state,

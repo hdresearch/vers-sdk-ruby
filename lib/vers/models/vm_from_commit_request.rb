@@ -9,7 +9,7 @@ module Vers
       required :commit_id, String
 
       # @!method initialize(commit_id:)
-      #   Request body for POST /api/vm/from_commit
+      #   Request body for POST /api/v1/vm/from_commit
       #
       #   @param commit_id [String]
     end

@@ -13,7 +13,7 @@ module Vers
       def list(params = {})
         @client.request(
           method: :get,
-          path: "vms",
+          path: "api/v1/vms",
           model: Vers::Internal::Type::ArrayOf[Vers::VmAPI],
           options: params[:request_options]
         )
@@ -34,7 +34,7 @@ module Vers
         parsed, options = Vers::VmDeleteParams.dump_request(params)
         @client.request(
           method: :delete,
-          path: ["vm/%1$s", vm_id],
+          path: ["api/v1/vm/%1$s", vm_id],
           query: parsed,
           model: Vers::VmDeleteResponse,
           options: options
@@ -53,7 +53,7 @@ module Vers
       def branch(vm_id, params = {})
         @client.request(
           method: :post,
-          path: ["vm/%1$s/branch", vm_id],
+          path: ["api/v1/vm/%1$s/branch", vm_id],
           model: Vers::NewVmResponse,
           options: params[:request_options]
         )
@@ -76,7 +76,7 @@ module Vers
         parsed, options = Vers::VmCommitParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["vm/%1$s/commit", vm_id],
+          path: ["api/v1/vm/%1$s/commit", vm_id],
           query: parsed,
           model: Vers::VmCommitResponse,
           options: options
@@ -102,7 +102,7 @@ module Vers
         query_params = [:wait_boot]
         @client.request(
           method: :post,
-          path: "vm/new_root",
+          path: "api/v1/vm/new_root",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           model: Vers::NewVmResponse,
@@ -122,7 +122,7 @@ module Vers
       def get_ssh_key(vm_id, params = {})
         @client.request(
           method: :get,
-          path: ["vm/%1$s/ssh_key", vm_id],
+          path: ["api/v1/vm/%1$s/ssh_key", vm_id],
           model: Vers::VmSSHKeyResponse,
           options: params[:request_options]
         )
@@ -140,10 +140,28 @@ module Vers
         parsed, options = Vers::VmRestoreFromCommitParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "vm/from_commit",
+          path: "api/v1/vm/from_commit",
           body: parsed,
           model: Vers::NewVmResponse,
           options: options
+        )
+      end
+
+      # @overload status(vm_id, request_options: {})
+      #
+      # @param vm_id [String] VM ID
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::VmAPI]
+      #
+      # @see Vers::Models::VmStatusParams
+      def status(vm_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["api/v1/vm/%1$s/status", vm_id],
+          model: Vers::VmAPI,
+          options: params[:request_options]
         )
       end
 
@@ -168,7 +186,7 @@ module Vers
         query_params = [:skip_wait_boot]
         @client.request(
           method: :patch,
-          path: ["vm/%1$s/state", vm_id],
+          path: ["api/v1/vm/%1$s/state", vm_id],
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           model: NilClass,

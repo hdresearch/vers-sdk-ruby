@@ -78,7 +78,7 @@ module Vers
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Vers::Models::VmBranchByCommitResponse]
+      # @return [Vers::Models::NewVmsResponse]
       #
       # @see Vers::Models::VmBranchByCommitParams
       def branch_by_commit(commit_id, params = {})
@@ -87,7 +87,7 @@ module Vers
           method: :post,
           path: ["api/v1/vm/branch/by_commit/%1$s", commit_id],
           query: parsed,
-          model: Vers::Models::VmBranchByCommitResponse,
+          model: Vers::NewVmsResponse,
           options: options
         )
       end
@@ -104,7 +104,7 @@ module Vers
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Vers::Models::VmBranchByVmResponse]
+      # @return [Vers::Models::NewVmsResponse]
       #
       # @see Vers::Models::VmBranchByVmParams
       def branch_by_vm(vm_id, params = {})
@@ -113,7 +113,7 @@ module Vers
           method: :post,
           path: ["api/v1/vm/branch/by_vm/%1$s", vm_id],
           query: parsed,
-          model: Vers::Models::VmBranchByVmResponse,
+          model: Vers::NewVmsResponse,
           options: options
         )
       end

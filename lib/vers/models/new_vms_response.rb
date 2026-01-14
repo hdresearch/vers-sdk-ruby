@@ -2,8 +2,8 @@
 
 module Vers
   module Models
-    # @see Vers::Resources::Vm#branch_by_vm
-    class VmBranchByVmResponse < Vers::Internal::Type::BaseModel
+    # @see Vers::Resources::Vm#branch_by_commit
+    class NewVmsResponse < Vers::Internal::Type::BaseModel
       # @!attribute vms
       #
       #   @return [Array<Vers::Models::NewVmResponse>]

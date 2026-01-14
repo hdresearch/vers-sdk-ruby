@@ -23,7 +23,7 @@ module Vers
         String commit_id,
         ?count: Integer,
         ?request_options: Vers::request_opts
-      ) -> Vers::Models::VmBranchByCommitResponse
+      ) -> Vers::NewVmsResponse
 
       def branch_by_vm: (
         String vm_id,
@@ -31,7 +31,7 @@ module Vers
         ?keep_paused: bool,
         ?skip_wait_boot: bool,
         ?request_options: Vers::request_opts
-      ) -> Vers::Models::VmBranchByVmResponse
+      ) -> Vers::NewVmsResponse
 
       def commit: (
         String vm_id,

@@ -2,11 +2,9 @@
 
 module Vers
   module Models
-    class VmBranchByVmResponse < Vers::Internal::Type::BaseModel
+    class NewVmsResponse < Vers::Internal::Type::BaseModel
       OrHash =
-        T.type_alias do
-          T.any(Vers::Models::VmBranchByVmResponse, Vers::Internal::AnyHash)
-        end
+        T.type_alias { T.any(Vers::NewVmsResponse, Vers::Internal::AnyHash) }
 
       sig { returns(T::Array[Vers::NewVmResponse]) }
       attr_accessor :vms

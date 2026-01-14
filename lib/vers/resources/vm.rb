@@ -56,7 +56,7 @@ module Vers
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Vers::Models::NewVmResponse]
+      # @return [Vers::Models::NewVmsResponse]
       #
       # @see Vers::Models::VmBranchParams
       def branch(vm_or_commit_id, params = {})
@@ -65,7 +65,7 @@ module Vers
           method: :post,
           path: ["api/v1/vm/%1$s/branch", vm_or_commit_id],
           query: parsed,
-          model: Vers::NewVmResponse,
+          model: Vers::NewVmsResponse,
           options: options
         )
       end

@@ -35,12 +35,12 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.branch("vm_or_commit_id")
 
     assert_pattern do
-      response => Vers::NewVmResponse
+      response => Vers::NewVmsResponse
     end
 
     assert_pattern do
       response => {
-        vm_id: String
+        vms: ^(Vers::Internal::Type::ArrayOf[Vers::NewVmResponse])
       }
     end
   end

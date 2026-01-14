@@ -34,7 +34,7 @@ module Vers
           keep_paused: T::Boolean,
           skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
-        ).returns(Vers::NewVmResponse)
+        ).returns(Vers::NewVmsResponse)
       end
       def branch(
         # Parent VM or commit ID

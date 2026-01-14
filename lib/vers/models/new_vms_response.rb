@@ -2,7 +2,7 @@
 
 module Vers
   module Models
-    # @see Vers::Resources::Vm#branch_by_commit
+    # @see Vers::Resources::Vm#branch
     class NewVmsResponse < Vers::Internal::Type::BaseModel
       # @!attribute vms
       #

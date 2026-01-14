@@ -47,6 +47,10 @@ module Vers
 
   VmAPI = Vers::Models::VmAPI
 
+  VmBranchByCommitParams = Vers::Models::VmBranchByCommitParams
+
+  VmBranchByVmParams = Vers::Models::VmBranchByVmParams
+
   VmBranchParams = Vers::Models::VmBranchParams
 
   VmCommitParams = Vers::Models::VmCommitParams

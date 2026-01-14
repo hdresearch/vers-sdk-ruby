@@ -29,13 +29,61 @@ module Vers
 
       sig do
         params(
-          vm_id: String,
+          vm_or_commit_id: String,
+          count: Integer,
+          keep_paused: T::Boolean,
+          skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::NewVmResponse)
       end
       def branch(
-        # Parent VM ID
+        # Parent VM or commit ID
+        vm_or_commit_id,
+        # Number of VMs to branch (optional; default 1)
+        count: nil,
+        # If true, keep VM paused after commit. Only applicable when branching a VM ID.
+        keep_paused: nil,
+        # If true, immediately return an error if VM is booting instead of waiting. Only
+        # applicable when branching a VM ID.
+        skip_wait_boot: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          commit_id: String,
+          count: Integer,
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(Vers::Models::VmBranchByCommitResponse)
+      end
+      def branch_by_commit(
+        # The commit id to branch off
+        commit_id,
+        # Number of VMs to branch (optional; default 1)
+        count: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
+          count: Integer,
+          keep_paused: T::Boolean,
+          skip_wait_boot: T::Boolean,
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(Vers::Models::VmBranchByVmResponse)
+      end
+      def branch_by_vm(
+        # VM to commit and then branch off of
         vm_id,
+        # Number of VMs to branch (optional; default 1)
+        count: nil,
+        # If true, keep VM paused after commit
+        keep_paused: nil,
+        # If true, immediately return an error if VM is booting instead of waiting
+        skip_wait_boot: nil,
         request_options: {}
       )
       end

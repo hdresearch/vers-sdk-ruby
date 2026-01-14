@@ -1,8 +1,8 @@
 module Vers
   module Models
-    type vm_branch_by_commit_response = { vms: ::Array[Vers::NewVmResponse] }
+    type new_vms_response = { vms: ::Array[Vers::NewVmResponse] }
 
-    class VmBranchByCommitResponse < Vers::Internal::Type::BaseModel
+    class NewVmsResponse < Vers::Internal::Type::BaseModel
       attr_accessor vms: ::Array[Vers::NewVmResponse]
 
       def initialize: (vms: ::Array[Vers::NewVmResponse]) -> void

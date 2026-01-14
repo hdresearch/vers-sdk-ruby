@@ -51,7 +51,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.branch_by_commit("commit_id")
 
     assert_pattern do
-      response => Vers::Models::VmBranchByCommitResponse
+      response => Vers::NewVmsResponse
     end
 
     assert_pattern do
@@ -67,7 +67,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     response = @vers.vm.branch_by_vm("vm_id")
 
     assert_pattern do
-      response => Vers::Models::VmBranchByVmResponse
+      response => Vers::NewVmsResponse
     end
 
     assert_pattern do

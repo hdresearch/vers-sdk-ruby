@@ -5,6 +5,8 @@ module Vers
 
   class NewVmResponse = Vers::Models::NewVmResponse
 
+  class NewVmsResponse = Vers::Models::NewVmsResponse
+
   class VmAPI = Vers::Models::VmAPI
 
   class VmBranchByCommitParams = Vers::Models::VmBranchByCommitParams

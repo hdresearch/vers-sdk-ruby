@@ -55,7 +55,7 @@ module Vers
           commit_id: String,
           count: Integer,
           request_options: Vers::RequestOptions::OrHash
-        ).returns(Vers::Models::VmBranchByCommitResponse)
+        ).returns(Vers::NewVmsResponse)
       end
       def branch_by_commit(
         # The commit id to branch off
@@ -73,7 +73,7 @@ module Vers
           keep_paused: T::Boolean,
           skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
-        ).returns(Vers::Models::VmBranchByVmResponse)
+        ).returns(Vers::NewVmsResponse)
       end
       def branch_by_vm(
         # VM to commit and then branch off of

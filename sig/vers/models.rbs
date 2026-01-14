@@ -7,12 +7,6 @@ module Vers
 
   class VmAPI = Vers::Models::VmAPI
 
-  class VmBranchByCommitParams = Vers::Models::VmBranchByCommitParams
-
-  class VmBranchByVmParams = Vers::Models::VmBranchByVmParams
-
-  class VmBranchParams = Vers::Models::VmBranchParams
-
   class VmCommitParams = Vers::Models::VmCommitParams
 
   class VmCommitResponse = Vers::Models::VmCommitResponse

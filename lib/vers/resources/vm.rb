@@ -41,6 +41,83 @@ module Vers
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Vers::Models::VmBranchParams} for more details.
+      #
+      # @overload branch(vm_or_commit_id, count: nil, keep_paused: nil, skip_wait_boot: nil, request_options: {})
+      #
+      # @param vm_or_commit_id [String] Parent VM or commit ID
+      #
+      # @param count [Integer] Number of VMs to branch (optional; default 1)
+      #
+      # @param keep_paused [Boolean] If true, keep VM paused after commit. Only applicable when branching a VM ID.
+      #
+      # @param skip_wait_boot [Boolean] If true, immediately return an error if VM is booting instead of waiting. Only a
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::NewVmResponse]
+      #
+      # @see Vers::Models::VmBranchParams
+      def branch(vm_or_commit_id, params = {})
+        parsed, options = Vers::VmBranchParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["api/v1/vm/%1$s/branch", vm_or_commit_id],
+          query: parsed,
+          model: Vers::NewVmResponse,
+          options: options
+        )
+      end
+
+      # @overload branch_by_commit(commit_id, count: nil, request_options: {})
+      #
+      # @param commit_id [String] The commit id to branch off
+      #
+      # @param count [Integer] Number of VMs to branch (optional; default 1)
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::VmBranchByCommitResponse]
+      #
+      # @see Vers::Models::VmBranchByCommitParams
+      def branch_by_commit(commit_id, params = {})
+        parsed, options = Vers::VmBranchByCommitParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["api/v1/vm/branch/by_commit/%1$s", commit_id],
+          query: parsed,
+          model: Vers::Models::VmBranchByCommitResponse,
+          options: options
+        )
+      end
+
+      # @overload branch_by_vm(vm_id, count: nil, keep_paused: nil, skip_wait_boot: nil, request_options: {})
+      #
+      # @param vm_id [String] VM to commit and then branch off of
+      #
+      # @param count [Integer] Number of VMs to branch (optional; default 1)
+      #
+      # @param keep_paused [Boolean] If true, keep VM paused after commit
+      #
+      # @param skip_wait_boot [Boolean] If true, immediately return an error if VM is booting instead of waiting
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::VmBranchByVmResponse]
+      #
+      # @see Vers::Models::VmBranchByVmParams
+      def branch_by_vm(vm_id, params = {})
+        parsed, options = Vers::VmBranchByVmParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["api/v1/vm/branch/by_vm/%1$s", vm_id],
+          query: parsed,
+          model: Vers::Models::VmBranchByVmResponse,
+          options: options
+        )
+      end
+
       # @overload commit(vm_id, keep_paused: nil, skip_wait_boot: nil, request_options: {})
       #
       # @param vm_id [String] VM ID to commit

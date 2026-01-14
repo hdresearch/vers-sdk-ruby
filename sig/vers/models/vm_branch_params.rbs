@@ -1,0 +1,38 @@
+module Vers
+  module Models
+    type vm_branch_params =
+      { count: Integer, keep_paused: bool, skip_wait_boot: bool }
+      & Vers::Internal::Type::request_parameters
+
+    class VmBranchParams < Vers::Internal::Type::BaseModel
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      attr_reader count: Integer?
+
+      def count=: (Integer) -> Integer
+
+      attr_reader keep_paused: bool?
+
+      def keep_paused=: (bool) -> bool
+
+      attr_reader skip_wait_boot: bool?
+
+      def skip_wait_boot=: (bool) -> bool
+
+      def initialize: (
+        ?count: Integer,
+        ?keep_paused: bool,
+        ?skip_wait_boot: bool,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        count: Integer,
+        keep_paused: bool,
+        skip_wait_boot: bool,
+        request_options: Vers::RequestOptions
+      }
+    end
+  end
+end

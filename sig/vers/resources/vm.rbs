@@ -12,9 +12,26 @@ module Vers
       ) -> Vers::VmDeleteResponse
 
       def branch: (
-        String vm_id,
+        String vm_or_commit_id,
+        ?count: Integer,
+        ?keep_paused: bool,
+        ?skip_wait_boot: bool,
         ?request_options: Vers::request_opts
       ) -> Vers::NewVmResponse
+
+      def branch_by_commit: (
+        String commit_id,
+        ?count: Integer,
+        ?request_options: Vers::request_opts
+      ) -> Vers::Models::VmBranchByCommitResponse
+
+      def branch_by_vm: (
+        String vm_id,
+        ?count: Integer,
+        ?keep_paused: bool,
+        ?skip_wait_boot: bool,
+        ?request_options: Vers::request_opts
+      ) -> Vers::Models::VmBranchByVmResponse
 
       def commit: (
         String vm_id,

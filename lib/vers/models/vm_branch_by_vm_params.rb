@@ -2,8 +2,8 @@
 
 module Vers
   module Models
-    # @see Vers::Resources::Vm#branch
-    class VmBranchParams < Vers::Internal::Type::BaseModel
+    # @see Vers::Resources::Vm#branch_by_vm
+    class VmBranchByVmParams < Vers::Internal::Type::BaseModel
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
@@ -14,27 +14,23 @@ module Vers
       optional :count, Integer
 
       # @!attribute keep_paused
-      #   If true, keep VM paused after commit. Only applicable when branching a VM ID.
+      #   If true, keep VM paused after commit
       #
       #   @return [Boolean, nil]
       optional :keep_paused, Vers::Internal::Type::Boolean
 
       # @!attribute skip_wait_boot
-      #   If true, immediately return an error if VM is booting instead of waiting. Only
-      #   applicable when branching a VM ID.
+      #   If true, immediately return an error if VM is booting instead of waiting
       #
       #   @return [Boolean, nil]
       optional :skip_wait_boot, Vers::Internal::Type::Boolean
 
       # @!method initialize(count: nil, keep_paused: nil, skip_wait_boot: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Vers::Models::VmBranchParams} for more details.
-      #
       #   @param count [Integer] Number of VMs to branch (optional; default 1)
       #
-      #   @param keep_paused [Boolean] If true, keep VM paused after commit. Only applicable when branching a VM ID.
+      #   @param keep_paused [Boolean] If true, keep VM paused after commit
       #
-      #   @param skip_wait_boot [Boolean] If true, immediately return an error if VM is booting instead of waiting. Only a
+      #   @param skip_wait_boot [Boolean] If true, immediately return an error if VM is booting instead of waiting
       #
       #   @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}]
     end

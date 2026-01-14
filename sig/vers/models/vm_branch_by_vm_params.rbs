@@ -1,10 +1,10 @@
 module Vers
   module Models
-    type vm_branch_params =
+    type vm_branch_by_vm_params =
       { count: Integer, keep_paused: bool, skip_wait_boot: bool }
       & Vers::Internal::Type::request_parameters
 
-    class VmBranchParams < Vers::Internal::Type::BaseModel
+    class VmBranchByVmParams < Vers::Internal::Type::BaseModel
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 

@@ -2,7 +2,7 @@
 
 module Vers
   module Models
-    # @see Vers::Resources::Vm#create_root
+    # @see Vers::Resources::Vm#branch
     class NewVmResponse < Vers::Internal::Type::BaseModel
       # @!attribute vm_id
       #

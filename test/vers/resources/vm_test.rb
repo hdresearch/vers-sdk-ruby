@@ -29,6 +29,54 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     end
   end
 
+  def test_branch
+    skip("Prism tests are disabled")
+
+    response = @vers.vm.branch("vm_or_commit_id")
+
+    assert_pattern do
+      response => Vers::NewVmsResponse
+    end
+
+    assert_pattern do
+      response => {
+        vms: ^(Vers::Internal::Type::ArrayOf[Vers::NewVmResponse])
+      }
+    end
+  end
+
+  def test_branch_by_commit
+    skip("Prism tests are disabled")
+
+    response = @vers.vm.branch_by_commit("commit_id")
+
+    assert_pattern do
+      response => Vers::NewVmsResponse
+    end
+
+    assert_pattern do
+      response => {
+        vms: ^(Vers::Internal::Type::ArrayOf[Vers::NewVmResponse])
+      }
+    end
+  end
+
+  def test_branch_by_vm
+    skip("Prism tests are disabled")
+
+    response = @vers.vm.branch_by_vm("vm_id")
+
+    assert_pattern do
+      response => Vers::NewVmsResponse
+    end
+
+    assert_pattern do
+      response => {
+        vms: ^(Vers::Internal::Type::ArrayOf[Vers::NewVmResponse])
+      }
+    end
+  end
+
   def test_commit
     skip("Prism tests are disabled")
 

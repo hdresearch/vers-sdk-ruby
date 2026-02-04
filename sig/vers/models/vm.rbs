@@ -31,7 +31,7 @@ module Vers
         vm_id: String
       }
 
-      type state = :booting | :running | :paused
+      type state = :booting | :running | :paused | :sleeping
 
       module State
         extend Vers::Internal::Type::Enum
@@ -39,6 +39,7 @@ module Vers
         BOOTING: :booting
         RUNNING: :running
         PAUSED: :paused
+        SLEEPING: :sleeping
 
         def self?.values: -> ::Array[Vers::Models::VmAPI::state]
       end

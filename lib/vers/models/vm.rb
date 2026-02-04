@@ -43,6 +43,7 @@ module Vers
         BOOTING = :booting
         RUNNING = :running
         PAUSED = :paused
+        SLEEPING = :sleeping
 
         # @!method self.values
         #   @return [Array<Symbol>]

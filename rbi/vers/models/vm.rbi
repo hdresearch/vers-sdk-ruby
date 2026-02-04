@@ -58,6 +58,7 @@ module Vers
         BOOTING = T.let(:booting, Vers::VmAPI::State::TaggedSymbol)
         RUNNING = T.let(:running, Vers::VmAPI::State::TaggedSymbol)
         PAUSED = T.let(:paused, Vers::VmAPI::State::TaggedSymbol)
+        SLEEPING = T.let(:sleeping, Vers::VmAPI::State::TaggedSymbol)
 
         sig { override.returns(T::Array[Vers::VmAPI::State::TaggedSymbol]) }
         def self.values

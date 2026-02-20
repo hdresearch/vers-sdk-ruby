@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.list
 
@@ -14,7 +14,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.delete("vm_id")
 
@@ -30,7 +30,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_branch
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.branch("vm_or_commit_id")
 
@@ -46,7 +46,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_branch_by_commit
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.branch_by_commit("commit_id")
 
@@ -62,7 +62,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_branch_by_vm
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.branch_by_vm("vm_id")
 
@@ -78,7 +78,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_commit
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.commit("vm_id")
 
@@ -94,7 +94,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_create_root_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.create_root(vm_config: {})
 
@@ -110,7 +110,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_get_ssh_key
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.get_ssh_key("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -127,7 +127,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_restore_from_commit_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.restore_from_commit(commit_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -143,7 +143,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.status("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -162,7 +162,7 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   end
 
   def test_update_state_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @vers.vm.update_state("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", state: :Paused)
 

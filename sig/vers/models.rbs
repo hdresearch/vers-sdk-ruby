@@ -25,7 +25,7 @@ module Vers
 
   class VmDeleteResponse = Vers::Models::VmDeleteResponse
 
-  class VmFromCommitRequest = Vers::Models::VmFromCommitRequest
+  module VmFromCommitRequest = Vers::Models::VmFromCommitRequest
 
   class VmGetSSHKeyParams = Vers::Models::VmGetSSHKeyParams
 

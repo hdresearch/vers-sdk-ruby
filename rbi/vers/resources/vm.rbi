@@ -139,11 +139,15 @@ module Vers
 
       sig do
         params(
-          commit_id: String,
+          vm_from_commit_request: Vers::VmFromCommitRequest,
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::NewVmResponse)
       end
-      def restore_from_commit(commit_id:, request_options: {})
+      def restore_from_commit(
+        # Request body for POST /api/v1/vm/from_commit
+        vm_from_commit_request:,
+        request_options: {}
+      )
       end
 
       sig do

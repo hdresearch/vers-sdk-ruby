@@ -52,7 +52,7 @@ module Vers
       ) -> Vers::VmSSHKeyResponse
 
       def restore_from_commit: (
-        commit_id: String,
+        vm_from_commit_request: Vers::Models::VmFromCommitRequest,
         ?request_options: Vers::request_opts
       ) -> Vers::NewVmResponse
 

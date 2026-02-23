@@ -4,6 +4,17 @@ module Vers
   module Internal
     module Type
       # @api private
+      #
+      # @example
+      #   # `vm_from_commit_request` is a `Vers::VmFromCommitRequest`
+      #   case vm_from_commit_request
+      #   when Vers::VmFromCommitRequest::CommitID
+      #     puts(vm_from_commit_request.commit_id)
+      #   when Vers::VmFromCommitRequest::TagName
+      #     puts(vm_from_commit_request.tag_name)
+      #   else
+      #     puts(vm_from_commit_request)
+      #   end
       module Union
         include Vers::Internal::Type::Converter
         include Vers::Internal::Util::SorbetRuntimeSupport

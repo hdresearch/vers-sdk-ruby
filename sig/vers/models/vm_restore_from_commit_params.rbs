@@ -1,15 +1,28 @@
 module Vers
   module Models
     type vm_restore_from_commit_params =
-      {  } & Vers::Internal::Type::request_parameters
+      { vm_from_commit_request: Vers::Models::vm_from_commit_request }
+      & Vers::Internal::Type::request_parameters
 
-    class VmRestoreFromCommitParams < Vers::Models::VmFromCommitRequest
+    class VmRestoreFromCommitParams < Vers::Internal::Type::BaseModel
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Vers::request_opts) -> void
+      def vm_from_commit_request: -> Vers::Models::vm_from_commit_request
 
-      def to_hash: -> { request_options: Vers::RequestOptions }
+      def vm_from_commit_request=: (
+        Vers::Models::vm_from_commit_request _
+      ) -> Vers::Models::vm_from_commit_request
+
+      def initialize: (
+        vm_from_commit_request: Vers::Models::vm_from_commit_request,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        vm_from_commit_request: Vers::Models::vm_from_commit_request,
+        request_options: Vers::RequestOptions
+      }
     end
   end
 end

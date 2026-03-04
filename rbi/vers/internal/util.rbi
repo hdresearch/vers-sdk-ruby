@@ -297,6 +297,26 @@ module Vers
       class << self
         # @api private
         sig do
+          params(query: Vers::Internal::AnyHash).returns(
+            Vers::Internal::AnyHash
+          )
+        end
+        def encode_query_params(query)
+        end
+
+        # @api private
+        sig do
+          params(
+            collection: Vers::Internal::AnyHash,
+            key: String,
+            element: T.anything
+          ).void
+        end
+        private def write_query_param_element!(collection, key, element)
+        end
+
+        # @api private
+        sig do
           params(
             y: Enumerator::Yielder,
             val: T.anything,

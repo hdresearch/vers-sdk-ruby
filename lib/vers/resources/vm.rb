@@ -32,10 +32,11 @@ module Vers
       # @see Vers::Models::VmDeleteParams
       def delete(vm_id, params = {})
         parsed, options = Vers::VmDeleteParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :delete,
           path: ["api/v1/vm/%1$s", vm_id],
-          query: parsed,
+          query: query,
           model: Vers::VmDeleteResponse,
           options: options
         )
@@ -61,10 +62,11 @@ module Vers
       # @see Vers::Models::VmBranchParams
       def branch(vm_or_commit_id, params = {})
         parsed, options = Vers::VmBranchParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :post,
           path: ["api/v1/vm/%1$s/branch", vm_or_commit_id],
-          query: parsed,
+          query: query,
           model: Vers::NewVmsResponse,
           options: options
         )
@@ -83,10 +85,11 @@ module Vers
       # @see Vers::Models::VmBranchByCommitParams
       def branch_by_commit(commit_id, params = {})
         parsed, options = Vers::VmBranchByCommitParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :post,
           path: ["api/v1/vm/branch/by_commit/%1$s", commit_id],
-          query: parsed,
+          query: query,
           model: Vers::NewVmsResponse,
           options: options
         )
@@ -109,10 +112,11 @@ module Vers
       # @see Vers::Models::VmBranchByVmParams
       def branch_by_vm(vm_id, params = {})
         parsed, options = Vers::VmBranchByVmParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :post,
           path: ["api/v1/vm/branch/by_vm/%1$s", vm_id],
-          query: parsed,
+          query: query,
           model: Vers::NewVmsResponse,
           options: options
         )
@@ -133,10 +137,11 @@ module Vers
       # @see Vers::Models::VmCommitParams
       def commit(vm_id, params = {})
         parsed, options = Vers::VmCommitParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :post,
           path: ["api/v1/vm/%1$s/commit", vm_id],
-          query: parsed,
+          query: query,
           model: Vers::VmCommitResponse,
           options: options
         )
@@ -157,12 +162,13 @@ module Vers
       #
       # @see Vers::Models::VmCreateRootParams
       def create_root(params)
-        parsed, options = Vers::VmCreateRootParams.dump_request(params)
         query_params = [:wait_boot]
+        parsed, options = Vers::VmCreateRootParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :post,
           path: "api/v1/vm/new_root",
-          query: parsed.slice(*query_params),
+          query: query,
           body: parsed.except(*query_params),
           model: Vers::NewVmResponse,
           options: options
@@ -247,12 +253,13 @@ module Vers
       #
       # @see Vers::Models::VmUpdateStateParams
       def update_state(vm_id, params)
-        parsed, options = Vers::VmUpdateStateParams.dump_request(params)
         query_params = [:skip_wait_boot]
+        parsed, options = Vers::VmUpdateStateParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :patch,
           path: ["api/v1/vm/%1$s/state", vm_id],
-          query: parsed.slice(*query_params),
+          query: query,
           body: parsed.except(*query_params),
           model: NilClass,
           options: options

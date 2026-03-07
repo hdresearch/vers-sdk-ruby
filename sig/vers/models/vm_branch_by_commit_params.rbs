@@ -1,22 +1,30 @@
 module Vers
   module Models
     type vm_branch_by_commit_params =
-      { count: Integer } & Vers::Internal::Type::request_parameters
+      { commit_id: String, count: Integer }
+      & Vers::Internal::Type::request_parameters
 
     class VmBranchByCommitParams < Vers::Internal::Type::BaseModel
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
+
+      attr_accessor commit_id: String
 
       attr_reader count: Integer?
 
       def count=: (Integer) -> Integer
 
       def initialize: (
+        commit_id: String,
         ?count: Integer,
         ?request_options: Vers::request_opts
       ) -> void
 
-      def to_hash: -> { count: Integer, request_options: Vers::RequestOptions }
+      def to_hash: -> {
+        commit_id: String,
+        count: Integer,
+        request_options: Vers::RequestOptions
+      }
     end
   end
 end

@@ -11,6 +11,9 @@ module Vers
           T.any(Vers::VmBranchByVmParams, Vers::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :vm_id
+
       # Number of VMs to branch (optional; default 1)
       sig { returns(T.nilable(Integer)) }
       attr_reader :count
@@ -34,6 +37,7 @@ module Vers
 
       sig do
         params(
+          vm_id: String,
           count: Integer,
           keep_paused: T::Boolean,
           skip_wait_boot: T::Boolean,
@@ -41,6 +45,7 @@ module Vers
         ).returns(T.attached_class)
       end
       def self.new(
+        vm_id:,
         # Number of VMs to branch (optional; default 1)
         count: nil,
         # If true, keep VM paused after commit
@@ -54,6 +59,7 @@ module Vers
       sig do
         override.returns(
           {
+            vm_id: String,
             count: Integer,
             keep_paused: T::Boolean,
             skip_wait_boot: T::Boolean,

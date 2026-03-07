@@ -7,6 +7,11 @@ module Vers
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
+      # @!attribute vm_id
+      #
+      #   @return [String]
+      required :vm_id, String
+
       # @!attribute count
       #   Number of VMs to branch (optional; default 1)
       #
@@ -25,7 +30,9 @@ module Vers
       #   @return [Boolean, nil]
       optional :skip_wait_boot, Vers::Internal::Type::Boolean
 
-      # @!method initialize(count: nil, keep_paused: nil, skip_wait_boot: nil, request_options: {})
+      # @!method initialize(vm_id:, count: nil, keep_paused: nil, skip_wait_boot: nil, request_options: {})
+      #   @param vm_id [String]
+      #
       #   @param count [Integer] Number of VMs to branch (optional; default 1)
       #
       #   @param keep_paused [Boolean] If true, keep VM paused after commit

@@ -7,7 +7,13 @@ module Vers
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute vm_id
+      #
+      #   @return [String]
+      required :vm_id, String
+
+      # @!method initialize(vm_id:, request_options: {})
+      #   @param vm_id [String]
       #   @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}]
     end
   end

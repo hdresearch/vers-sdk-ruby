@@ -129,7 +129,8 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
   def test_restore_from_commit_required_params
     skip("Mock server tests are disabled")
 
-    response = @vers.vm.restore_from_commit(commit_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    response =
+      @vers.vm.restore_from_commit(vm_from_commit_request: {commit_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"})
 
     assert_pattern do
       response => Vers::NewVmResponse

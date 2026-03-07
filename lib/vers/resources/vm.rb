@@ -195,7 +195,7 @@ module Vers
 
       # @overload restore_from_commit(vm_from_commit_request:, request_options: {})
       #
-      # @param vm_from_commit_request [Vers::VmFromCommitRequest] Request body for POST /api/v1/vm/from_commit
+      # @param vm_from_commit_request [Vers::Models::VmFromCommitRequest::CommitID, Vers::Models::VmFromCommitRequest::TagName] Request body for POST /api/v1/vm/from_commit
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -204,15 +204,10 @@ module Vers
       # @see Vers::Models::VmRestoreFromCommitParams
       def restore_from_commit(params)
         parsed, options = Vers::VmRestoreFromCommitParams.dump_request(params)
-        case parsed
-        in {vm_from_commit_request: Hash => union, **rest}
-          parsed = {**rest, **union}
-        else
-        end
         @client.request(
           method: :post,
           path: "api/v1/vm/from_commit",
-          body: parsed,
+          body: parsed[:vm_from_commit_request],
           model: Vers::NewVmResponse,
           options: options
         )

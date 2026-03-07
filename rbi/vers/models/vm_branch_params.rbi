@@ -9,6 +9,9 @@ module Vers
       OrHash =
         T.type_alias { T.any(Vers::VmBranchParams, Vers::Internal::AnyHash) }
 
+      sig { returns(String) }
+      attr_accessor :vm_or_commit_id
+
       # Number of VMs to branch (optional; default 1)
       sig { returns(T.nilable(Integer)) }
       attr_reader :count
@@ -33,6 +36,7 @@ module Vers
 
       sig do
         params(
+          vm_or_commit_id: String,
           count: Integer,
           keep_paused: T::Boolean,
           skip_wait_boot: T::Boolean,
@@ -40,6 +44,7 @@ module Vers
         ).returns(T.attached_class)
       end
       def self.new(
+        vm_or_commit_id:,
         # Number of VMs to branch (optional; default 1)
         count: nil,
         # If true, keep VM paused after commit. Only applicable when branching a VM ID.
@@ -54,6 +59,7 @@ module Vers
       sig do
         override.returns(
           {
+            vm_or_commit_id: String,
             count: Integer,
             keep_paused: T::Boolean,
             skip_wait_boot: T::Boolean,

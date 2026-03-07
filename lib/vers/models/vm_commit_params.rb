@@ -7,6 +7,11 @@ module Vers
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
 
+      # @!attribute vm_id
+      #
+      #   @return [String]
+      required :vm_id, String
+
       # @!attribute keep_paused
       #   If true, keep VM paused after commit
       #
@@ -19,7 +24,9 @@ module Vers
       #   @return [Boolean, nil]
       optional :skip_wait_boot, Vers::Internal::Type::Boolean
 
-      # @!method initialize(keep_paused: nil, skip_wait_boot: nil, request_options: {})
+      # @!method initialize(vm_id:, keep_paused: nil, skip_wait_boot: nil, request_options: {})
+      #   @param vm_id [String]
+      #
       #   @param keep_paused [Boolean] If true, keep VM paused after commit
       #
       #   @param skip_wait_boot [Boolean] If true, return an error immediately if the VM is still booting. Default: false

@@ -11,46 +11,15 @@ module Vers
           T.any(Vers::VmRestoreFromCommitParams, Vers::Internal::AnyHash)
         end
 
-      # Request body for POST /api/v1/vm/from_commit
       sig do
-        returns(
-          T.any(
-            Vers::VmFromCommitRequest::CommitID,
-            Vers::VmFromCommitRequest::TagName
-          )
+        params(request_options: Vers::RequestOptions::OrHash).returns(
+          T.attached_class
         )
       end
-      attr_accessor :vm_from_commit_request
-
-      sig do
-        params(
-          vm_from_commit_request:
-            T.any(
-              Vers::VmFromCommitRequest::CommitID::OrHash,
-              Vers::VmFromCommitRequest::TagName::OrHash
-            ),
-          request_options: Vers::RequestOptions::OrHash
-        ).returns(T.attached_class)
-      end
-      def self.new(
-        # Request body for POST /api/v1/vm/from_commit
-        vm_from_commit_request:,
-        request_options: {}
-      )
+      def self.new(request_options: {})
       end
 
-      sig do
-        override.returns(
-          {
-            vm_from_commit_request:
-              T.any(
-                Vers::VmFromCommitRequest::CommitID,
-                Vers::VmFromCommitRequest::TagName
-              ),
-            request_options: Vers::RequestOptions
-          }
-        )
-      end
+      sig { override.returns({ request_options: Vers::RequestOptions }) }
       def to_hash
       end
     end

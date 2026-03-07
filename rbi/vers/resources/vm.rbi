@@ -139,7 +139,11 @@ module Vers
 
       sig do
         params(
-          vm_from_commit_request: Vers::VmFromCommitRequest,
+          vm_from_commit_request:
+            T.any(
+              Vers::VmFromCommitRequest::CommitID::OrHash,
+              Vers::VmFromCommitRequest::TagName::OrHash
+            ),
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::NewVmResponse)
       end

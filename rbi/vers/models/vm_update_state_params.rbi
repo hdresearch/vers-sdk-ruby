@@ -11,6 +11,9 @@ module Vers
           T.any(Vers::VmUpdateStateParams, Vers::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :vm_id
+
       # If true, error immediately if the VM is not finished booting. Defaults to false
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :skip_wait_boot
@@ -20,11 +23,13 @@ module Vers
 
       sig do
         params(
+          vm_id: String,
           skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        vm_id:,
         # If true, error immediately if the VM is not finished booting. Defaults to false
         skip_wait_boot: nil,
         request_options: {}
@@ -33,7 +38,11 @@ module Vers
 
       sig do
         override.returns(
-          { skip_wait_boot: T::Boolean, request_options: Vers::RequestOptions }
+          {
+            vm_id: String,
+            skip_wait_boot: T::Boolean,
+            request_options: Vers::RequestOptions
+          }
         )
       end
       def to_hash

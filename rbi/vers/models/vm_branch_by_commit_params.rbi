@@ -11,6 +11,9 @@ module Vers
           T.any(Vers::VmBranchByCommitParams, Vers::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :commit_id
+
       # Number of VMs to branch (optional; default 1)
       sig { returns(T.nilable(Integer)) }
       attr_reader :count
@@ -20,11 +23,13 @@ module Vers
 
       sig do
         params(
+          commit_id: String,
           count: Integer,
           request_options: Vers::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        commit_id:,
         # Number of VMs to branch (optional; default 1)
         count: nil,
         request_options: {}
@@ -33,7 +38,11 @@ module Vers
 
       sig do
         override.returns(
-          { count: Integer, request_options: Vers::RequestOptions }
+          {
+            commit_id: String,
+            count: Integer,
+            request_options: Vers::RequestOptions
+          }
         )
       end
       def to_hash

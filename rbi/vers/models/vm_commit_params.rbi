@@ -9,6 +9,9 @@ module Vers
       OrHash =
         T.type_alias { T.any(Vers::VmCommitParams, Vers::Internal::AnyHash) }
 
+      sig { returns(String) }
+      attr_accessor :vm_id
+
       # If true, keep VM paused after commit
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :keep_paused
@@ -25,12 +28,14 @@ module Vers
 
       sig do
         params(
+          vm_id: String,
           keep_paused: T::Boolean,
           skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        vm_id:,
         # If true, keep VM paused after commit
         keep_paused: nil,
         # If true, return an error immediately if the VM is still booting. Default: false
@@ -42,6 +47,7 @@ module Vers
       sig do
         override.returns(
           {
+            vm_id: String,
             keep_paused: T::Boolean,
             skip_wait_boot: T::Boolean,
             request_options: Vers::RequestOptions

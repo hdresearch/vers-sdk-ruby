@@ -1,12 +1,14 @@
 module Vers
   module Models
     type vm_commit_params =
-      { keep_paused: bool, skip_wait_boot: bool }
+      { vm_id: String, keep_paused: bool, skip_wait_boot: bool }
       & Vers::Internal::Type::request_parameters
 
     class VmCommitParams < Vers::Internal::Type::BaseModel
       extend Vers::Internal::Type::RequestParameters::Converter
       include Vers::Internal::Type::RequestParameters
+
+      attr_accessor vm_id: String
 
       attr_reader keep_paused: bool?
 
@@ -17,12 +19,14 @@ module Vers
       def skip_wait_boot=: (bool) -> bool
 
       def initialize: (
+        vm_id: String,
         ?keep_paused: bool,
         ?skip_wait_boot: bool,
         ?request_options: Vers::request_opts
       ) -> void
 
       def to_hash: -> {
+        vm_id: String,
         keep_paused: bool,
         skip_wait_boot: bool,
         request_options: Vers::RequestOptions

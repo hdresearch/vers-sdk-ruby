@@ -9,6 +9,9 @@ module Vers
       OrHash =
         T.type_alias { T.any(Vers::VmDeleteParams, Vers::Internal::AnyHash) }
 
+      sig { returns(String) }
+      attr_accessor :vm_id
+
       # If true, return an error immediately if the VM is still booting. Default: false
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :skip_wait_boot
@@ -18,11 +21,13 @@ module Vers
 
       sig do
         params(
+          vm_id: String,
           skip_wait_boot: T::Boolean,
           request_options: Vers::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        vm_id:,
         # If true, return an error immediately if the VM is still booting. Default: false
         skip_wait_boot: nil,
         request_options: {}
@@ -31,7 +36,11 @@ module Vers
 
       sig do
         override.returns(
-          { skip_wait_boot: T::Boolean, request_options: Vers::RequestOptions }
+          {
+            vm_id: String,
+            skip_wait_boot: T::Boolean,
+            request_options: Vers::RequestOptions
+          }
         )
       end
       def to_hash

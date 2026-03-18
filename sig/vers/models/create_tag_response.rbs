@@ -1,0 +1,22 @@
+module Vers
+  module Models
+    type create_tag_response =
+      { commit_id: String, tag_id: String, tag_name: String }
+
+    class CreateTagResponse < Vers::Internal::Type::BaseModel
+      attr_accessor commit_id: String
+
+      attr_accessor tag_id: String
+
+      attr_accessor tag_name: String
+
+      def initialize: (
+        commit_id: String,
+        tag_id: String,
+        tag_name: String
+      ) -> void
+
+      def to_hash: -> { commit_id: String, tag_id: String, tag_name: String }
+    end
+  end
+end

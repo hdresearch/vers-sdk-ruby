@@ -1,0 +1,35 @@
+module Vers
+  module Models
+    type list_commits_response =
+      {
+        commits: ::Array[Vers::CommitInfo],
+        limit: Integer,
+        offset: Integer,
+        total: Integer
+      }
+
+    class ListCommitsResponse < Vers::Internal::Type::BaseModel
+      attr_accessor commits: ::Array[Vers::CommitInfo]
+
+      attr_accessor limit: Integer
+
+      attr_accessor offset: Integer
+
+      attr_accessor total: Integer
+
+      def initialize: (
+        commits: ::Array[Vers::CommitInfo],
+        limit: Integer,
+        offset: Integer,
+        total: Integer
+      ) -> void
+
+      def to_hash: -> {
+        commits: ::Array[Vers::CommitInfo],
+        limit: Integer,
+        offset: Integer,
+        total: Integer
+      }
+    end
+  end
+end

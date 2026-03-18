@@ -1,0 +1,23 @@
+module Vers
+  module Models
+    type commit_list_parents_params =
+      { commit_id: String } & Vers::Internal::Type::request_parameters
+
+    class CommitListParentsParams < Vers::Internal::Type::BaseModel
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      attr_accessor commit_id: String
+
+      def initialize: (
+        commit_id: String,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        commit_id: String,
+        request_options: Vers::RequestOptions
+      }
+    end
+  end
+end

@@ -12,6 +12,10 @@ module Vers
 
     attr_reader vm: Vers::Resources::Vm
 
+    attr_reader commits: Vers::Resources::Commits
+
+    attr_reader commit_tags: Vers::Resources::CommitTags
+
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (

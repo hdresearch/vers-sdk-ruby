@@ -61,6 +61,22 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     end
   end
 
+  def test_branch_by_tag
+    skip("Mock server tests are disabled")
+
+    response = @vers.vm.branch_by_tag("tag_name")
+
+    assert_pattern do
+      response => Vers::NewVmsResponse
+    end
+
+    assert_pattern do
+      response => {
+        vms: ^(Vers::Internal::Type::ArrayOf[Vers::NewVmResponse])
+      }
+    end
+  end
+
   def test_branch_by_vm
     skip("Mock server tests are disabled")
 
@@ -109,6 +125,29 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     end
   end
 
+  def test_get_metadata
+    skip("Mock server tests are disabled")
+
+    response = @vers.vm.get_metadata("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Vers::VmMetadataResponse
+    end
+
+    assert_pattern do
+      response => {
+        created_at: Time,
+        ip: String,
+        owner_id: String,
+        state: Vers::VmMetadataResponse::State,
+        vm_id: String,
+        deleted_at: Time | nil,
+        grandparent_vm_id: String | nil,
+        parent_commit_id: String | nil
+      }
+    end
+  end
+
   def test_get_ssh_key
     skip("Mock server tests are disabled")
 
@@ -123,6 +162,16 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
         ssh_port: Integer,
         ssh_private_key: String
       }
+    end
+  end
+
+  def test_resize_disk_required_params
+    skip("Mock server tests are disabled")
+
+    response = @vers.vm.resize_disk("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", fs_size_mib: 0)
+
+    assert_pattern do
+      response => nil
     end
   end
 

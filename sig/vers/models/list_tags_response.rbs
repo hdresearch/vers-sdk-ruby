@@ -1,0 +1,13 @@
+module Vers
+  module Models
+    type list_tags_response = { tags: ::Array[Vers::TagInfo] }
+
+    class ListTagsResponse < Vers::Internal::Type::BaseModel
+      attr_accessor tags: ::Array[Vers::TagInfo]
+
+      def initialize: (tags: ::Array[Vers::TagInfo]) -> void
+
+      def to_hash: -> { tags: ::Array[Vers::TagInfo] }
+    end
+  end
+end

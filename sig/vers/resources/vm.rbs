@@ -25,6 +25,12 @@ module Vers
         ?request_options: Vers::request_opts
       ) -> Vers::NewVmsResponse
 
+      def branch_by_tag: (
+        String tag_name,
+        ?count: Integer,
+        ?request_options: Vers::request_opts
+      ) -> Vers::NewVmsResponse
+
       def branch_by_vm: (
         String vm_id,
         ?count: Integer,
@@ -46,10 +52,22 @@ module Vers
         ?request_options: Vers::request_opts
       ) -> Vers::NewVmResponse
 
+      def get_metadata: (
+        String vm_id,
+        ?request_options: Vers::request_opts
+      ) -> Vers::VmMetadataResponse
+
       def get_ssh_key: (
         String vm_id,
         ?request_options: Vers::request_opts
       ) -> Vers::VmSSHKeyResponse
+
+      def resize_disk: (
+        String vm_id,
+        fs_size_mib: Integer,
+        ?skip_wait_boot: bool,
+        ?request_options: Vers::request_opts
+      ) -> nil
 
       def restore_from_commit: (
         vm_from_commit_request: Vers::Models::vm_from_commit_request,

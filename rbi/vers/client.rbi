@@ -16,6 +16,12 @@ module Vers
     sig { returns(Vers::Resources::Vm) }
     attr_reader :vm
 
+    sig { returns(Vers::Resources::Commits) }
+    attr_reader :commits
+
+    sig { returns(Vers::Resources::CommitTags) }
+    attr_reader :commit_tags
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

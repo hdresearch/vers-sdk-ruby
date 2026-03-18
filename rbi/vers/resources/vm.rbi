@@ -68,6 +68,22 @@ module Vers
 
       sig do
         params(
+          tag_name: String,
+          count: Integer,
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(Vers::NewVmsResponse)
+      end
+      def branch_by_tag(
+        # The tag name to branch off
+        tag_name,
+        # Number of VMs to branch (optional; default 1)
+        count: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
           vm_id: String,
           count: Integer,
           keep_paused: T::Boolean,
@@ -128,11 +144,45 @@ module Vers
         params(
           vm_id: String,
           request_options: Vers::RequestOptions::OrHash
+        ).returns(Vers::VmMetadataResponse)
+      end
+      def get_metadata(
+        # VM ID
+        vm_id,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
+          request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::VmSSHKeyResponse)
       end
       def get_ssh_key(
         # Node ID
         vm_id,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
+          fs_size_mib: Integer,
+          skip_wait_boot: T::Boolean,
+          request_options: Vers::RequestOptions::OrHash
+        ).void
+      end
+      def resize_disk(
+        # Path param: VM ID whose disk to resize
+        vm_id,
+        # Body param: The new disk size in MiB. Must be strictly greater than the current
+        # size.
+        fs_size_mib:,
+        # Query param: If true, return an error immediately if the VM is still booting.
+        # Default: false
+        skip_wait_boot: nil,
         request_options: {}
       )
       end

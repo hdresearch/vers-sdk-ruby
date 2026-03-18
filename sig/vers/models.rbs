@@ -1,5 +1,35 @@
 module Vers
+  class CommitDeleteParams = Vers::Models::CommitDeleteParams
+
+  class CommitInfo = Vers::Models::CommitInfo
+
+  class CommitListParams = Vers::Models::CommitListParams
+
+  class CommitListParentsParams = Vers::Models::CommitListParentsParams
+
+  class CommitListPublicParams = Vers::Models::CommitListPublicParams
+
+  class CommitTagCreateParams = Vers::Models::CommitTagCreateParams
+
+  class CommitTagDeleteParams = Vers::Models::CommitTagDeleteParams
+
+  class CommitTagGetParams = Vers::Models::CommitTagGetParams
+
+  class CommitTagListParams = Vers::Models::CommitTagListParams
+
+  class CommitTagUpdateParams = Vers::Models::CommitTagUpdateParams
+
+  class CommitUpdateParams = Vers::Models::CommitUpdateParams
+
+  class CreateTagRequest = Vers::Models::CreateTagRequest
+
+  class CreateTagResponse = Vers::Models::CreateTagResponse
+
   class ErrorResponse = Vers::Models::ErrorResponse
+
+  class ListCommitsResponse = Vers::Models::ListCommitsResponse
+
+  class ListTagsResponse = Vers::Models::ListTagsResponse
 
   class NewRootRequest = Vers::Models::NewRootRequest
 
@@ -7,9 +37,17 @@ module Vers
 
   class NewVmsResponse = Vers::Models::NewVmsResponse
 
+  class TagInfo = Vers::Models::TagInfo
+
+  class UpdateCommitRequest = Vers::Models::UpdateCommitRequest
+
+  class UpdateTagRequest = Vers::Models::UpdateTagRequest
+
   class VmAPI = Vers::Models::VmAPI
 
   class VmBranchByCommitParams = Vers::Models::VmBranchByCommitParams
+
+  class VmBranchByTagParams = Vers::Models::VmBranchByTagParams
 
   class VmBranchByVmParams = Vers::Models::VmBranchByVmParams
 
@@ -27,9 +65,17 @@ module Vers
 
   module VmFromCommitRequest = Vers::Models::VmFromCommitRequest
 
+  class VmGetMetadataParams = Vers::Models::VmGetMetadataParams
+
   class VmGetSSHKeyParams = Vers::Models::VmGetSSHKeyParams
 
   class VmListParams = Vers::Models::VmListParams
+
+  class VmMetadataResponse = Vers::Models::VmMetadataResponse
+
+  class VmResizeDiskParams = Vers::Models::VmResizeDiskParams
+
+  class VmResizeDiskRequest = Vers::Models::VmResizeDiskRequest
 
   class VmRestoreFromCommitParams = Vers::Models::VmRestoreFromCommitParams
 

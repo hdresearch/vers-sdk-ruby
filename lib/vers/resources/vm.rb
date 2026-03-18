@@ -95,6 +95,29 @@ module Vers
         )
       end
 
+      # @overload branch_by_tag(tag_name, count: nil, request_options: {})
+      #
+      # @param tag_name [String] The tag name to branch off
+      #
+      # @param count [Integer] Number of VMs to branch (optional; default 1)
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::NewVmsResponse]
+      #
+      # @see Vers::Models::VmBranchByTagParams
+      def branch_by_tag(tag_name, params = {})
+        parsed, options = Vers::VmBranchByTagParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :post,
+          path: ["api/v1/vm/branch/by_tag/%1$s", tag_name],
+          query: query,
+          model: Vers::NewVmsResponse,
+          options: options
+        )
+      end
+
       # @overload branch_by_vm(vm_id, count: nil, keep_paused: nil, skip_wait_boot: nil, request_options: {})
       #
       # @param vm_id [String] VM to commit and then branch off of
@@ -175,6 +198,24 @@ module Vers
         )
       end
 
+      # @overload get_metadata(vm_id, request_options: {})
+      #
+      # @param vm_id [String] VM ID
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::VmMetadataResponse]
+      #
+      # @see Vers::Models::VmGetMetadataParams
+      def get_metadata(vm_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["api/v1/vm/%1$s/metadata", vm_id],
+          model: Vers::VmMetadataResponse,
+          options: params[:request_options]
+        )
+      end
+
       # @overload get_ssh_key(vm_id, request_options: {})
       #
       # @param vm_id [String] Node ID
@@ -190,6 +231,36 @@ module Vers
           path: ["api/v1/vm/%1$s/ssh_key", vm_id],
           model: Vers::VmSSHKeyResponse,
           options: params[:request_options]
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Vers::Models::VmResizeDiskParams} for more details.
+      #
+      # @overload resize_disk(vm_id, fs_size_mib:, skip_wait_boot: nil, request_options: {})
+      #
+      # @param vm_id [String] Path param: VM ID whose disk to resize
+      #
+      # @param fs_size_mib [Integer] Body param: The new disk size in MiB. Must be strictly greater than the current
+      #
+      # @param skip_wait_boot [Boolean] Query param: If true, return an error immediately if the VM is still booting. De
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [nil]
+      #
+      # @see Vers::Models::VmResizeDiskParams
+      def resize_disk(vm_id, params)
+        query_params = [:skip_wait_boot]
+        parsed, options = Vers::VmResizeDiskParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed.slice(*query_params))
+        @client.request(
+          method: :patch,
+          path: ["api/v1/vm/%1$s/disk", vm_id],
+          query: query,
+          body: parsed.except(*query_params),
+          model: NilClass,
+          options: options
         )
       end
 

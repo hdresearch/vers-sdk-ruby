@@ -1,0 +1,45 @@
+module Vers
+  module Models
+    type tag_info =
+      {
+        commit_id: String,
+        created_at: Time,
+        tag_id: String,
+        tag_name: String,
+        updated_at: Time,
+        description: String?
+      }
+
+    class TagInfo < Vers::Internal::Type::BaseModel
+      attr_accessor commit_id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor tag_id: String
+
+      attr_accessor tag_name: String
+
+      attr_accessor updated_at: Time
+
+      attr_accessor description: String?
+
+      def initialize: (
+        commit_id: String,
+        created_at: Time,
+        tag_id: String,
+        tag_name: String,
+        updated_at: Time,
+        ?description: String?
+      ) -> void
+
+      def to_hash: -> {
+        commit_id: String,
+        created_at: Time,
+        tag_id: String,
+        tag_name: String,
+        updated_at: Time,
+        description: String?
+      }
+    end
+  end
+end

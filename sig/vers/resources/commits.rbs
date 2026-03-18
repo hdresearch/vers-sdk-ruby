@@ -1,0 +1,31 @@
+module Vers
+  module Resources
+    class Commits
+      def update: (
+        String commit_id,
+        is_public: bool,
+        ?request_options: Vers::request_opts
+      ) -> Vers::CommitInfo
+
+      def list: (
+        ?request_options: Vers::request_opts
+      ) -> Vers::ListCommitsResponse
+
+      def delete: (
+        String commit_id,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def list_parents: (
+        String commit_id,
+        ?request_options: Vers::request_opts
+      ) -> Vers::Models::commit_list_parents_response
+
+      def list_public: (
+        ?request_options: Vers::request_opts
+      ) -> Vers::ListCommitsResponse
+
+      def initialize: (client: Vers::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,55 @@
+module Vers
+  module Models
+    type commit_info =
+      {
+        commit_id: String,
+        created_at: String,
+        is_public: bool,
+        name: String,
+        owner_id: String,
+        description: String?,
+        grandparent_commit_id: String?,
+        parent_vm_id: String?
+      }
+
+    class CommitInfo < Vers::Internal::Type::BaseModel
+      attr_accessor commit_id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor is_public: bool
+
+      attr_accessor name: String
+
+      attr_accessor owner_id: String
+
+      attr_accessor description: String?
+
+      attr_accessor grandparent_commit_id: String?
+
+      attr_accessor parent_vm_id: String?
+
+      def initialize: (
+        commit_id: String,
+        created_at: String,
+        is_public: bool,
+        name: String,
+        owner_id: String,
+        ?description: String?,
+        ?grandparent_commit_id: String?,
+        ?parent_vm_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        commit_id: String,
+        created_at: String,
+        is_public: bool,
+        name: String,
+        owner_id: String,
+        description: String?,
+        grandparent_commit_id: String?,
+        parent_vm_id: String?
+      }
+    end
+  end
+end

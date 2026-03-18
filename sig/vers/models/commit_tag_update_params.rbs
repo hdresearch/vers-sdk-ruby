@@ -1,0 +1,25 @@
+module Vers
+  module Models
+    type commit_tag_update_params =
+      { tag_name: String } & Vers::Internal::Type::request_parameters
+
+    class CommitTagUpdateParams < Vers::Models::UpdateTagRequest
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      def tag_name: -> String
+
+      def tag_name=: (String _) -> String
+
+      def initialize: (
+        tag_name: String,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        tag_name: String,
+        request_options: Vers::RequestOptions
+      }
+    end
+  end
+end

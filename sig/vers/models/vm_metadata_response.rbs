@@ -1,0 +1,68 @@
+module Vers
+  module Models
+    type vm_metadata_response =
+      {
+        created_at: Time,
+        ip: String,
+        owner_id: String,
+        state: Vers::Models::VmMetadataResponse::state,
+        vm_id: String,
+        deleted_at: Time?,
+        grandparent_vm_id: String?,
+        parent_commit_id: String?
+      }
+
+    class VmMetadataResponse < Vers::Internal::Type::BaseModel
+      attr_accessor created_at: Time
+
+      attr_accessor ip: String
+
+      attr_accessor owner_id: String
+
+      attr_accessor state: Vers::Models::VmMetadataResponse::state
+
+      attr_accessor vm_id: String
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor grandparent_vm_id: String?
+
+      attr_accessor parent_commit_id: String?
+
+      def initialize: (
+        created_at: Time,
+        ip: String,
+        owner_id: String,
+        state: Vers::Models::VmMetadataResponse::state,
+        vm_id: String,
+        ?deleted_at: Time?,
+        ?grandparent_vm_id: String?,
+        ?parent_commit_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        created_at: Time,
+        ip: String,
+        owner_id: String,
+        state: Vers::Models::VmMetadataResponse::state,
+        vm_id: String,
+        deleted_at: Time?,
+        grandparent_vm_id: String?,
+        parent_commit_id: String?
+      }
+
+      type state = :booting | :running | :paused | :sleeping
+
+      module State
+        extend Vers::Internal::Type::Enum
+
+        BOOTING: :booting
+        RUNNING: :running
+        PAUSED: :paused
+        SLEEPING: :sleeping
+
+        def self?.values: -> ::Array[Vers::Models::VmMetadataResponse::state]
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Vers
+  module Models
+    type vm_resize_disk_request = { fs_size_mib: Integer }
+
+    class VmResizeDiskRequest < Vers::Internal::Type::BaseModel
+      attr_accessor fs_size_mib: Integer
+
+      def initialize: (fs_size_mib: Integer) -> void
+
+      def to_hash: -> { fs_size_mib: Integer }
+    end
+  end
+end

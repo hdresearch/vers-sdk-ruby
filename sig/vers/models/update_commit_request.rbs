@@ -1,0 +1,13 @@
+module Vers
+  module Models
+    type update_commit_request = { is_public: bool }
+
+    class UpdateCommitRequest < Vers::Internal::Type::BaseModel
+      attr_accessor is_public: bool
+
+      def initialize: (is_public: bool) -> void
+
+      def to_hash: -> { is_public: bool }
+    end
+  end
+end

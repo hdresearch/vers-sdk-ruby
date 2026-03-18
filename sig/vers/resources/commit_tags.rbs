@@ -1,0 +1,30 @@
+module Vers
+  module Resources
+    class CommitTags
+      def create: (
+        commit_id: String,
+        tag_name: String,
+        ?description: String?,
+        ?request_options: Vers::request_opts
+      ) -> Vers::CreateTagResponse
+
+      def update: (
+        String tag_name,
+        ?commit_id: String?,
+        ?description: String?,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def list: (?request_options: Vers::request_opts) -> Vers::ListTagsResponse
+
+      def delete: (String tag_name, ?request_options: Vers::request_opts) -> nil
+
+      def get: (
+        String tag_name,
+        ?request_options: Vers::request_opts
+      ) -> Vers::TagInfo
+
+      def initialize: (client: Vers::Client) -> void
+    end
+  end
+end

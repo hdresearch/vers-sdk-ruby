@@ -21,6 +21,12 @@ module Vers
     # @return [Vers::Resources::Vm]
     attr_reader :vm
 
+    # @return [Vers::Resources::Commits]
+    attr_reader :commits
+
+    # @return [Vers::Resources::CommitTags]
+    attr_reader :commit_tags
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -65,6 +71,8 @@ module Vers
       )
 
       @vm = Vers::Resources::Vm.new(client: self)
+      @commits = Vers::Resources::Commits.new(client: self)
+      @commit_tags = Vers::Resources::CommitTags.new(client: self)
     end
   end
 end

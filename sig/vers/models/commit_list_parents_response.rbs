@@ -1,0 +1,60 @@
+module Vers
+  module Models
+    type commit_list_parents_response_item =
+      {
+        id: String,
+        created_at: Time,
+        is_public: bool,
+        name: String,
+        owner_id: String,
+        description: String?,
+        grandparent_commit_id: String?,
+        parent_vm_id: String?
+      }
+
+    class CommitListParentsResponseItem < Vers::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor is_public: bool
+
+      attr_accessor name: String
+
+      attr_accessor owner_id: String
+
+      attr_accessor description: String?
+
+      attr_accessor grandparent_commit_id: String?
+
+      attr_accessor parent_vm_id: String?
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        is_public: bool,
+        name: String,
+        owner_id: String,
+        ?description: String?,
+        ?grandparent_commit_id: String?,
+        ?parent_vm_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        is_public: bool,
+        name: String,
+        owner_id: String,
+        description: String?,
+        grandparent_commit_id: String?,
+        parent_vm_id: String?
+      }
+    end
+
+    type commit_list_parents_response =
+      ::Array[Vers::Models::CommitListParentsResponseItem]
+
+    CommitListParentsResponse: Vers::Internal::Type::Converter
+  end
+end

@@ -12,6 +12,8 @@ module Vers
       #     puts(vm_from_commit_request.commit_id)
       #   when Vers::VmFromCommitRequest::TagName
       #     puts(vm_from_commit_request.tag_name)
+      #   when Vers::VmFromCommitRequest::Ref
+      #     puts(vm_from_commit_request.ref)
       #   else
       #     puts(vm_from_commit_request)
       #   end

@@ -1,7 +1,9 @@
 module Vers
   module Models
     type vm_from_commit_request =
-      Vers::VmFromCommitRequest::CommitID | Vers::VmFromCommitRequest::TagName
+      Vers::VmFromCommitRequest::CommitID
+      | Vers::VmFromCommitRequest::TagName
+      | Vers::VmFromCommitRequest::Ref
 
     module VmFromCommitRequest
       extend Vers::Internal::Type::Union
@@ -24,6 +26,16 @@ module Vers
         def initialize: (tag_name: String) -> void
 
         def to_hash: -> { tag_name: String }
+      end
+
+      type ref = { ref: String }
+
+      class Ref < Vers::Internal::Type::BaseModel
+        attr_accessor ref: String
+
+        def initialize: (ref: String) -> void
+
+        def to_hash: -> { ref: String }
       end
 
       def self?.variants: -> ::Array[Vers::Models::vm_from_commit_request]

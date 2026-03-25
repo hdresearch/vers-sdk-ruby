@@ -32,7 +32,7 @@ module Vers
       #
       # @overload update(tag_name, commit_id: nil, description: nil, request_options: {})
       #
-      # @param tag_name [String] The name of the tag to update
+      # @param tag_name [String] Tag name
       #
       # @param commit_id [String, nil] Optional new commit ID to move the tag to
       #
@@ -72,7 +72,7 @@ module Vers
 
       # @overload delete(tag_name, request_options: {})
       #
-      # @param tag_name [String] The name of the tag to delete
+      # @param tag_name [String] Tag name
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -90,7 +90,7 @@ module Vers
 
       # @overload get(tag_name, request_options: {})
       #
-      # @param tag_name [String] The name of the tag to retrieve
+      # @param tag_name [String] Tag name
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #

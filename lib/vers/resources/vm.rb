@@ -266,7 +266,7 @@ module Vers
 
       # @overload restore_from_commit(vm_from_commit_request:, request_options: {})
       #
-      # @param vm_from_commit_request [Vers::Models::VmFromCommitRequest::CommitID, Vers::Models::VmFromCommitRequest::TagName] Request body for POST /api/v1/vm/from_commit
+      # @param vm_from_commit_request [Vers::Models::VmFromCommitRequest::CommitID, Vers::Models::VmFromCommitRequest::TagName, Vers::Models::VmFromCommitRequest::Ref] Request body for POST /api/v1/vm/from_commit
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #

@@ -31,7 +31,7 @@ module Vers
         ).void
       end
       def update(
-        # The name of the tag to update
+        # Tag name
         tag_name,
         # Optional new commit ID to move the tag to
         commit_id: nil,
@@ -57,7 +57,7 @@ module Vers
         ).void
       end
       def delete(
-        # The name of the tag to delete
+        # Tag name
         tag_name,
         request_options: {}
       )
@@ -70,7 +70,7 @@ module Vers
         ).returns(Vers::TagInfo)
       end
       def get(
-        # The name of the tag to retrieve
+        # Tag name
         tag_name,
         request_options: {}
       )

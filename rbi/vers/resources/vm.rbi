@@ -192,7 +192,8 @@ module Vers
           vm_from_commit_request:
             T.any(
               Vers::VmFromCommitRequest::CommitID::OrHash,
-              Vers::VmFromCommitRequest::TagName::OrHash
+              Vers::VmFromCommitRequest::TagName::OrHash,
+              Vers::VmFromCommitRequest::Ref::OrHash
             ),
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::NewVmResponse)

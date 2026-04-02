@@ -74,6 +74,7 @@ module Vers
         RUNNING = :running
         PAUSED = :paused
         SLEEPING = :sleeping
+        DEAD = :dead
 
         # @!method self.values
         #   @return [Array<Symbol>]

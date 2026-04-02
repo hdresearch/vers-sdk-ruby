@@ -89,6 +89,7 @@ module Vers
         PAUSED = T.let(:paused, Vers::VmMetadataResponse::State::TaggedSymbol)
         SLEEPING =
           T.let(:sleeping, Vers::VmMetadataResponse::State::TaggedSymbol)
+        DEAD = T.let(:dead, Vers::VmMetadataResponse::State::TaggedSymbol)
 
         sig do
           override.returns(

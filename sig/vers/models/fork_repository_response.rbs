@@ -1,0 +1,40 @@
+module Vers
+  module Models
+    type fork_repository_response =
+      {
+        commit_id: String,
+        reference: String,
+        repo_name: String,
+        tag_name: String,
+        vm_id: String
+      }
+
+    class ForkRepositoryResponse < Vers::Internal::Type::BaseModel
+      attr_accessor commit_id: String
+
+      attr_accessor reference: String
+
+      attr_accessor repo_name: String
+
+      attr_accessor tag_name: String
+
+      attr_accessor vm_id: String
+
+      def initialize: (
+        commit_id: String,
+        reference: String,
+        repo_name: String,
+        tag_name: String,
+        vm_id: String
+      ) -> void
+
+      def to_hash: -> {
+        commit_id: String,
+        reference: String,
+        repo_name: String,
+        tag_name: String,
+        vm_id: String
+      }
+    end
+  end
+end

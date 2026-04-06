@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    type create_repository_request = { name: String, description: String? }
+
+    class CreateRepositoryRequest < Vers::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor description: String?
+
+      def initialize: (name: String, ?description: String?) -> void
+
+      def to_hash: -> { name: String, description: String? }
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Vers
+  module Models
+    type list_repositories_response =
+      { repositories: ::Array[Vers::RepositoryInfo] }
+
+    class ListRepositoriesResponse < Vers::Internal::Type::BaseModel
+      attr_accessor repositories: ::Array[Vers::RepositoryInfo]
+
+      def initialize: (repositories: ::Array[Vers::RepositoryInfo]) -> void
+
+      def to_hash: -> { repositories: ::Array[Vers::RepositoryInfo] }
+    end
+  end
+end

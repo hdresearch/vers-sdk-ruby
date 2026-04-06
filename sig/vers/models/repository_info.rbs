@@ -1,0 +1,40 @@
+module Vers
+  module Models
+    type repository_info =
+      {
+        created_at: Time,
+        is_public: bool,
+        name: String,
+        repo_id: String,
+        description: String?
+      }
+
+    class RepositoryInfo < Vers::Internal::Type::BaseModel
+      attr_accessor created_at: Time
+
+      attr_accessor is_public: bool
+
+      attr_accessor name: String
+
+      attr_accessor repo_id: String
+
+      attr_accessor description: String?
+
+      def initialize: (
+        created_at: Time,
+        is_public: bool,
+        name: String,
+        repo_id: String,
+        ?description: String?
+      ) -> void
+
+      def to_hash: -> {
+        created_at: Time,
+        is_public: bool,
+        name: String,
+        repo_id: String,
+        description: String?
+      }
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    type update_repo_tag_request = { commit_id: String?, description: String? }
+
+    class UpdateRepoTagRequest < Vers::Internal::Type::BaseModel
+      attr_accessor commit_id: String?
+
+      attr_accessor description: String?
+
+      def initialize: (?commit_id: String?, ?description: String?) -> void
+
+      def to_hash: -> { commit_id: String?, description: String? }
+    end
+  end
+end

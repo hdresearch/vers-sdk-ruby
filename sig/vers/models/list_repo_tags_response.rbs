@@ -1,0 +1,19 @@
+module Vers
+  module Models
+    type list_repo_tags_response =
+      { repository: String, tags: ::Array[Vers::RepoTagInfo] }
+
+    class ListRepoTagsResponse < Vers::Internal::Type::BaseModel
+      attr_accessor repository: String
+
+      attr_accessor tags: ::Array[Vers::RepoTagInfo]
+
+      def initialize: (
+        repository: String,
+        tags: ::Array[Vers::RepoTagInfo]
+      ) -> void
+
+      def to_hash: -> { repository: String, tags: ::Array[Vers::RepoTagInfo] }
+    end
+  end
+end

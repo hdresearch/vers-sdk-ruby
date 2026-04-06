@@ -1,0 +1,30 @@
+module Vers
+  module Resources
+    class PublicRepositories
+      def list: (
+        ?request_options: Vers::request_opts
+      ) -> Vers::ListPublicRepositoriesResponse
+
+      def get: (
+        String repo_name,
+        org_name: String,
+        ?request_options: Vers::request_opts
+      ) -> Vers::PublicRepositoryInfo
+
+      def get_tag: (
+        String tag_name,
+        org_name: String,
+        repo_name: String,
+        ?request_options: Vers::request_opts
+      ) -> Vers::RepoTagInfo
+
+      def list_tags: (
+        String repo_name,
+        org_name: String,
+        ?request_options: Vers::request_opts
+      ) -> Vers::ListRepoTagsResponse
+
+      def initialize: (client: Vers::Client) -> void
+    end
+  end
+end

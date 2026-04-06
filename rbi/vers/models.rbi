@@ -23,13 +23,31 @@ module Vers
 
   CommitUpdateParams = Vers::Models::CommitUpdateParams
 
+  CreateRepositoryRequest = Vers::Models::CreateRepositoryRequest
+
+  CreateRepositoryResponse = Vers::Models::CreateRepositoryResponse
+
+  CreateRepoTagRequest = Vers::Models::CreateRepoTagRequest
+
+  CreateRepoTagResponse = Vers::Models::CreateRepoTagResponse
+
   CreateTagRequest = Vers::Models::CreateTagRequest
 
   CreateTagResponse = Vers::Models::CreateTagResponse
 
   ErrorResponse = Vers::Models::ErrorResponse
 
+  ForkRepositoryRequest = Vers::Models::ForkRepositoryRequest
+
+  ForkRepositoryResponse = Vers::Models::ForkRepositoryResponse
+
   ListCommitsResponse = Vers::Models::ListCommitsResponse
+
+  ListPublicRepositoriesResponse = Vers::Models::ListPublicRepositoriesResponse
+
+  ListRepositoriesResponse = Vers::Models::ListRepositoriesResponse
+
+  ListRepoTagsResponse = Vers::Models::ListRepoTagsResponse
 
   ListTagsResponse = Vers::Models::ListTagsResponse
 
@@ -39,9 +57,49 @@ module Vers
 
   NewVmsResponse = Vers::Models::NewVmsResponse
 
+  PublicRepositoryGetParams = Vers::Models::PublicRepositoryGetParams
+
+  PublicRepositoryGetTagParams = Vers::Models::PublicRepositoryGetTagParams
+
+  PublicRepositoryInfo = Vers::Models::PublicRepositoryInfo
+
+  PublicRepositoryListParams = Vers::Models::PublicRepositoryListParams
+
+  PublicRepositoryListTagsParams = Vers::Models::PublicRepositoryListTagsParams
+
+  RepositoryCreateParams = Vers::Models::RepositoryCreateParams
+
+  RepositoryCreateTagParams = Vers::Models::RepositoryCreateTagParams
+
+  RepositoryDeleteParams = Vers::Models::RepositoryDeleteParams
+
+  RepositoryDeleteTagParams = Vers::Models::RepositoryDeleteTagParams
+
+  RepositoryForkParams = Vers::Models::RepositoryForkParams
+
+  RepositoryGetParams = Vers::Models::RepositoryGetParams
+
+  RepositoryGetTagParams = Vers::Models::RepositoryGetTagParams
+
+  RepositoryInfo = Vers::Models::RepositoryInfo
+
+  RepositoryListParams = Vers::Models::RepositoryListParams
+
+  RepositoryListTagsParams = Vers::Models::RepositoryListTagsParams
+
+  RepositorySetVisibilityParams = Vers::Models::RepositorySetVisibilityParams
+
+  RepositoryUpdateTagParams = Vers::Models::RepositoryUpdateTagParams
+
+  RepoTagInfo = Vers::Models::RepoTagInfo
+
+  SetRepositoryVisibilityRequest = Vers::Models::SetRepositoryVisibilityRequest
+
   TagInfo = Vers::Models::TagInfo
 
   UpdateCommitRequest = Vers::Models::UpdateCommitRequest
+
+  UpdateRepoTagRequest = Vers::Models::UpdateRepoTagRequest
 
   UpdateTagRequest = Vers::Models::UpdateTagRequest
 

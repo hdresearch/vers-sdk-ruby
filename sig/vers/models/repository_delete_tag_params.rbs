@@ -1,0 +1,28 @@
+module Vers
+  module Models
+    type repository_delete_tag_params =
+      { repo_name: String, tag_name: String }
+      & Vers::Internal::Type::request_parameters
+
+    class RepositoryDeleteTagParams < Vers::Internal::Type::BaseModel
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      attr_accessor repo_name: String
+
+      attr_accessor tag_name: String
+
+      def initialize: (
+        repo_name: String,
+        tag_name: String,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        repo_name: String,
+        tag_name: String,
+        request_options: Vers::RequestOptions
+      }
+    end
+  end
+end

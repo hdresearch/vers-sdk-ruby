@@ -1,0 +1,40 @@
+module Vers
+  module Models
+    type fork_repository_request =
+      {
+        source_org: String,
+        source_repo: String,
+        source_tag: String,
+        repo_name: String?,
+        tag_name: String?
+      }
+
+    class ForkRepositoryRequest < Vers::Internal::Type::BaseModel
+      attr_accessor source_org: String
+
+      attr_accessor source_repo: String
+
+      attr_accessor source_tag: String
+
+      attr_accessor repo_name: String?
+
+      attr_accessor tag_name: String?
+
+      def initialize: (
+        source_org: String,
+        source_repo: String,
+        source_tag: String,
+        ?repo_name: String?,
+        ?tag_name: String?
+      ) -> void
+
+      def to_hash: -> {
+        source_org: String,
+        source_repo: String,
+        source_tag: String,
+        repo_name: String?,
+        tag_name: String?
+      }
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Vers
+  module Models
+    type repository_update_tag_params =
+      { repo_name: String, tag_name: String }
+      & Vers::Internal::Type::request_parameters
+
+    class RepositoryUpdateTagParams < Vers::Models::UpdateRepoTagRequest
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      def repo_name: -> String
+
+      def repo_name=: (String _) -> String
+
+      def tag_name: -> String
+
+      def tag_name=: (String _) -> String
+
+      def initialize: (
+        repo_name: String,
+        tag_name: String,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        repo_name: String,
+        tag_name: String,
+        request_options: Vers::RequestOptions
+      }
+    end
+  end
+end

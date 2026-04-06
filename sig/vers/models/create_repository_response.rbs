@@ -1,0 +1,15 @@
+module Vers
+  module Models
+    type create_repository_response = { name: String, repo_id: String }
+
+    class CreateRepositoryResponse < Vers::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor repo_id: String
+
+      def initialize: (name: String, repo_id: String) -> void
+
+      def to_hash: -> { name: String, repo_id: String }
+    end
+  end
+end

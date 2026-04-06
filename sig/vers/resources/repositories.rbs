@@ -1,0 +1,75 @@
+module Vers
+  module Resources
+    class Repositories
+      def create: (
+        name: String,
+        ?description: String?,
+        ?request_options: Vers::request_opts
+      ) -> Vers::CreateRepositoryResponse
+
+      def list: (
+        ?request_options: Vers::request_opts
+      ) -> Vers::ListRepositoriesResponse
+
+      def delete: (
+        String repo_name,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def create_tag: (
+        String repo_name,
+        commit_id: String,
+        tag_name: String,
+        ?description: String?,
+        ?request_options: Vers::request_opts
+      ) -> Vers::CreateRepoTagResponse
+
+      def delete_tag: (
+        String tag_name,
+        repo_name: String,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def fork_: (
+        source_org: String,
+        source_repo: String,
+        source_tag: String,
+        ?repo_name: String?,
+        ?tag_name: String?,
+        ?request_options: Vers::request_opts
+      ) -> Vers::ForkRepositoryResponse
+
+      def get: (
+        String repo_name,
+        ?request_options: Vers::request_opts
+      ) -> Vers::RepositoryInfo
+
+      def get_tag: (
+        String tag_name,
+        repo_name: String,
+        ?request_options: Vers::request_opts
+      ) -> Vers::RepoTagInfo
+
+      def list_tags: (
+        String repo_name,
+        ?request_options: Vers::request_opts
+      ) -> Vers::ListRepoTagsResponse
+
+      def set_visibility: (
+        String repo_name,
+        is_public: bool,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def update_tag: (
+        String tag_name,
+        repo_name: String,
+        ?commit_id: String?,
+        ?description: String?,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def initialize: (client: Vers::Client) -> void
+    end
+  end
+end

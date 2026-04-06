@@ -1,0 +1,28 @@
+module Vers
+  module Models
+    type public_repository_list_tags_params =
+      { org_name: String, repo_name: String }
+      & Vers::Internal::Type::request_parameters
+
+    class PublicRepositoryListTagsParams < Vers::Internal::Type::BaseModel
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      attr_accessor org_name: String
+
+      attr_accessor repo_name: String
+
+      def initialize: (
+        org_name: String,
+        repo_name: String,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        org_name: String,
+        repo_name: String,
+        request_options: Vers::RequestOptions
+      }
+    end
+  end
+end

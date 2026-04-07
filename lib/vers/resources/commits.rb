@@ -3,11 +3,15 @@
 module Vers
   module Resources
     class Commits
-      # @overload update(commit_id, is_public:, request_options: {})
+      # @overload update(commit_id, is_public:, description: nil, name: nil, request_options: {})
       #
       # @param commit_id [String] The commit ID
       #
       # @param is_public [Boolean]
+      #
+      # @param description [String, nil] Optional description for the commit.
+      #
+      # @param name [String, nil] Optional human-readable name for the commit.
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #

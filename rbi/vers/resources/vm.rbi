@@ -109,16 +109,28 @@ module Vers
           vm_id: String,
           keep_paused: T::Boolean,
           skip_wait_boot: T::Boolean,
+          commit_id: T.nilable(String),
+          description: T.nilable(String),
+          name: T.nilable(String),
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::VmCommitResponse)
       end
       def commit(
-        # VM ID to commit
+        # Path param: VM ID to commit
         vm_id,
-        # If true, keep VM paused after commit
+        # Query param: If true, keep VM paused after commit
         keep_paused: nil,
-        # If true, return an error immediately if the VM is still booting. Default: false
+        # Query param: If true, return an error immediately if the VM is still booting.
+        # Default: false
         skip_wait_boot: nil,
+        # Body param: If provided, chelsea will use the requested commit UUID. Otherwise,
+        # it will generate a UUID itself.
+        commit_id: nil,
+        # Body param: Optional description for the commit.
+        description: nil,
+        # Body param: Optional human-readable name for the commit. Defaults to
+        # auto-generated name if not provided.
+        name: nil,
         request_options: {}
       )
       end

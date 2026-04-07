@@ -7,6 +7,8 @@ module Vers
         params(
           commit_id: String,
           is_public: T::Boolean,
+          description: T.nilable(String),
+          name: T.nilable(String),
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::CommitInfo)
       end
@@ -14,6 +16,10 @@ module Vers
         # The commit ID
         commit_id,
         is_public:,
+        # Optional description for the commit.
+        description: nil,
+        # Optional human-readable name for the commit.
+        name: nil,
         request_options: {}
       )
       end

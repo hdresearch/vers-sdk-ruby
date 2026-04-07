@@ -1,13 +1,22 @@
 module Vers
   module Models
-    type update_commit_request = { is_public: bool }
+    type update_commit_request =
+      { is_public: bool, description: String?, name: String? }
 
     class UpdateCommitRequest < Vers::Internal::Type::BaseModel
       attr_accessor is_public: bool
 
-      def initialize: (is_public: bool) -> void
+      attr_accessor description: String?
 
-      def to_hash: -> { is_public: bool }
+      attr_accessor name: String?
+
+      def initialize: (
+        is_public: bool,
+        ?description: String?,
+        ?name: String?
+      ) -> void
+
+      def to_hash: -> { is_public: bool, description: String?, name: String? }
     end
   end
 end

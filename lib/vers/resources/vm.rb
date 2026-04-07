@@ -145,13 +145,22 @@ module Vers
         )
       end
 
-      # @overload commit(vm_id, keep_paused: nil, skip_wait_boot: nil, request_options: {})
+      # Some parameter documentations has been truncated, see
+      # {Vers::Models::VmCommitParams} for more details.
       #
-      # @param vm_id [String] VM ID to commit
+      # @overload commit(vm_id, keep_paused: nil, skip_wait_boot: nil, commit_id: nil, description: nil, name: nil, request_options: {})
       #
-      # @param keep_paused [Boolean] If true, keep VM paused after commit
+      # @param vm_id [String] Path param: VM ID to commit
       #
-      # @param skip_wait_boot [Boolean] If true, return an error immediately if the VM is still booting. Default: false
+      # @param keep_paused [Boolean] Query param: If true, keep VM paused after commit
+      #
+      # @param skip_wait_boot [Boolean] Query param: If true, return an error immediately if the VM is still booting. De
+      #
+      # @param commit_id [String, nil] Body param: If provided, chelsea will use the requested commit UUID. Otherwise,
+      #
+      # @param description [String, nil] Body param: Optional description for the commit.
+      #
+      # @param name [String, nil] Body param: Optional human-readable name for the commit. Defaults to auto-genera
       #
       # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -159,12 +168,14 @@ module Vers
       #
       # @see Vers::Models::VmCommitParams
       def commit(vm_id, params = {})
+        query_params = [:keep_paused, :skip_wait_boot]
         parsed, options = Vers::VmCommitParams.dump_request(params)
-        query = Vers::Internal::Util.encode_query_params(parsed)
+        query = Vers::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :post,
           path: ["api/v1/vm/%1$s/commit", vm_id],
           query: query,
+          body: parsed.except(*query_params),
           model: Vers::VmCommitResponse,
           options: options
         )

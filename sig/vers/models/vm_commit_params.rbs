@@ -1,7 +1,14 @@
 module Vers
   module Models
     type vm_commit_params =
-      { vm_id: String, keep_paused: bool, skip_wait_boot: bool }
+      {
+        vm_id: String,
+        keep_paused: bool,
+        skip_wait_boot: bool,
+        commit_id: String?,
+        description: String?,
+        name: String?
+      }
       & Vers::Internal::Type::request_parameters
 
     class VmCommitParams < Vers::Internal::Type::BaseModel
@@ -18,10 +25,19 @@ module Vers
 
       def skip_wait_boot=: (bool) -> bool
 
+      attr_accessor commit_id: String?
+
+      attr_accessor description: String?
+
+      attr_accessor name: String?
+
       def initialize: (
         vm_id: String,
         ?keep_paused: bool,
         ?skip_wait_boot: bool,
+        ?commit_id: String?,
+        ?description: String?,
+        ?name: String?,
         ?request_options: Vers::request_opts
       ) -> void
 
@@ -29,6 +45,9 @@ module Vers
         vm_id: String,
         keep_paused: bool,
         skip_wait_boot: bool,
+        commit_id: String?,
+        description: String?,
+        name: String?,
         request_options: Vers::RequestOptions
       }
     end

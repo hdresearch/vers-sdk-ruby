@@ -43,6 +43,9 @@ module Vers
         String vm_id,
         ?keep_paused: bool,
         ?skip_wait_boot: bool,
+        ?commit_id: String?,
+        ?description: String?,
+        ?name: String?,
         ?request_options: Vers::request_opts
       ) -> Vers::VmCommitResponse
 

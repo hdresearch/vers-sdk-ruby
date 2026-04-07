@@ -4,6 +4,8 @@ module Vers
       def update: (
         String commit_id,
         is_public: bool,
+        ?description: String?,
+        ?name: String?,
         ?request_options: Vers::request_opts
       ) -> Vers::CommitInfo
 

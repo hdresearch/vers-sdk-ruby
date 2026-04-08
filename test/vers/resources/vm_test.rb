@@ -125,6 +125,67 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
     end
   end
 
+  def test_exec__required_params
+    skip("Mock server tests are disabled")
+
+    response = @vers.vm.exec_("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", command: ["string"])
+
+    assert_pattern do
+      response => Vers::VmExecResponse
+    end
+
+    assert_pattern do
+      response => {
+        exit_code: Integer,
+        stderr: String,
+        stdout: String,
+        exec_id: String | nil
+      }
+    end
+  end
+
+  def test_exec_stream_required_params
+    skip("Mock server tests are disabled")
+
+    response = @vers.vm.exec_stream("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", command: ["string"])
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
+  def test_exec_stream_attach_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @vers.vm.exec_stream_attach(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        exec_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+      )
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
+  def test_get_logs
+    skip("Mock server tests are disabled")
+
+    response = @vers.vm.get_logs("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Vers::VmExecLogResponse
+    end
+
+    assert_pattern do
+      response => {
+        entries: ^(Vers::Internal::Type::ArrayOf[Vers::VmExecLogResponse::Entry]),
+        eof: Vers::Internal::Type::Boolean,
+        next_offset: Integer
+      }
+    end
+  end
+
   def test_get_metadata
     skip("Mock server tests are disabled")
 

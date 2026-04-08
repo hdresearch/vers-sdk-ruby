@@ -123,7 +123,25 @@ module Vers
 
   VmDeleteResponse = Vers::Models::VmDeleteResponse
 
+  VmExecLogQuery = Vers::Models::VmExecLogQuery
+
+  VmExecLogResponse = Vers::Models::VmExecLogResponse
+
+  VmExecParams = Vers::Models::VmExecParams
+
+  VmExecRequest = Vers::Models::VmExecRequest
+
+  VmExecResponse = Vers::Models::VmExecResponse
+
+  VmExecStreamAttachParams = Vers::Models::VmExecStreamAttachParams
+
+  VmExecStreamAttachRequest = Vers::Models::VmExecStreamAttachRequest
+
+  VmExecStreamParams = Vers::Models::VmExecStreamParams
+
   VmFromCommitRequest = Vers::Models::VmFromCommitRequest
+
+  VmGetLogsParams = Vers::Models::VmGetLogsParams
 
   VmGetMetadataParams = Vers::Models::VmGetMetadataParams
 

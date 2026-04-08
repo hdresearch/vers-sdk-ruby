@@ -1,0 +1,30 @@
+module Vers
+  module Models
+    type vm_exec_response =
+      { exit_code: Integer, stderr: String, stdout: String, exec_id: String? }
+
+    class VmExecResponse < Vers::Internal::Type::BaseModel
+      attr_accessor exit_code: Integer
+
+      attr_accessor stderr: String
+
+      attr_accessor stdout: String
+
+      attr_accessor exec_id: String?
+
+      def initialize: (
+        exit_code: Integer,
+        stderr: String,
+        stdout: String,
+        ?exec_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        exit_code: Integer,
+        stderr: String,
+        stdout: String,
+        exec_id: String?
+      }
+    end
+  end
+end

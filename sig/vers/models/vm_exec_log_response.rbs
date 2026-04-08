@@ -1,0 +1,73 @@
+module Vers
+  module Models
+    type vm_exec_log_response =
+      {
+        entries: ::Array[Vers::VmExecLogResponse::Entry],
+        eof: bool,
+        next_offset: Integer
+      }
+
+    class VmExecLogResponse < Vers::Internal::Type::BaseModel
+      attr_accessor entries: ::Array[Vers::VmExecLogResponse::Entry]
+
+      attr_accessor eof: bool
+
+      attr_accessor next_offset: Integer
+
+      def initialize: (
+        entries: ::Array[Vers::VmExecLogResponse::Entry],
+        eof: bool,
+        next_offset: Integer
+      ) -> void
+
+      def to_hash: -> {
+        entries: ::Array[Vers::VmExecLogResponse::Entry],
+        eof: bool,
+        next_offset: Integer
+      }
+
+      type entry =
+        {
+          :data_b64 => String,
+          stream: Vers::Models::VmExecLogResponse::Entry::stream,
+          timestamp: String,
+          exec_id: String?
+        }
+
+      class Entry < Vers::Internal::Type::BaseModel
+        attr_accessor data_b64: String
+
+        attr_accessor stream: Vers::Models::VmExecLogResponse::Entry::stream
+
+        attr_accessor timestamp: String
+
+        attr_accessor exec_id: String?
+
+        def initialize: (
+          data_b64: String,
+          stream: Vers::Models::VmExecLogResponse::Entry::stream,
+          timestamp: String,
+          ?exec_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          :data_b64 => String,
+          stream: Vers::Models::VmExecLogResponse::Entry::stream,
+          timestamp: String,
+          exec_id: String?
+        }
+
+        type stream = :stdout | :stderr
+
+        module Stream
+          extend Vers::Internal::Type::Enum
+
+          STDOUT: :stdout
+          STDERR: :stderr
+
+          def self?.values: -> ::Array[Vers::Models::VmExecLogResponse::Entry::stream]
+        end
+      end
+    end
+  end
+end

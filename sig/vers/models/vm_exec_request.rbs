@@ -1,0 +1,45 @@
+module Vers
+  module Models
+    type vm_exec_request =
+      {
+        command: ::Array[String],
+        env: ::Hash[Symbol, String]?,
+        exec_id: String?,
+        stdin: String?,
+        timeout_secs: Integer?,
+        working_dir: String?
+      }
+
+    class VmExecRequest < Vers::Internal::Type::BaseModel
+      attr_accessor command: ::Array[String]
+
+      attr_accessor env: ::Hash[Symbol, String]?
+
+      attr_accessor exec_id: String?
+
+      attr_accessor stdin: String?
+
+      attr_accessor timeout_secs: Integer?
+
+      attr_accessor working_dir: String?
+
+      def initialize: (
+        command: ::Array[String],
+        ?env: ::Hash[Symbol, String]?,
+        ?exec_id: String?,
+        ?stdin: String?,
+        ?timeout_secs: Integer?,
+        ?working_dir: String?
+      ) -> void
+
+      def to_hash: -> {
+        command: ::Array[String],
+        env: ::Hash[Symbol, String]?,
+        exec_id: String?,
+        stdin: String?,
+        timeout_secs: Integer?,
+        working_dir: String?
+      }
+    end
+  end
+end

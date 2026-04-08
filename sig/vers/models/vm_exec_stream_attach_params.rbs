@@ -1,0 +1,22 @@
+module Vers
+  module Models
+    type vm_exec_stream_attach_params =
+      { vm_id: String } & Vers::Internal::Type::request_parameters
+
+    class VmExecStreamAttachParams < Vers::Models::VmExecStreamAttachRequest
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      def vm_id: -> String
+
+      def vm_id=: (String _) -> String
+
+      def initialize: (
+        vm_id: String,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> { vm_id: String, request_options: Vers::RequestOptions }
+    end
+  end
+end

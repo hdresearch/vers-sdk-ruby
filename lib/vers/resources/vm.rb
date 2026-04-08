@@ -209,6 +209,126 @@ module Vers
         )
       end
 
+      # @overload exec_(vm_id, command:, env: nil, exec_id: nil, stdin: nil, timeout_secs: nil, working_dir: nil, request_options: {})
+      #
+      # @param vm_id [String] VM ID
+      #
+      # @param command [Array<String>] Command and arguments to execute.
+      #
+      # @param env [Hash{Symbol=>String}, nil] Optional environment variables to set for the process.
+      #
+      # @param exec_id [String, nil] Optional exec identifier for tracking.
+      #
+      # @param stdin [String, nil] Optional stdin payload passed to the command.
+      #
+      # @param timeout_secs [Integer, nil] Timeout in seconds (0 = no timeout).
+      #
+      # @param working_dir [String, nil] Optional working directory for the command.
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::VmExecResponse]
+      #
+      # @see Vers::Models::VmExecParams
+      def exec_(vm_id, params)
+        parsed, options = Vers::VmExecParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["api/v1/vm/%1$s/exec", vm_id],
+          body: parsed,
+          model: Vers::VmExecResponse,
+          options: options
+        )
+      end
+
+      # @overload exec_stream(vm_id, command:, env: nil, exec_id: nil, stdin: nil, timeout_secs: nil, working_dir: nil, request_options: {})
+      #
+      # @param vm_id [String] VM ID
+      #
+      # @param command [Array<String>] Command and arguments to execute.
+      #
+      # @param env [Hash{Symbol=>String}, nil] Optional environment variables to set for the process.
+      #
+      # @param exec_id [String, nil] Optional exec identifier for tracking.
+      #
+      # @param stdin [String, nil] Optional stdin payload passed to the command.
+      #
+      # @param timeout_secs [Integer, nil] Timeout in seconds (0 = no timeout).
+      #
+      # @param working_dir [String, nil] Optional working directory for the command.
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [nil]
+      #
+      # @see Vers::Models::VmExecStreamParams
+      def exec_stream(vm_id, params)
+        parsed, options = Vers::VmExecStreamParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["api/v1/vm/%1$s/exec/stream", vm_id],
+          body: parsed,
+          model: NilClass,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Vers::Models::VmExecStreamAttachParams} for more details.
+      #
+      # @overload exec_stream_attach(vm_id, exec_id:, cursor: nil, from_latest: nil, request_options: {})
+      #
+      # @param vm_id [String] VM ID
+      #
+      # @param exec_id [String] Identifier of the exec stream session to reattach to.
+      #
+      # @param cursor [Integer, nil] Optional cursor to resume from (exclusive). If omitted, the full retained backlo
+      #
+      # @param from_latest [Boolean, nil] Start streaming after the latest retained chunk (ignores cursor).
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [nil]
+      #
+      # @see Vers::Models::VmExecStreamAttachParams
+      def exec_stream_attach(vm_id, params)
+        parsed, options = Vers::VmExecStreamAttachParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["api/v1/vm/%1$s/exec/stream/attach", vm_id],
+          body: parsed,
+          model: NilClass,
+          options: options
+        )
+      end
+
+      # @overload get_logs(vm_id, max_entries: nil, offset: nil, stream: nil, request_options: {})
+      #
+      # @param vm_id [String] VM ID
+      #
+      # @param max_entries [Integer] Maximum number of log entries to return
+      #
+      # @param offset [Integer] Byte offset into the log file (default: 0)
+      #
+      # @param stream [String] Filter by 'stdout' or 'stderr'
+      #
+      # @param request_options [Vers::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Vers::Models::VmExecLogResponse]
+      #
+      # @see Vers::Models::VmGetLogsParams
+      def get_logs(vm_id, params = {})
+        parsed, options = Vers::VmGetLogsParams.dump_request(params)
+        query = Vers::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: ["api/v1/vm/%1$s/logs", vm_id],
+          query: query,
+          model: Vers::VmExecLogResponse,
+          options: options
+        )
+      end
+
       # @overload get_metadata(vm_id, request_options: {})
       #
       # @param vm_id [String] VM ID

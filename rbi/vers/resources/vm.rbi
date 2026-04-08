@@ -155,6 +155,113 @@ module Vers
       sig do
         params(
           vm_id: String,
+          command: T::Array[String],
+          env: T.nilable(T::Hash[Symbol, String]),
+          exec_id: T.nilable(String),
+          stdin: T.nilable(String),
+          timeout_secs: T.nilable(Integer),
+          working_dir: T.nilable(String),
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(Vers::VmExecResponse)
+      end
+      def exec_(
+        # VM ID
+        vm_id,
+        # Command and arguments to execute.
+        command:,
+        # Optional environment variables to set for the process.
+        env: nil,
+        # Optional exec identifier for tracking.
+        exec_id: nil,
+        # Optional stdin payload passed to the command.
+        stdin: nil,
+        # Timeout in seconds (0 = no timeout).
+        timeout_secs: nil,
+        # Optional working directory for the command.
+        working_dir: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
+          command: T::Array[String],
+          env: T.nilable(T::Hash[Symbol, String]),
+          exec_id: T.nilable(String),
+          stdin: T.nilable(String),
+          timeout_secs: T.nilable(Integer),
+          working_dir: T.nilable(String),
+          request_options: Vers::RequestOptions::OrHash
+        ).void
+      end
+      def exec_stream(
+        # VM ID
+        vm_id,
+        # Command and arguments to execute.
+        command:,
+        # Optional environment variables to set for the process.
+        env: nil,
+        # Optional exec identifier for tracking.
+        exec_id: nil,
+        # Optional stdin payload passed to the command.
+        stdin: nil,
+        # Timeout in seconds (0 = no timeout).
+        timeout_secs: nil,
+        # Optional working directory for the command.
+        working_dir: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
+          exec_id: String,
+          cursor: T.nilable(Integer),
+          from_latest: T.nilable(T::Boolean),
+          request_options: Vers::RequestOptions::OrHash
+        ).void
+      end
+      def exec_stream_attach(
+        # VM ID
+        vm_id,
+        # Identifier of the exec stream session to reattach to.
+        exec_id:,
+        # Optional cursor to resume from (exclusive). If omitted, the full retained
+        # backlog is replayed.
+        cursor: nil,
+        # Start streaming after the latest retained chunk (ignores cursor).
+        from_latest: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
+          max_entries: Integer,
+          offset: Integer,
+          stream: String,
+          request_options: Vers::RequestOptions::OrHash
+        ).returns(Vers::VmExecLogResponse)
+      end
+      def get_logs(
+        # VM ID
+        vm_id,
+        # Maximum number of log entries to return
+        max_entries: nil,
+        # Byte offset into the log file (default: 0)
+        offset: nil,
+        # Filter by 'stdout' or 'stderr'
+        stream: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        params(
+          vm_id: String,
           request_options: Vers::RequestOptions::OrHash
         ).returns(Vers::VmMetadataResponse)
       end

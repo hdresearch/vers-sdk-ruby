@@ -1,0 +1,42 @@
+module Vers
+  module Models
+    type vm_get_logs_params =
+      { vm_id: String, max_entries: Integer, offset: Integer, stream: String }
+      & Vers::Internal::Type::request_parameters
+
+    class VmGetLogsParams < Vers::Internal::Type::BaseModel
+      extend Vers::Internal::Type::RequestParameters::Converter
+      include Vers::Internal::Type::RequestParameters
+
+      attr_accessor vm_id: String
+
+      attr_reader max_entries: Integer?
+
+      def max_entries=: (Integer) -> Integer
+
+      attr_reader offset: Integer?
+
+      def offset=: (Integer) -> Integer
+
+      attr_reader stream: String?
+
+      def stream=: (String) -> String
+
+      def initialize: (
+        vm_id: String,
+        ?max_entries: Integer,
+        ?offset: Integer,
+        ?stream: String,
+        ?request_options: Vers::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        vm_id: String,
+        max_entries: Integer,
+        offset: Integer,
+        stream: String,
+        request_options: Vers::RequestOptions
+      }
+    end
+  end
+end

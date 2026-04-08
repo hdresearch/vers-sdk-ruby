@@ -1,0 +1,22 @@
+module Vers
+  module Models
+    type vm_exec_stream_attach_request =
+      { exec_id: String, cursor: Integer?, from_latest: bool? }
+
+    class VmExecStreamAttachRequest < Vers::Internal::Type::BaseModel
+      attr_accessor exec_id: String
+
+      attr_accessor cursor: Integer?
+
+      attr_accessor from_latest: bool?
+
+      def initialize: (
+        exec_id: String,
+        ?cursor: Integer?,
+        ?from_latest: bool?
+      ) -> void
+
+      def to_hash: -> { exec_id: String, cursor: Integer?, from_latest: bool? }
+    end
+  end
+end

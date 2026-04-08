@@ -1,0 +1,46 @@
+module Vers
+  module Models
+    type vm_exec_log_query =
+      {
+        max_entries: Integer?,
+        offset: Integer?,
+        skip_wait_boot: bool?,
+        stream: Vers::Models::VmExecLogQuery::stream?
+      }
+
+    class VmExecLogQuery < Vers::Internal::Type::BaseModel
+      attr_accessor max_entries: Integer?
+
+      attr_accessor offset: Integer?
+
+      attr_accessor skip_wait_boot: bool?
+
+      attr_accessor stream: Vers::Models::VmExecLogQuery::stream?
+
+      def initialize: (
+        ?max_entries: Integer?,
+        ?offset: Integer?,
+        ?skip_wait_boot: bool?,
+        ?stream: Vers::Models::VmExecLogQuery::stream?
+      ) -> void
+
+      def to_hash: -> {
+        max_entries: Integer?,
+        offset: Integer?,
+        skip_wait_boot: bool?,
+        stream: Vers::Models::VmExecLogQuery::stream?
+      }
+
+      type stream = :stdout | :stderr
+
+      module Stream
+        extend Vers::Internal::Type::Enum
+
+        STDOUT: :stdout
+        STDERR: :stderr
+
+        def self?.values: -> ::Array[Vers::Models::VmExecLogQuery::stream]
+      end
+    end
+  end
+end

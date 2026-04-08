@@ -55,6 +55,44 @@ module Vers
         ?request_options: Vers::request_opts
       ) -> Vers::NewVmResponse
 
+      def exec_: (
+        String vm_id,
+        command: ::Array[String],
+        ?env: ::Hash[Symbol, String]?,
+        ?exec_id: String?,
+        ?stdin: String?,
+        ?timeout_secs: Integer?,
+        ?working_dir: String?,
+        ?request_options: Vers::request_opts
+      ) -> Vers::VmExecResponse
+
+      def exec_stream: (
+        String vm_id,
+        command: ::Array[String],
+        ?env: ::Hash[Symbol, String]?,
+        ?exec_id: String?,
+        ?stdin: String?,
+        ?timeout_secs: Integer?,
+        ?working_dir: String?,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def exec_stream_attach: (
+        String vm_id,
+        exec_id: String,
+        ?cursor: Integer?,
+        ?from_latest: bool?,
+        ?request_options: Vers::request_opts
+      ) -> nil
+
+      def get_logs: (
+        String vm_id,
+        ?max_entries: Integer,
+        ?offset: Integer,
+        ?stream: String,
+        ?request_options: Vers::request_opts
+      ) -> Vers::VmExecLogResponse
+
       def get_metadata: (
         String vm_id,
         ?request_options: Vers::request_opts

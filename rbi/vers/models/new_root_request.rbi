@@ -46,6 +46,9 @@ module Vers
         sig { returns(T.nilable(String)) }
         attr_accessor :kernel_name
 
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_accessor :labels
+
         # The RAM size, in MiB.
         sig { returns(T.nilable(Integer)) }
         attr_accessor :mem_size_mib
@@ -60,6 +63,7 @@ module Vers
             fs_size_mib: T.nilable(Integer),
             image_name: T.nilable(String),
             kernel_name: T.nilable(String),
+            labels: T.nilable(T::Hash[Symbol, String]),
             mem_size_mib: T.nilable(Integer),
             vcpu_count: T.nilable(Integer)
           ).returns(T.attached_class)
@@ -71,6 +75,7 @@ module Vers
           image_name: nil,
           # The kernel name. Currently, must be 'default.bin'
           kernel_name: nil,
+          labels: nil,
           # The RAM size, in MiB.
           mem_size_mib: nil,
           # How many vCPUs to allocate to this VM (and its children)
@@ -84,6 +89,7 @@ module Vers
               fs_size_mib: T.nilable(Integer),
               image_name: T.nilable(String),
               kernel_name: T.nilable(String),
+              labels: T.nilable(T::Hash[Symbol, String]),
               mem_size_mib: T.nilable(Integer),
               vcpu_count: T.nilable(Integer)
             }

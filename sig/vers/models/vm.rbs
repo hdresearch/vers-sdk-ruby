@@ -5,7 +5,8 @@ module Vers
         created_at: Time,
         owner_id: String,
         state: Vers::Models::VmAPI::state,
-        vm_id: String
+        vm_id: String,
+        labels: ::Hash[Symbol, String]?
       }
 
     class VmAPI < Vers::Internal::Type::BaseModel
@@ -17,18 +18,22 @@ module Vers
 
       attr_accessor vm_id: String
 
+      attr_accessor labels: ::Hash[Symbol, String]?
+
       def initialize: (
         created_at: Time,
         owner_id: String,
         state: Vers::Models::VmAPI::state,
-        vm_id: String
+        vm_id: String,
+        ?labels: ::Hash[Symbol, String]?
       ) -> void
 
       def to_hash: -> {
         created_at: Time,
         owner_id: String,
         state: Vers::Models::VmAPI::state,
-        vm_id: String
+        vm_id: String,
+        labels: ::Hash[Symbol, String]?
       }
 
       type state = :booting | :running | :paused | :sleeping | :dead

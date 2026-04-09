@@ -267,7 +267,8 @@ class Vers::Test::Resources::VmTest < Vers::Test::ResourceTest
         created_at: Time,
         owner_id: String,
         state: Vers::VmAPI::State,
-        vm_id: String
+        vm_id: String,
+        labels: ^(Vers::Internal::Type::HashOf[String]) | nil
       }
     end
   end

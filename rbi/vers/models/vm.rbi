@@ -18,12 +18,16 @@ module Vers
       sig { returns(String) }
       attr_accessor :vm_id
 
+      sig { returns(T.nilable(T::Hash[Symbol, String])) }
+      attr_accessor :labels
+
       sig do
         params(
           created_at: Time,
           owner_id: String,
           state: Vers::VmAPI::State::OrSymbol,
-          vm_id: String
+          vm_id: String,
+          labels: T.nilable(T::Hash[Symbol, String])
         ).returns(T.attached_class)
       end
       def self.new(
@@ -31,7 +35,8 @@ module Vers
         owner_id:,
         # The state of a VM
         state:,
-        vm_id:
+        vm_id:,
+        labels: nil
       )
       end
 
@@ -41,7 +46,8 @@ module Vers
             created_at: Time,
             owner_id: String,
             state: Vers::VmAPI::State::TaggedSymbol,
-            vm_id: String
+            vm_id: String,
+            labels: T.nilable(T::Hash[Symbol, String])
           }
         )
       end

@@ -25,7 +25,12 @@ module Vers
       #   @return [String]
       required :vm_id, String
 
-      # @!method initialize(created_at:, owner_id:, state:, vm_id:)
+      # @!attribute labels
+      #
+      #   @return [Hash{Symbol=>String}, nil]
+      optional :labels, Vers::Internal::Type::HashOf[String], nil?: true
+
+      # @!method initialize(created_at:, owner_id:, state:, vm_id:, labels: nil)
       #   @param created_at [Time]
       #
       #   @param owner_id [String]
@@ -33,6 +38,8 @@ module Vers
       #   @param state [Symbol, Vers::Models::VmAPI::State] The state of a VM
       #
       #   @param vm_id [String]
+      #
+      #   @param labels [Hash{Symbol=>String}, nil]
 
       # The state of a VM
       #
